@@ -1,6 +1,5 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
-import Logo from '../components/Logo'
 
 const Test = () => {
   return (
