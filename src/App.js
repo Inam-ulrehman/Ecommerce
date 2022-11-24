@@ -10,6 +10,7 @@ import {
   About,
   Contact,
   Test,
+  Products,
 } from './pages'
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
           <Route index element={<LandingPage />} />
           <Route path='*' element={<ErrorPage />} />
           <Route path='about' element={<About />} />
+          <Route path='products' element={<Products />} />
           <Route path='contact' element={<Contact />} />
           <Route path='test' element={<Test />} />
         </Route>

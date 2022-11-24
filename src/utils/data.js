@@ -7,6 +7,7 @@ import {
   FaFacebook,
   FaTwitterSquare,
   FaProductHunt,
+  // FaSignInAlt,
 } from 'react-icons/fa'
 // ========logo =========== //
 export const logo =
@@ -16,7 +17,7 @@ export const logo =
 export const navbar = [
   { id: 1, path: '/', title: 'Home', icon: <FaHome /> },
   { id: 2, path: '/about', title: 'About', icon: <FaEnvelope /> },
-  { id: 3, path: '/product', title: 'Product', icon: <FaProductHunt /> },
+  { id: 3, path: '/products', title: 'Products', icon: <FaProductHunt /> },
   { id: 3, path: '/contact', title: 'Contact', icon: <FaRegAddressBook /> },
   { id: 4, path: '/test', title: 'Test', icon: <FaRegSun /> },
 ]
