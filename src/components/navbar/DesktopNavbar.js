@@ -22,6 +22,7 @@ const DesktopNavbar = () => {
 }
 
 const Wrapper = styled.nav`
+  overflow: hidden;
   box-shadow: var(--shadow-2);
   height: 3.2rem;
   background-color: var(--white);

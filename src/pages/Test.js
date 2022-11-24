@@ -10,9 +10,7 @@ const Test = () => {
         <meta name='description' content='Welcome to our Test Page' />
         <link rel='canonical' href='/about' />
       </Helmet>
-      <div>
-        <Logo />
-      </div>
+      <div></div>
     </>
   )
 }

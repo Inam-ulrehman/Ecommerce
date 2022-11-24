@@ -30,6 +30,7 @@ const Wrapper = styled.footer`
   display: grid;
   place-items: center;
   .logo-holder {
+    overflow: hidden;
   }
   @media (min-width: 600px) {
     min-height: calc(100vh - 3.2rem);
