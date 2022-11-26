@@ -12,6 +12,7 @@ import {
   Test,
   Products,
 } from './pages'
+import Register from './pages/Register'
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path='about' element={<About />} />
           <Route path='products' element={<Products />} />
           <Route path='contact' element={<Contact />} />
+          <Route path='register' element={<Register />} />
           <Route path='test' element={<Test />} />
         </Route>
       </Routes>
