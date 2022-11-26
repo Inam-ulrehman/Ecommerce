@@ -1,10 +1,13 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa'
+import { useSelector } from 'react-redux'
+import { Link, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { navbar } from '../../utils/data'
 import Logo from '../Logo'
 
 const DesktopNavbar = () => {
+  const { user } = useSelector((state) => state)
   return (
     <Wrapper>
       <Logo />
@@ -16,6 +19,19 @@ const DesktopNavbar = () => {
             </li>
           )
         })}
+        {user.isMember ? (
+          <li>
+            <Link to='/'>
+              <FaSignOutAlt /> LogOut
+            </Link>
+          </li>
+        ) : (
+          <li>
+            <Link to='/register'>
+              <FaSignInAlt /> LogIn
+            </Link>
+          </li>
+        )}
       </ul>
     </Wrapper>
   )

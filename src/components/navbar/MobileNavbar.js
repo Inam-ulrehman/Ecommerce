@@ -1,12 +1,14 @@
 import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 import { navbar } from '../../utils/data'
-import { FaBars } from 'react-icons/fa'
+import { FaBars, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 const MobileNavbar = () => {
   const [show, setShow] = useState(true)
+  const { user } = useSelector((state) => state)
   const sidebar = useRef()
   const sidebarLink = useRef()
   // sidebar
@@ -37,6 +39,19 @@ const MobileNavbar = () => {
               </li>
             )
           })}
+          {user.isMember ? (
+            <li>
+              <Link to='/'>
+                <FaSignOutAlt /> LogOut
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link to='/register'>
+                <FaSignInAlt /> LogIn
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </Wrapper>
