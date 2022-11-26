@@ -1,11 +1,20 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { customFetch } from '../../utils/axios'
+import {
+  getUserFromLocalStorage,
+  setUserInLocalStorage,
+} from '../../utils/localStorage'
+const {
+  token,
+  user: { name },
+} = getUserFromLocalStorage('user')
+  ? getUserFromLocalStorage('user')
+  : { token: '', user: '' }
 
 const initialState = {
-  name: '',
-  email: '',
-  password: '',
-  isMember: false,
+  token: '' || token,
+  userName: '' || name,
+  isMember: name ? true : false,
   isLoading: false,
 }
 
@@ -17,6 +26,34 @@ export const userThunk = createAsyncThunk(
       console.log('hello Thunk')
       return response.data
     } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  }
+)
+// Register a user
+export const registerUserThunk = createAsyncThunk(
+  'user/registerUserThunk',
+  async (user, thunkAPI) => {
+    try {
+      const response = await customFetch.post('/auth/register', user)
+      console.log(response.data)
+      return response.data
+    } catch (error) {
+      console.log(error)
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  }
+)
+// Login a user
+export const loginUserThunk = createAsyncThunk(
+  'user/loginUserThunk',
+  async (user, thunkAPI) => {
+    try {
+      const response = await customFetch.post('/auth/login', user)
+      console.log(response.data)
+      return response.data
+    } catch (error) {
+      console.log(error)
       return thunkAPI.rejectWithValue(error.response.data)
     }
   }
@@ -41,6 +78,35 @@ const userSlice = createSlice({
     },
     [userThunk.rejected]: (state, { payload }) => {
       console.log('promise rejected')
+      state.isLoading = false
+    },
+    // Register a user
+    [registerUserThunk.pending]: (state, { payload }) => {
+      state.isLoading = true
+    },
+    [registerUserThunk.fulfilled]: (state, { payload }) => {
+      setUserInLocalStorage(payload)
+      state.token = payload.token
+      state.userName = payload.user.name
+      state.isMember = true
+      state.isLoading = false
+      state.isLoading = false
+    },
+    [registerUserThunk.rejected]: (state, { payload }) => {
+      state.isLoading = false
+    },
+    // login a user
+    [loginUserThunk.pending]: (state, { payload }) => {
+      state.isLoading = true
+    },
+    [loginUserThunk.fulfilled]: (state, { payload }) => {
+      setUserInLocalStorage(payload)
+      state.token = payload.token
+      state.userName = payload.user.name
+      state.isMember = true
+      state.isLoading = false
+    },
+    [loginUserThunk.rejected]: (state, { payload }) => {
       state.isLoading = false
     },
   },

@@ -1,10 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
 import { useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import styled from 'styled-components'
+import { loginUserThunk, registerUserThunk } from '../features/user/userSlice'
 
 const Register = () => {
+  const dispatch = useDispatch()
+  const { user } = useSelector((state) => state)
   const [login, setLogin] = useState(true)
   const nameRef = useRef()
   const emailRef = useRef()
@@ -21,16 +25,24 @@ const Register = () => {
       return
     }
     if (login) {
-      console.log(` Email: ${email}, Password: ${password}`)
+      dispatch(loginUserThunk({ email, password }))
       return
     } else {
-      console.log(`Name: ${name} Email: ${email}, Password: ${password}`)
+      dispatch(registerUserThunk({ name, email, password }))
     }
-    // const name = nameRef.current.value
   }
   // handle Login
   const handleLogin = () => {
     setLogin(!login)
+  }
+
+  if (user.isLoading) {
+    return (
+      <div>
+        <h1 className='title'>Loading...</h1>
+        <div className='loading'></div>
+      </div>
+    )
   }
   return (
     <Wrapper>
