@@ -15,8 +15,8 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const name = nameRef.current?.value
-    const email = emailRef.current.value
+    const name = nameRef.current?.value.toLowerCase()
+    const email = emailRef.current.value.toLowerCase()
     const password = passwordRef.current.value
 
     if (!email || !password || (!login && !name)) {

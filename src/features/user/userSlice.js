@@ -5,6 +5,8 @@ import {
   removeUserFromLocalStorage,
   setUserInLocalStorage,
 } from '../../utils/localStorage'
+import { toast } from 'react-toastify'
+
 const {
   token,
   user: { name },
@@ -37,10 +39,9 @@ export const registerUserThunk = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const response = await customFetch.post('/auth/register', user)
-      console.log(response.data)
+
       return response.data
     } catch (error) {
-      console.log(error)
       return thunkAPI.rejectWithValue(error.response.data)
     }
   }
@@ -51,10 +52,9 @@ export const loginUserThunk = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const response = await customFetch.post('/auth/login', user)
-      console.log(response.data)
+
       return response.data
     } catch (error) {
-      console.log(error)
       return thunkAPI.rejectWithValue(error.response.data)
     }
   }
@@ -95,10 +95,11 @@ const userSlice = createSlice({
       state.userName = payload.user.name
       state.isMember = true
       state.isLoading = false
-      state.isLoading = false
+      toast.success(`Welcome ${payload.user.name.toUpperCase()}.`)
     },
     [registerUserThunk.rejected]: (state, { payload }) => {
       state.isLoading = false
+      toast.error(`${payload?.msg ? payload.msg : payload}`)
     },
     // login a user
     [loginUserThunk.pending]: (state, { payload }) => {
@@ -110,9 +111,11 @@ const userSlice = createSlice({
       state.userName = payload.user.name
       state.isMember = true
       state.isLoading = false
+      toast.success(`Welcome back ${payload.user.name.toUpperCase()}.`)
     },
     [loginUserThunk.rejected]: (state, { payload }) => {
       state.isLoading = false
+      toast.error(`${payload?.msg ? payload.msg : payload}`)
     },
   },
 })
