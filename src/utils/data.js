@@ -19,7 +19,6 @@ export const navbar = [
   { id: 2, path: '/about', title: 'About', icon: <FaEnvelope /> },
   { id: 3, path: '/products', title: 'Products', icon: <FaProductHunt /> },
   { id: 4, path: '/contact', title: 'Contact', icon: <FaRegAddressBook /> },
-  { id: 5, path: '/test', title: 'Test', icon: <FaRegSun /> },
 ]
 
 // footer //============

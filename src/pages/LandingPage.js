@@ -1,6 +1,5 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
-import GoogleMaps from '../components/GoogleMaps'
 
 const LandingPage = () => {
   return (
@@ -11,7 +10,6 @@ const LandingPage = () => {
         <link rel='canonical' href='/' />
       </Helmet>
       <h1>this is our landing page</h1>
-      <GoogleMaps />
     </>
   )
 }

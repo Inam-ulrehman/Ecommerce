@@ -9,7 +9,6 @@ import {
   ErrorPage,
   About,
   Contact,
-  Test,
   Products,
 } from './pages'
 import Register from './pages/Register'
@@ -26,7 +25,6 @@ const App = () => {
           <Route path='products' element={<Products />} />
           <Route path='contact' element={<Contact />} />
           <Route path='register' element={<Register />} />
-          <Route path='test' element={<Test />} />
         </Route>
       </Routes>
       <ToastContainer />
