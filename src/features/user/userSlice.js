@@ -83,7 +83,7 @@ export const forgetPasswordChangeThunk = createAsyncThunk(
       const response = await customFetch.post(`/auth/forgetpassword/${id}`, {
         password,
       })
-      console.log(response)
+
       return response.data.msg
     } catch (error) {
       console.log(error.response)
