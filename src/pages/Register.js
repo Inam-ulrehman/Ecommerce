@@ -1,6 +1,5 @@
-import React from 'react'
-import { useState } from 'react'
-import { useRef } from 'react'
+import { React, useState, useRef } from 'react'
+import { Navigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import styled from 'styled-components'
@@ -43,6 +42,9 @@ const Register = () => {
         <div className='loading'></div>
       </div>
     )
+  }
+  if (user.isMember) {
+    return <Navigate to={'/dashboard'} />
   }
   return (
     <Wrapper>
