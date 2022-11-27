@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { customFetch } from '../../utils/axios'
 import {
   getUserFromLocalStorage,
+  removeUserFromLocalStorage,
   setUserInLocalStorage,
 } from '../../utils/localStorage'
 const {
@@ -66,6 +67,10 @@ const userSlice = createSlice({
     createFunction: (state, { payload }) => {
       console.log('function call')
     },
+    logOut: (state, { payload }) => {
+      removeUserFromLocalStorage('user')
+      state.isMember = false
+    },
   },
   extraReducers: {
     [userThunk.pending]: (state, { payload }) => {
@@ -111,5 +116,5 @@ const userSlice = createSlice({
     },
   },
 })
-export const { createFunction } = userSlice.actions
+export const { createFunction, logOut } = userSlice.actions
 export default userSlice.reducer

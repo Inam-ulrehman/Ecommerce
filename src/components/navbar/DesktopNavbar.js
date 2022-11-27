@@ -1,13 +1,15 @@
 import React from 'react'
 import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+import { logOut } from '../../features/user/userSlice'
 import { navbar } from '../../utils/data'
 import Logo from '../Logo'
 
 const DesktopNavbar = () => {
   const { user } = useSelector((state) => state)
+  const dispatch = useDispatch()
   return (
     <Wrapper>
       <Logo />
@@ -20,7 +22,7 @@ const DesktopNavbar = () => {
           )
         })}
         {user.isMember ? (
-          <li>
+          <li onClick={() => dispatch(logOut())}>
             <Link to='/'>
               <FaSignOutAlt /> LogOut
             </Link>
