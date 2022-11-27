@@ -3,11 +3,17 @@ import { Navigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import styled from 'styled-components'
-import { loginUserThunk, registerUserThunk } from '../features/user/userSlice'
+import {
+  forgetPasswordToggle,
+  loginUserThunk,
+  registerUserThunk,
+} from '../features/user/userSlice'
+import ForgetPassword from '../components/user/ForgetPassword'
 
 const Register = () => {
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state)
+
   const [login, setLogin] = useState(true)
   const nameRef = useRef()
   const emailRef = useRef()
@@ -35,6 +41,11 @@ const Register = () => {
     setLogin(!login)
   }
 
+  // handle Forget Password
+  const handleForgetPassword = (e) => {
+    dispatch(forgetPasswordToggle())
+  }
+
   if (user.isLoading) {
     return (
       <div>
@@ -48,45 +59,60 @@ const Register = () => {
   }
   return (
     <Wrapper>
-      <form className='form' onSubmit={handleSubmit}>
-        {/* name input */}
-        {!login && (
-          <div>
-            <label className='form-label' htmlFor='name'>
-              Name
-            </label>
-            <input className='form-input' ref={nameRef} type='text' />
-          </div>
-        )}
-        {/* email input */}
-        <label className='form-label' htmlFor='email'>
-          Email
-        </label>
-        <input className='form-input' ref={emailRef} type='text' />
-        {/* name input */}
-        <label className='form-label' htmlFor='password'>
-          Password
-        </label>
-        <input className='form-input' ref={passwordRef} type='password' />
-        <div>
-          {login ? (
-            <button type='submit' className='btn'>
-              LogIn
-            </button>
-          ) : (
-            <button type='submit' className='btn'>
-              Register
-            </button>
+      {user.forgetPassword ? (
+        <ForgetPassword />
+      ) : (
+        <form className='form' onSubmit={handleSubmit}>
+          {/* name input */}
+          {!login && (
+            <div>
+              <label className='form-label' htmlFor='name'>
+                Name
+              </label>
+              <input className='form-input' ref={nameRef} type='text' />
+            </div>
           )}
-        </div>
+          {/* email input */}
+          <label className='form-label' htmlFor='email'>
+            Email
+          </label>
+          <input className='form-input' ref={emailRef} type='text' />
+          {/* name input */}
+          <label className='form-label' htmlFor='password'>
+            Password
+          </label>
+          <input className='form-input' ref={passwordRef} type='password' />
+          <div>
+            {login ? (
+              <button type='submit' className='btn'>
+                LogIn
+              </button>
+            ) : (
+              <button type='submit' className='btn'>
+                Register
+              </button>
+            )}
+            <button
+              className='btn'
+              type='button'
+              onClick={handleForgetPassword}
+            >
+              Forget Password
+            </button>
+          </div>
 
-        <p>
-          {login ? 'You are not a member ?' : 'Are you a member ?'}
-          <button className='login-button' onClick={handleLogin} type='button'>
-            {login ? 'Register' : 'LogIn'}
-          </button>
-        </p>
-      </form>
+          <p>
+            {login ? 'You are not a member ?' : 'Are you a member ?'}
+            <button
+              className='login-button'
+              onClick={handleLogin}
+              type='button'
+            >
+              {login ? 'Register' : 'LogIn'}
+            </button>
+          </p>
+        </form>
+      )}
     </Wrapper>
   )
 }

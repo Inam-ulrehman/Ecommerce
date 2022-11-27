@@ -19,6 +19,7 @@ const initialState = {
   userName: '' || name,
   isMember: name ? true : false,
   isLoading: false,
+  forgetPassword: false,
 }
 
 export const userThunk = createAsyncThunk(
@@ -59,6 +60,20 @@ export const loginUserThunk = createAsyncThunk(
     }
   }
 )
+// Forget Password Link
+export const forgetPasswordLinkThunk = createAsyncThunk(
+  'user/forgetPasswordLinkThunk',
+  async (user, thunkAPI) => {
+    try {
+      const response = await customFetch.post('/auth/forgetpassword', user)
+
+      return response.data.msg
+    } catch (error) {
+      console.log(error.response)
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  }
+)
 
 const userSlice = createSlice({
   name: 'user',
@@ -70,6 +85,9 @@ const userSlice = createSlice({
     logOut: (state, { payload }) => {
       removeUserFromLocalStorage('user')
       state.isMember = false
+    },
+    forgetPasswordToggle: (state, { payload }) => {
+      state.forgetPassword = !state.forgetPassword
     },
   },
   extraReducers: {
@@ -117,7 +135,20 @@ const userSlice = createSlice({
       state.isLoading = false
       toast.error(`${payload?.msg ? payload.msg : payload}`)
     },
+    // Forget Password Link
+    [forgetPasswordLinkThunk.pending]: (state, { payload }) => {
+      state.isLoading = true
+    },
+    [forgetPasswordLinkThunk.fulfilled]: (state, { payload }) => {
+      state.isLoading = false
+      toast.success(payload)
+    },
+    [forgetPasswordLinkThunk.rejected]: (state, { payload }) => {
+      state.isLoading = false
+      toast.error(`${payload?.msg ? payload.msg : payload}`)
+    },
   },
 })
-export const { createFunction, logOut } = userSlice.actions
+export const { createFunction, logOut, forgetPasswordToggle } =
+  userSlice.actions
 export default userSlice.reducer
