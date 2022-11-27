@@ -51,10 +51,9 @@ export const registerUserThunk = createAsyncThunk(
 export const verifyUserThunk = createAsyncThunk(
   'user/verifyUserThunk',
   async (id, thunkAPI) => {
-    console.log(id)
     try {
       const response = await customFetch.get(`/auth/verify/${id}`)
-      console.log(response)
+
       return response.data
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data)
