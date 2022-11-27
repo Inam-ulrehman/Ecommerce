@@ -47,6 +47,20 @@ export const registerUserThunk = createAsyncThunk(
     }
   }
 )
+// verify a user
+export const verifyUserThunk = createAsyncThunk(
+  'user/verifyUserThunk',
+  async (id, thunkAPI) => {
+    console.log(id)
+    try {
+      const response = await customFetch.get(`/auth/verify/${id}`)
+      console.log(response)
+      return response.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  }
+)
 // Login a user
 export const loginUserThunk = createAsyncThunk(
   'user/loginUserThunk',
@@ -149,6 +163,17 @@ const userSlice = createSlice({
       toast.success(`Welcome back ${payload.user.name.toUpperCase()}.`)
     },
     [loginUserThunk.rejected]: (state, { payload }) => {
+      state.isLoading = false
+      toast.error(`${payload?.msg ? payload.msg : payload}`)
+    },
+    // verify a user
+    [verifyUserThunk.pending]: (state, { payload }) => {
+      state.isLoading = true
+    },
+    [verifyUserThunk.fulfilled]: (state, { payload }) => {
+      state.isLoading = false
+    },
+    [verifyUserThunk.rejected]: (state, { payload }) => {
       state.isLoading = false
       toast.error(`${payload?.msg ? payload.msg : payload}`)
     },

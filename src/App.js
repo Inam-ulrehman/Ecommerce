@@ -14,6 +14,7 @@ import {
   ProtectedRoute,
   ChangePassword,
   SingleChangePassword,
+  VerifyUser,
 } from './pages'
 import Register from './pages/Register'
 
@@ -36,6 +37,7 @@ const App = () => {
           <Route path='*' element={<ErrorPage />} />
           <Route path='changepassword' element={<ChangePassword />} />
           <Route path='changepassword/:id' element={<SingleChangePassword />} />
+          <Route path='verify/:id' element={<VerifyUser />} />
           <Route path='about' element={<About />} />
           <Route path='products' element={<Products />} />
           <Route path='contact' element={<Contact />} />

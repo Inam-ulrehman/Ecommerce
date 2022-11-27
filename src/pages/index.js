@@ -8,6 +8,7 @@ import Products from './Products'
 import ProtectedRoute from './ProtectedRoute'
 import SharedLayout from './SharedLayout'
 import SingleChangePassword from './SingleChangePassword'
+import VerifyUser from './VerifyUser'
 
 export {
   Products,
@@ -20,4 +21,5 @@ export {
   ProtectedRoute,
   ChangePassword,
   SingleChangePassword,
+  VerifyUser,
 }
