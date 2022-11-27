@@ -10,6 +10,8 @@ import {
   About,
   Contact,
   Products,
+  Dashboard,
+  ProtectedRoute,
 } from './pages'
 import Register from './pages/Register'
 
@@ -20,6 +22,14 @@ const App = () => {
       <Routes>
         <Route path='/' element={<SharedLayout />}>
           <Route index element={<LandingPage />} />
+          <Route
+            path='/dashboard'
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
           <Route path='*' element={<ErrorPage />} />
           <Route path='about' element={<About />} />
           <Route path='products' element={<Products />} />

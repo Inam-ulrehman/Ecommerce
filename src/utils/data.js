@@ -2,7 +2,6 @@ import {
   FaHome,
   FaEnvelope,
   FaRegAddressBook,
-  FaRegSun,
   FaInstagramSquare,
   FaFacebook,
   FaTwitterSquare,
