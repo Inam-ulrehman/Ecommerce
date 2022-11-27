@@ -172,6 +172,8 @@ const userSlice = createSlice({
     },
     [verifyUserThunk.fulfilled]: (state, { payload }) => {
       state.isLoading = false
+
+      toast.success(payload)
     },
     [verifyUserThunk.rejected]: (state, { payload }) => {
       state.isLoading = false
