@@ -12,6 +12,8 @@ import {
   Products,
   Dashboard,
   ProtectedRoute,
+  ChangePassword,
+  SingleChangePassword,
 } from './pages'
 import Register from './pages/Register'
 
@@ -30,7 +32,10 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+
           <Route path='*' element={<ErrorPage />} />
+          <Route path='changepassword' element={<ChangePassword />} />
+          <Route path='changepassword/:id' element={<SingleChangePassword />} />
           <Route path='about' element={<About />} />
           <Route path='products' element={<Products />} />
           <Route path='contact' element={<Contact />} />
