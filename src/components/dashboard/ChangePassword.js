@@ -23,6 +23,8 @@ const ChangePassword = () => {
       return toast.error('Password is too short.')
     } else {
       dispatch(changePasswordThunk({ password }))
+      passwordOneRef.current.value = ''
+      passwordTwoRef.current.value = ''
     }
   }
   return (
