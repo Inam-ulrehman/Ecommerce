@@ -118,10 +118,9 @@ export const changePasswordThunk = createAsyncThunk(
           },
         }
       )
-      console.log(response)
+
       return response.data.msg
     } catch (error) {
-      console.log(error.response)
       return thunkAPI.rejectWithValue(error.response.data)
     }
   }
