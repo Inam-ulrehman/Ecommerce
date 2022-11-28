@@ -1,8 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import DashboardNav from '../components/dashboard/DashboardNav'
 
 const Dashboard = () => {
-  return <Wrapper>Dashboard</Wrapper>
+  return (
+    <Wrapper>
+      <DashboardNav />
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.div`

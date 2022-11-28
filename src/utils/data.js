@@ -19,8 +19,12 @@ export const navbar = [
   { id: 3, path: '/products', title: 'Products', icon: <FaProductHunt /> },
   { id: 4, path: '/contact', title: 'Contact', icon: <FaRegAddressBook /> },
 ]
-
-// footer //============
+// =======Dashboard========
+export const dashboardNavLink = [
+  { id: 1, title: 'Profile', path: '/dashboard/profile' },
+  { id: 2, title: 'Change password', path: '/dashboard/changepassword' },
+]
+// ==================footer //============
 // ===== Data for Address =====
 export const address = [
   {

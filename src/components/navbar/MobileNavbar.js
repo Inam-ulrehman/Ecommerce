@@ -4,10 +4,12 @@ import { navbar } from '../../utils/data'
 import { FaBars, FaMailBulk, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { logOut } from '../../features/user/userSlice'
 
 const MobileNavbar = () => {
   const [show, setShow] = useState(true)
+  const dispatch = useDispatch()
   const { user } = useSelector((state) => state)
   const sidebar = useRef()
   const sidebarLink = useRef()
@@ -47,7 +49,7 @@ const MobileNavbar = () => {
             </li>
           )}
           {user.isMember ? (
-            <li>
+            <li onClick={() => dispatch(logOut())}>
               <Link to='/'>
                 <FaSignOutAlt /> LogOut
               </Link>
