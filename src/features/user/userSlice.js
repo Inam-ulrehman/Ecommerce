@@ -104,6 +104,28 @@ export const forgetPasswordChangeThunk = createAsyncThunk(
     }
   }
 )
+// change password
+export const changePasswordThunk = createAsyncThunk(
+  'user/changePasswordThunk',
+  async (password, thunkAPI) => {
+    try {
+      const response = await customFetch.post(
+        `/auth/changepassword`,
+        password,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      console.log(response)
+      return response.data.msg
+    } catch (error) {
+      console.log(error.response)
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  }
+)
 
 const userSlice = createSlice({
   name: 'user',
@@ -200,6 +222,18 @@ const userSlice = createSlice({
       toast.success(payload)
     },
     [forgetPasswordChangeThunk.rejected]: (state, { payload }) => {
+      state.isLoading = false
+      toast.error(`${payload?.msg ? payload.msg : payload}`)
+    },
+    // Change Password
+    [changePasswordThunk.pending]: (state, { payload }) => {
+      state.isLoading = true
+    },
+    [changePasswordThunk.fulfilled]: (state, { payload }) => {
+      state.isLoading = false
+      toast.success(payload)
+    },
+    [changePasswordThunk.rejected]: (state, { payload }) => {
       state.isLoading = false
       toast.error(`${payload?.msg ? payload.msg : payload}`)
     },
