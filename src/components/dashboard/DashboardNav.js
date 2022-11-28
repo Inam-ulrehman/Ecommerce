@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   ul {
     display: flex;
     li {
-      padding: 1rem;
+      padding: 0 1rem;
       a {
         color: black;
       }
@@ -39,7 +39,7 @@ const Wrapper = styled.div`
   }
   p {
     color: black;
-    padding: 1rem;
+    padding: 0 1rem;
     strong {
       border-bottom: 2px solid var(--primary-8);
     }
