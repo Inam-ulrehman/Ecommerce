@@ -21,6 +21,11 @@ const DesktopNavbar = () => {
             </li>
           )
         })}
+        {user.isMember && (
+          <li>
+            <NavLink to={'/dashboard'}>Dashboard</NavLink>
+          </li>
+        )}
         {user.isMember ? (
           <li onClick={() => dispatch(logOut())}>
             <Link to='/'>

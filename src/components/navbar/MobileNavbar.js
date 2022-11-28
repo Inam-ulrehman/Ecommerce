@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 import { navbar } from '../../utils/data'
-import { FaBars, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa'
+import { FaBars, FaMailBulk, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
@@ -39,6 +39,13 @@ const MobileNavbar = () => {
               </li>
             )
           })}
+          {user.isMember && (
+            <li>
+              <Link to={'/dashboard'}>
+                <FaMailBulk /> Dashboard
+              </Link>
+            </li>
+          )}
           {user.isMember ? (
             <li>
               <Link to='/'>
