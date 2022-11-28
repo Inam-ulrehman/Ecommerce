@@ -64,7 +64,6 @@ const Profile = () => {
   }
 
   useEffect(() => {
-    console.log(state.isLoading)
     getData()
     // eslint-disable-next-line
   }, [])
