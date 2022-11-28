@@ -115,6 +115,7 @@ const userSlice = createSlice({
     logOut: (state, { payload }) => {
       removeUserFromLocalStorage('user')
       state.isMember = false
+      toast.success('See you soon.')
     },
     forgetPasswordToggle: (state, { payload }) => {
       state.forgetPassword = !state.forgetPassword

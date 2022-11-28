@@ -27,11 +27,11 @@ const MobileNavbar = () => {
     <Wrapper>
       <FaBars className='icon' onClick={handleClick} />
 
-      <div className='sidebar' ref={sidebar}>
+      <div onClick={handleClick} className='sidebar' ref={sidebar}>
         <ul ref={sidebarLink}>
           {navbar.map((item, index) => {
             return (
-              <li key={index} onClick={handleClick}>
+              <li key={index}>
                 <Link to={item.path}>
                   {item.icon}
                   {item.title}
@@ -83,13 +83,16 @@ const Wrapper = styled.nav`
   .sidebar {
     margin-top: 3.2rem;
     height: calc(100vh);
-    width: 60vw;
-    background-color: var(--grey-2);
+    width: 100vw;
+
     position: relative;
     transition: var(--transition-1);
-    margin-left: -350px;
+    margin-left: -600px;
 
     ul {
+      background-color: var(--grey-2);
+      width: 60vw;
+      height: 100vh;
       li {
         :hover {
           background-color: var(--grey-3);
