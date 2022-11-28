@@ -1,11 +1,16 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async'
 import styled from 'styled-components'
-import DashboardNav from '../components/dashboard/DashboardNav'
 
 const Dashboard = () => {
   return (
     <Wrapper>
-      <DashboardNav />
+      <Helmet>
+        <title>Dashboard</title>
+        <meta name='description' content='Welcome to your Dashboard.' />
+        <link rel='canonical' href='/Dashboard' />
+      </Helmet>
+      Dashboard page
     </Wrapper>
   )
 }

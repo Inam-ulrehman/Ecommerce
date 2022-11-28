@@ -17,6 +17,16 @@ const DashboardNav = () => {
   )
 }
 
-const Wrapper = styled.ul``
+const Wrapper = styled.ul`
+  display: flex;
+  li {
+    padding: 1rem;
+    a {
+      color: black;
+    }
+  }
+
+  background-color: var(--primary-1);
+`
 
 export default DashboardNav
