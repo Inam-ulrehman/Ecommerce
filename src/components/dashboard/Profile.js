@@ -8,6 +8,7 @@ import FormInput from '../FormInput'
 
 const initialState = {
   user: [],
+  isLoading: false,
   name: '',
   lastName: '',
   email: '',
@@ -26,12 +27,14 @@ const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
     try {
       const response = await customFetch.patch('/auth/changeprofile', state, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       })
+
       toast.success(response.data.msg)
     } catch (error) {
       console.log(error.response)
@@ -45,6 +48,7 @@ const Profile = () => {
 
   // Get single User
   const getData = async () => {
+    setState({ ...state, isLoading: true })
     try {
       const response = await customFetch.get('auth/profile', {
         headers: {
@@ -52,16 +56,26 @@ const Profile = () => {
         },
       })
       const data = response.data
-      setState({ ...state, ...data })
+      setState({ ...state, ...data, isLoading: false })
     } catch (error) {
+      setState({ ...state, isLoading: false })
       console.log(error)
     }
   }
 
   useEffect(() => {
+    console.log(state.isLoading)
     getData()
     // eslint-disable-next-line
   }, [])
+  if (state.isLoading) {
+    return (
+      <div>
+        <h1 className='title'>Loading...</h1>
+        <div className='loading'></div>
+      </div>
+    )
+  }
   return (
     <Wrapper>
       <div className='dates'>
