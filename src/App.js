@@ -10,7 +10,6 @@ import {
   ErrorPage,
   About,
   Contact,
-  Products,
   Dashboard,
   ProtectedRoute,
   SingleChangePassword,
@@ -18,6 +17,7 @@ import {
   SharedDashboardLayout,
   Register,
 } from './pages'
+import { Products } from './pages/productPages'
 
 const App = () => {
   return (
@@ -26,6 +26,8 @@ const App = () => {
       <Routes>
         <Route path='/' element={<SharedLayout />}>
           <Route index element={<LandingPage />} />
+
+          {/* =======Dashboard======== */}
           <Route
             path='/dashboard'
             element={
@@ -34,13 +36,14 @@ const App = () => {
               </ProtectedRoute>
             }
           >
-            <Route index element={<Dashboard />}></Route>
+            <Route index element={<Dashboard />} />
             <Route path='/dashboard/profile' element={<Profile />} />
             <Route
               path='/dashboard/changepassword'
               element={<ChangePassword />}
             />
           </Route>
+          {/* =======Dashboard======== */}
           <Route path='changepassword/:id' element={<SingleChangePassword />} />
           <Route path='verify/:id' element={<VerifyUser />} />
           <Route path='about' element={<About />} />
