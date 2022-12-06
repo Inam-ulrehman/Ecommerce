@@ -17,6 +17,7 @@ import {
   SharedDashboardLayout,
   Register,
 } from './pages'
+import Cart from './pages/Cart'
 import { Products, SingleProduct } from './pages/productPages'
 
 const App = () => {
@@ -51,6 +52,7 @@ const App = () => {
           <Route path='products/:_id' element={<SingleProduct />} />
           <Route path='contact' element={<Contact />} />
           <Route path='register' element={<Register />} />
+          <Route path='cart' element={<Cart />} />
           <Route path='*' element={<ErrorPage />} />
         </Route>
       </Routes>

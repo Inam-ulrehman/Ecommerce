@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa'
+import { FaCartArrowDown, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
@@ -8,7 +8,7 @@ import { navbar } from '../../utils/data'
 import Logo from '../Logo'
 
 const DesktopNavbar = () => {
-  const { user } = useSelector((state) => state)
+  const { user, product } = useSelector((state) => state)
   const dispatch = useDispatch()
   return (
     <Wrapper>
@@ -36,6 +36,13 @@ const DesktopNavbar = () => {
           <li>
             <Link to='/register'>
               <FaSignInAlt /> LogIn
+            </Link>
+          </li>
+        )}
+        {product.cart.length > 0 && (
+          <li>
+            <Link to='/cart'>
+              <FaCartArrowDown /> Cart
             </Link>
           </li>
         )}
