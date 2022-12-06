@@ -1,7 +1,11 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
-import { removeCartItem } from '../features/product/productSlice'
+import {
+  decreaseItemQuantity,
+  increaseItemQuantity,
+  removeCartItem,
+} from '../features/product/productSlice'
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -22,6 +26,19 @@ const Cart = () => {
   const handleRemove = (_id) => {
     dispatch(removeCartItem(_id))
   }
+
+  const handleIncrease = (_id) => {
+    // const product = cart.find((item) => item._id === _id)
+    // let value = Number(product.quantity) + 1
+    // const newProduct = { ...product, quantity: value }
+    dispatch(increaseItemQuantity(_id))
+  }
+  // ==== handle Decrease =====
+
+  const handleDecrease = (_id) => {
+    dispatch(decreaseItemQuantity(_id))
+  }
+
   return (
     <Wrapper>
       <table>
@@ -43,7 +60,23 @@ const Cart = () => {
                 <td className='name'>
                   <p>{item.title}</p>
                 </td>
-                <td className='quantity'>{item.quantity}</td>
+                <td className='quantity'>
+                  <button
+                    className='btn'
+                    type='button'
+                    onClick={() => handleIncrease(item._id)}
+                  >
+                    Increase
+                  </button>
+                  {item.quantity}
+                  <button
+                    className='btn'
+                    type='button'
+                    onClick={() => handleDecrease(item._id)}
+                  >
+                    Decrease
+                  </button>
+                </td>
                 <td className='price'>{item.amount}</td>
                 <td className='action'>
                   <button

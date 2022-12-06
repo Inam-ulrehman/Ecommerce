@@ -78,6 +78,12 @@ const userSlice = createSlice({
       state.cart = cart
       setCartInLocalStorage(state.cart)
     },
+    increaseItemQuantity: (state, { payload }) => {
+      console.log('function call Increase')
+    },
+    decreaseItemQuantity: (state, { payload }) => {
+      console.log('function call Decrease')
+    },
     productsCategories: (state, { payload }) => {
       if (payload === 'all') {
         state.productList = state.initialProductList
@@ -134,6 +140,12 @@ const userSlice = createSlice({
     },
   },
 })
-export const { createFunction, productsCategories, getCart, removeCartItem } =
-  userSlice.actions
+export const {
+  createFunction,
+  productsCategories,
+  getCart,
+  removeCartItem,
+  increaseItemQuantity,
+  decreaseItemQuantity,
+} = userSlice.actions
 export default userSlice.reducer
