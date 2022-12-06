@@ -2,12 +2,20 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
 import { customFetch } from '../../utils/axios'
 import { getUniqueValues } from '../../utils/helper'
+import {
+  getCartFromLocalStorage,
+  setCartInLocalStorage,
+} from '../../utils/localStorage'
 
+const cart = getCartFromLocalStorage()
 const initialState = {
   category: [],
   initialProductList: [],
   productList: [],
+  singleProduct: '',
+  singleProductImages: [],
   nbHits: '',
+  cart: cart || [],
   isLoading: false,
 }
 
@@ -39,6 +47,20 @@ export const getProductThunk = createAsyncThunk(
     }
   }
 )
+//  ==== Get Single Products
+export const getSingleProductThunk = createAsyncThunk(
+  'product/getSingleProductThunk',
+  async (_id, thunkAPI) => {
+    try {
+      const response = await customFetch.get(`products/static/${_id}`)
+
+      return response.data.products
+    } catch (error) {
+      console.log(error.response)
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  }
+)
 
 const userSlice = createSlice({
   name: 'product',
@@ -46,6 +68,10 @@ const userSlice = createSlice({
   reducers: {
     createFunction: (state, { payload }) => {
       console.log('function call')
+    },
+    getCart: (state, { payload }) => {
+      state.cart = [...state.cart, payload]
+      setCartInLocalStorage(state.cart)
     },
     productsCategories: (state, { payload }) => {
       if (payload === 'all') {
@@ -88,7 +114,20 @@ const userSlice = createSlice({
 
       state.isLoading = false
     },
+    //  ==== Get Single Product ====
+    [getSingleProductThunk.pending]: (state, { payload }) => {
+      state.isLoading = true
+    },
+    [getSingleProductThunk.fulfilled]: (state, { payload }) => {
+      state.singleProduct = payload
+      state.singleProductImages = payload.uploadImage
+      state.isLoading = false
+    },
+    [getSingleProductThunk.rejected]: (state, { payload }) => {
+      toast.error(`${payload?.msg ? payload.msg : payload}`)
+      state.isLoading = false
+    },
   },
 })
-export const { createFunction, productsCategories } = userSlice.actions
+export const { createFunction, productsCategories, getCart } = userSlice.actions
 export default userSlice.reducer

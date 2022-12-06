@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 
 import { Helmet } from 'react-helmet-async'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import {
   getProductThunk,
@@ -13,6 +14,7 @@ const Products = () => {
   const { category, isLoading, productList } = product
 
   // ==== handle Category button
+
   const handleCategory = (e) => {
     const value = e.target.value
     dispatch(productsCategories(value))
@@ -55,7 +57,11 @@ const Products = () => {
       {/*===== filter Product =======Start */}
       <div>
         {productList.map((item, index) => {
-          return <div key={index}>{item.title}</div>
+          return (
+            <Link to={`${item._id}`} key={index}>
+              <div>{item.title}</div>
+            </Link>
+          )
         })}
       </div>
       {/*===== filter Product =======End */}
