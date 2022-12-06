@@ -7,7 +7,6 @@ import {
   getProductThunk,
   productsCategories,
 } from '../../features/product/productSlice'
-
 const Products = () => {
   const dispatch = useDispatch()
   const { product } = useSelector((state) => state)
@@ -68,6 +67,7 @@ const Wrapper = styled.div`
   .category-holder {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     button {
       margin: 1rem;
     }
