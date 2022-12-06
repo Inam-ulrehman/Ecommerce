@@ -1,18 +1,27 @@
 import React, { useEffect } from 'react'
-import { useState } from 'react'
+
 import { Helmet } from 'react-helmet-async'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
-import { getProductThunk } from '../../features/product/productSlice'
+import {
+  getProductThunk,
+  productsCategories,
+} from '../../features/product/productSlice'
 
 const Products = () => {
   const dispatch = useDispatch()
-  const [filterProducts, setFilterProducts] = useState([])
   const { product } = useSelector((state) => state)
-  const { category, isLoading } = product
+  const { category, isLoading, productList } = product
+
+  // ==== handle Category button
+  const handleCategory = (e) => {
+    const value = e.target.value
+    dispatch(productsCategories(value))
+  }
 
   useEffect(() => {
     dispatch(getProductThunk())
+
     // eslint-disable-next-line
   }, [])
 
@@ -35,8 +44,8 @@ const Products = () => {
       <div className='category-holder'>
         {category.map((item, index) => {
           return (
-            <div key={index}>
-              <button type='button' className='btn'>
+            <div onClick={handleCategory} key={index}>
+              <button type='button' className='btn' value={item}>
                 {item}
               </button>
             </div>
@@ -44,6 +53,13 @@ const Products = () => {
         })}
       </div>
       {/*===== filter category =======End */}
+      {/*===== filter Product =======Start */}
+      <div>
+        {productList.map((item, index) => {
+          return <div key={index}>{item.title}</div>
+        })}
+      </div>
+      {/*===== filter Product =======End */}
     </Wrapper>
   )
 }

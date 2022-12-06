@@ -5,7 +5,8 @@ import { getUniqueValues } from '../../utils/helper'
 
 const initialState = {
   category: [],
-  productsList: [],
+  initialProductList: [],
+  productList: [],
   nbHits: '',
   isLoading: false,
 }
@@ -46,6 +47,16 @@ const userSlice = createSlice({
     createFunction: (state, { payload }) => {
       console.log('function call')
     },
+    productsCategories: (state, { payload }) => {
+      if (payload === 'all') {
+        state.productList = state.initialProductList
+        return
+      }
+      const category = state.initialProductList.filter(
+        (item) => item.category === payload
+      )
+      state.productList = category
+    },
   },
   extraReducers: {
     [productThunk.pending]: (state, { payload }) => {
@@ -67,7 +78,8 @@ const userSlice = createSlice({
     [getProductThunk.fulfilled]: (state, { payload }) => {
       const { category, products, nbHits } = payload
       state.category = category
-      state.productsList = products
+      state.initialProductList = products
+      state.productList = products
       state.nbHits = nbHits
       state.isLoading = false
     },
@@ -78,5 +90,5 @@ const userSlice = createSlice({
     },
   },
 })
-export const { createFunction } = userSlice.actions
+export const { createFunction, productsCategories } = userSlice.actions
 export default userSlice.reducer
