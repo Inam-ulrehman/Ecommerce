@@ -73,6 +73,11 @@ const userSlice = createSlice({
       state.cart = [...state.cart, payload]
       setCartInLocalStorage(state.cart)
     },
+    removeCartItem: (state, { payload }) => {
+      const cart = state.cart.filter((item) => item._id !== payload)
+      state.cart = cart
+      setCartInLocalStorage(state.cart)
+    },
     productsCategories: (state, { payload }) => {
       if (payload === 'all') {
         state.productList = state.initialProductList
@@ -129,5 +134,6 @@ const userSlice = createSlice({
     },
   },
 })
-export const { createFunction, productsCategories, getCart } = userSlice.actions
+export const { createFunction, productsCategories, getCart, removeCartItem } =
+  userSlice.actions
 export default userSlice.reducer
