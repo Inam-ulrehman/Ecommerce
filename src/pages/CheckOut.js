@@ -22,10 +22,7 @@ const CheckOut = () => {
 
   const getClientSecret = async () => {
     try {
-      const response = await axios.post(
-        'http://localhost:5000/api/v1/stripe',
-        cart
-      )
+      const response = await customFetch.post('/stripe', cart)
       const { client_secret } = response.data
       setClientSecret(client_secret)
     } catch (error) {
