@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import {
   decreaseItemQuantity,
@@ -9,7 +10,7 @@ import {
 
 const Cart = () => {
   const dispatch = useDispatch()
-  const { product } = useSelector((state) => state)
+  const { product, user } = useSelector((state) => state)
   const { cart } = product
 
   // ==== Calculator function=====
@@ -101,6 +102,14 @@ const Cart = () => {
         <p>
           <strong>TOTAL : {TotalAmount}</strong>
         </p>
+      </div>
+      <div>
+        <Link
+          to={`${user.isMember ? '/dashboard/checkout' : '/register'}`}
+          className='btn'
+        >
+          CheckOut
+        </Link>
       </div>
     </Wrapper>
   )
