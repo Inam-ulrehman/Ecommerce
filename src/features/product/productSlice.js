@@ -82,6 +82,10 @@ const userSlice = createSlice({
       const index = state.cart.findIndex((item) => {
         return item._id === payload
       })
+      if (state.cart[index].quantity >= state.cart[index].totalStock) {
+        toast.error('Maximum available stock.')
+        return
+      }
       state.cart[index].quantity = state.cart[index].quantity + 1
       console.log(state.cart[index].quantity)
       setCartInLocalStorage(state.cart)
@@ -90,6 +94,9 @@ const userSlice = createSlice({
       const index = state.cart.findIndex((item) => {
         return item._id === payload
       })
+      if (state.cart[index].quantity === 1) {
+        return
+      }
       state.cart[index].quantity = state.cart[index].quantity - 1
       console.log(state.cart[index].quantity)
       setCartInLocalStorage(state.cart)
