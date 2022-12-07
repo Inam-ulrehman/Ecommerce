@@ -7,6 +7,7 @@ import {
   increaseItemQuantity,
   removeCartItem,
 } from '../features/product/productSlice'
+import { totalBill } from '../utils/helper'
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -14,19 +15,7 @@ const Cart = () => {
   const { cart } = product
 
   // ==== Calculator function=====
-
-  const TotalAmount = cart.reduce((total, cart) => {
-    let productQuantity = cart.quantity
-    let productAmount = cart.amount * productQuantity
-    total += productAmount
-
-    return total
-  }, 0)
-
-  // const index = cart.findIndex((item) => {
-  //   return item._id === _id
-  // })
-  // const carts = cart[index].quantity + 1
+  const TotalAmount = totalBill(cart)
 
   // ===== Remove Item =====
   const handleRemove = (_id) => {

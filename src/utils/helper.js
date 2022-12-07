@@ -25,3 +25,16 @@ export const formatPrice = (number) => {
 
 // ============Scroll up============
 window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+
+// ==========bill calculator========
+
+export const totalBill = (cart) => {
+  const TotalAmount = cart.reduce((total, cart) => {
+    let productQuantity = cart.quantity
+    let productAmount = cart.amount * productQuantity
+    total += productAmount
+
+    return total
+  }, 0)
+  return TotalAmount
+}
