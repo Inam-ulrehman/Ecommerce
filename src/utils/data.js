@@ -82,6 +82,10 @@ export const socialIcons = [
     title: 'Instagram',
   },
 ]
-// ======== data for google maps==========
+// ======== Stripe  ==========
 
-export const googleMapsData = { lat: 43.4450848, lng: -80.48596 }
+export const StripePaymentStatus =
+  'http://localhost:3000/dashboard/paymentstatus'
+
+export const STRIPE_PUBLISHABLE_KEY =
+  'pk_test_51MCOOyAWL09tx3q3PEZKwZOjJyC94URRgxK9l8Efy9siYmXPybFxYhj3ByPZnjZfvaVmyvCpcT6NaLZogWkiUKK700XGTZL0aq'
