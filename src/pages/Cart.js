@@ -22,15 +22,17 @@ const Cart = () => {
     return total
   }, 0)
 
+  // const index = cart.findIndex((item) => {
+  //   return item._id === _id
+  // })
+  // const carts = cart[index].quantity + 1
+
   // ===== Remove Item =====
   const handleRemove = (_id) => {
     dispatch(removeCartItem(_id))
   }
 
   const handleIncrease = (_id) => {
-    // const product = cart.find((item) => item._id === _id)
-    // let value = Number(product.quantity) + 1
-    // const newProduct = { ...product, quantity: value }
     dispatch(increaseItemQuantity(_id))
   }
   // ==== handle Decrease =====

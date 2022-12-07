@@ -33,7 +33,7 @@ const SingleProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const quantity = quantityRef.current.value
+    const quantity = Number(quantityRef.current.value)
     if (!quantity) {
       toast.warning('Please select quantity.')
       return

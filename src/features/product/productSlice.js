@@ -79,10 +79,20 @@ const userSlice = createSlice({
       setCartInLocalStorage(state.cart)
     },
     increaseItemQuantity: (state, { payload }) => {
-      console.log('function call Increase')
+      const index = state.cart.findIndex((item) => {
+        return item._id === payload
+      })
+      state.cart[index].quantity = state.cart[index].quantity + 1
+      console.log(state.cart[index].quantity)
+      setCartInLocalStorage(state.cart)
     },
     decreaseItemQuantity: (state, { payload }) => {
-      console.log('function call Decrease')
+      const index = state.cart.findIndex((item) => {
+        return item._id === payload
+      })
+      state.cart[index].quantity = state.cart[index].quantity - 1
+      console.log(state.cart[index].quantity)
+      setCartInLocalStorage(state.cart)
     },
     productsCategories: (state, { payload }) => {
       if (payload === 'all') {
