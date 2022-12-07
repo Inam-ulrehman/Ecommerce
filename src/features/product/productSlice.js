@@ -98,7 +98,6 @@ const userSlice = createSlice({
         return
       }
       state.cart[index].quantity = state.cart[index].quantity - 1
-      console.log(state.cart[index].quantity)
       setCartInLocalStorage(state.cart)
     },
     productsCategories: (state, { payload }) => {
