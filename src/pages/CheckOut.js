@@ -16,7 +16,6 @@ const CheckOut = () => {
   const [stripePromise, setStripePromise] = useState(() =>
     loadStripe(PUBLISHABLE_KEY)
   )
-  console.log(clientSecret)
 
   const getClientSecret = async () => {
     try {
