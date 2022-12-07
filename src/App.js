@@ -18,6 +18,7 @@ import {
   Register,
 } from './pages'
 import Cart from './pages/Cart'
+import CheckOut from './pages/CheckOut'
 import { Products, SingleProduct } from './pages/productPages'
 
 const App = () => {
@@ -38,6 +39,7 @@ const App = () => {
             }
           >
             <Route index element={<Dashboard />} />
+            <Route path='/dashboard/checkout' element={<CheckOut />} />
             <Route path='/dashboard/profile' element={<Profile />} />
             <Route
               path='/dashboard/changepassword'
