@@ -2,20 +2,18 @@ import React from 'react'
 import queryString from 'query-string'
 import { useEffect } from 'react'
 // import { postOnlineOrderThunk } from '../../features/cart/cartSlice'
-import { useDispatch } from 'react-redux'
+
 import { useState } from 'react'
 const PaymentStatus = () => {
   const [value, setValue] = useState(false)
-  const dispatch = useDispatch()
+
   const parsed = queryString.parse(window.location.search)
   // payment_intent, payment_intent_client_secret,
   const { redirect_status } = parsed
 
-  console.log(redirect_status)
   // succeeded
   // I have created this function to cancel double order behavior caused by double render.
   const callFunction = () => {
-    dispatch(console.log('hello'))
     // dispatch(
     //   postOnlineOrderThunk({
     //     payment_intent,
