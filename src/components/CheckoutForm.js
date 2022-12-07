@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
+import { toast } from 'react-toastify'
 
 const CheckoutForm = () => {
   const url = window.location.href
-  console.log(url)
+
   const stripe = useStripe()
   const elements = useElements()
 
@@ -24,14 +25,12 @@ const CheckoutForm = () => {
       //`Elements` instance that was used to create the Payment Element
       elements,
       confirmParams: {
-        return_url: `http://localhost:3000/dashboard/checkout/paymentStatus`,
+        return_url: `${url}/paymentStatus`,
       },
     })
 
     if (error) {
-      // This point will only be reached if there is an immediate error when
-      // confirming the payment. Show error to your customer (for example, payment
-      // details incomplete)
+      toast.error(error.message)
       setErrorMessage(error.message)
     } else {
       // Your customer will be redirected to your `return_url`. For some payment
@@ -43,7 +42,10 @@ const CheckoutForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <PaymentElement />
-      <button disabled={!stripe}>Submit</button>
+
+      <button disabled={!stripe} className='btn'>
+        Submit
+      </button>
       {/* Show error message to your customers */}
       {errorMessage && <div>{errorMessage}</div>}
     </form>
