@@ -7,7 +7,6 @@ import { loadStripe } from '@stripe/stripe-js'
 import { customFetch } from '../utils/axios'
 import CheckoutForm from '../components/CheckoutForm'
 import { useState } from 'react'
-import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { STRIPE_PUBLISHABLE_KEY } from '../utils/data'
 
