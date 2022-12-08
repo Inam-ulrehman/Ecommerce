@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import styled from 'styled-components'
-import { customFetch } from '../utils/axios'
-import FormInput from '../components/FormInput'
+import { customFetch } from '../../utils/axios'
+import FormInput from '../FormInput'
 
 const initialState = {
   user: [],
