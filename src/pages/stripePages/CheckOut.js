@@ -1,15 +1,12 @@
-import React from 'react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Elements } from '@stripe/react-stripe-js'
-import AddressForm from '../components/AddressForm'
+import AddressForm from '../../components/AddressForm'
 import { loadStripe } from '@stripe/stripe-js'
-// eslint-disable-next-line
-import { customFetch } from '../utils/axios'
-import CheckoutForm from '../components/CheckoutForm'
-import { useState } from 'react'
+import { customFetch } from '../../utils/axios'
+import CheckoutForm from '../../components/CheckoutForm'
 import { useSelector } from 'react-redux'
-import { STRIPE_PUBLISHABLE_KEY } from '../utils/data'
-import StripeProfile from '../components/StripeProfile'
+import { STRIPE_PUBLISHABLE_KEY } from '../../utils/data'
+import StripeProfile from '../../components/StripeProfile'
 
 const CheckOut = () => {
   const { cart } = useSelector((state) => state.product)

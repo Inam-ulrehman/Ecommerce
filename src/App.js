@@ -18,9 +18,9 @@ import {
   Register,
 } from './pages'
 import Cart from './pages/Cart'
-import CheckOut from './pages/CheckOut'
-import PaymentStatus from './pages/PaymentStatus'
+import PaymentStatus from './pages/stripePages/PaymentStatus'
 import { Products, SingleProduct } from './pages/productPages'
+import { CheckOut } from './pages/stripePages'
 
 const App = () => {
   return (

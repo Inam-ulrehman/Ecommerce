@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import queryString from 'query-string'
 import { useDispatch, useSelector } from 'react-redux'
-import { createOrderThunk } from '../features/order/orderSlice'
-import { totalBill } from '../utils/helper'
+import { createOrderThunk } from '../../features/order/orderSlice'
+import { totalBill } from '../../utils/helper'
 import { useState } from 'react'
 
 const PaymentStatus = () => {

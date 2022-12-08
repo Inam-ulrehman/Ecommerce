@@ -26,7 +26,6 @@ export const createOrderThunk = createAsyncThunk(
   'order/createOrderThunk',
   async (order, thunkAPI) => {
     try {
-      console.log(order)
       const response = await customFetch.post('orders', order, {
         headers: {
           Authorization: `Bearer ${token}`,
