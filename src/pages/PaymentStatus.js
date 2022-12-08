@@ -1,35 +1,43 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import queryString from 'query-string'
-import { useEffect } from 'react'
-// import { postOnlineOrderThunk } from '../../features/cart/cartSlice'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { createOrderThunk } from '../features/order/orderSlice'
+import { totalBill } from '../utils/helper'
 import { useState } from 'react'
+
 const PaymentStatus = () => {
+  const dispatch = useDispatch()
   const [value, setValue] = useState(false)
+  const { cart } = useSelector((state) => state.product)
+  const payment = queryString.parse(window.location.search)
+  const { payment_intent, payment_intent_client_secret, redirect_status } =
+    payment
+  const success = redirect_status === 'succeeded'
+  const processing = redirect_status === 'processing'
+  const total = totalBill(cart)
 
-  const parsed = queryString.parse(window.location.search)
-  // payment_intent, payment_intent_client_secret,
-  const { redirect_status } = parsed
-
-  // succeeded
-  // I have created this function to cancel double order behavior caused by double render.
-  const callFunction = () => {
-    // dispatch(
-    //   postOnlineOrderThunk({
-    //     payment_intent,
-    //     payment_intent_client_secret,
-    //     redirect_status,
-    //   })
-    // )
+  const order = {
+    cart,
+    payment_intent,
+    payment_intent_client_secret,
+    redirect_status,
+    total,
   }
+  const postOrder = () => {
+    dispatch(createOrderThunk(order))
+  }
+
+  // I have created this useEffect to stop double Order.
+
   useEffect(() => {
     setValue(true)
-    if (value) {
-      callFunction()
+    if (value && (success || processing)) {
+      postOrder()
     }
     // eslint-disable-next-line
   }, [value])
-  if (redirect_status === 'succeeded') {
+
+  if (success) {
     return (
       <div>
         <h4>Success! Payment received..</h4>
@@ -37,7 +45,7 @@ const PaymentStatus = () => {
     )
   }
 
-  if (redirect_status === 'processing') {
+  if (processing) {
     return (
       <div>
         <h4>Payment processing. We'll update you when payment is received.</h4>
