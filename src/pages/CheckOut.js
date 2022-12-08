@@ -9,10 +9,11 @@ import CheckoutForm from '../components/CheckoutForm'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { STRIPE_PUBLISHABLE_KEY } from '../utils/data'
+import StripeProfile from '../components/StripeProfile'
 
 const CheckOut = () => {
   const { cart } = useSelector((state) => state.product)
-
+  const [showCart, setShowCart] = useState(false)
   const [clientSecret, setClientSecret] = useState('')
   // eslint-disable-next-line
   const [stripePromise, setStripePromise] = useState(() =>
@@ -45,7 +46,9 @@ const CheckOut = () => {
     <div>
       <p> Success card : 4242 4242 4242 4242</p>
       <p> fail card : 4000000000009995</p>
-      {clientSecret && (
+      {!showCart && <StripeProfile setShowCart={setShowCart} />}
+
+      {clientSecret && showCart && (
         <Elements stripe={stripePromise} options={options}>
           <CheckoutForm />
           <AddressForm />
