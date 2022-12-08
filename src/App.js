@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import ScrollToTopHook from './hooks/ScrollToTopHook'
 import { ChangePassword, Profile } from './components/dashboard'
 import {
