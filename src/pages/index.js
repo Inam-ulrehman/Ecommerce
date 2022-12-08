@@ -1,4 +1,5 @@
 import About from './About'
+import Cart from './Cart'
 import Contact from './Contact'
 import Dashboard from './Dashboard'
 import ErrorPage from './ErrorPage'
@@ -22,4 +23,5 @@ export {
   VerifyUser,
   SharedDashboardLayout,
   Register,
+  Cart,
 }

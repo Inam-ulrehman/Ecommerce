@@ -1,9 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import { ChangePassword, Profile } from './components/dashboard'
 import ScrollToTopHook from './hooks/ScrollToTopHook'
+import { ChangePassword, Profile } from './components/dashboard'
 import {
   SharedLayout,
   LandingPage,
@@ -16,11 +15,11 @@ import {
   VerifyUser,
   SharedDashboardLayout,
   Register,
+  Cart,
 } from './pages'
-import Cart from './pages/Cart'
-import PaymentStatus from './pages/stripePages/PaymentStatus'
+
 import { Products, SingleProduct } from './pages/productPages'
-import { CheckOut } from './pages/stripePages'
+import { CheckOut, PaymentStatus } from './pages/stripePages'
 
 const App = () => {
   return (

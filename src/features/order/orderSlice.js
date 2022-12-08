@@ -62,15 +62,12 @@ const orderSlice = createSlice({
     },
     // Create Order
     [createOrderThunk.pending]: (state, { payload }) => {
-      console.log('promise pending')
       state.isLoading = true
     },
     [createOrderThunk.fulfilled]: (state, { payload }) => {
-      console.log('promise full filled')
       state.isLoading = false
     },
     [createOrderThunk.rejected]: (state, { payload }) => {
-      console.log('promise rejected')
       state.isLoading = false
     },
   },
