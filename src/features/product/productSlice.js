@@ -4,6 +4,7 @@ import { customFetch } from '../../utils/axios'
 import { getUniqueValues } from '../../utils/helper'
 import {
   getCartFromLocalStorage,
+  removeCartFromLocalStorage,
   setCartInLocalStorage,
 } from '../../utils/localStorage'
 
@@ -68,6 +69,10 @@ const userSlice = createSlice({
   reducers: {
     createFunction: (state, { payload }) => {
       console.log('function call')
+    },
+    emptyCart: (state, { payload }) => {
+      removeCartFromLocalStorage()
+      state.cart = []
     },
     getCart: (state, { payload }) => {
       state.cart = [...state.cart, payload]
@@ -160,6 +165,7 @@ export const {
   createFunction,
   productsCategories,
   getCart,
+  emptyCart,
   removeCartItem,
   increaseItemQuantity,
   decreaseItemQuantity,

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { createOrderThunk } from '../../features/order/orderSlice'
 import { totalBill } from '../../utils/helper'
 import { useState } from 'react'
-import { removeCartFromLocalStorage } from '../../utils/localStorage'
+import { emptyCart } from '../../features/product/productSlice'
 
 const PaymentStatus = () => {
   const dispatch = useDispatch()
@@ -34,8 +34,9 @@ const PaymentStatus = () => {
     setValue(true)
     if (value && (success || processing)) {
       postOrder()
-      removeCartFromLocalStorage()
+      dispatch(emptyCart())
     }
+
     // eslint-disable-next-line
   }, [value])
 
