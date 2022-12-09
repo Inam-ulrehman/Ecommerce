@@ -1,7 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { customFetch } from '../../utils/axios'
 import { getUserFromLocalStorage } from '../../utils/localStorage'
+
 const { token } = getUserFromLocalStorage('user')
+  ? getUserFromLocalStorage('user')
+  : { token: '' }
+
 const initialState = {
   name: '',
   email: '',
