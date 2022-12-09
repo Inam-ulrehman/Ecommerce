@@ -1,24 +1,8 @@
 import React from 'react'
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { getOrdersThunk } from '../../features/order/orderSlice'
-import emptyCart from '../../images/empty_cart.svg'
+
 const Dashboard = () => {
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getOrdersThunk())
-  }, [])
-  return (
-    <Wrapper>
-      <div className='empty-cart'>
-        <h3>Your cart is empty.</h3>
-        <img src={emptyCart} alt='' />
-      </div>
-      {/* ===holding orders */}
-      <div className='orders'></div>
-    </Wrapper>
-  )
+  return <Wrapper>dashboard</Wrapper>
 }
 
 const Wrapper = styled.div`

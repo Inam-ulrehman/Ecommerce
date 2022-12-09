@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { toast } from 'react-toastify'
 import { customFetch } from '../../utils/axios'
 import { getUserFromLocalStorage } from '../../utils/localStorage'
 
@@ -28,7 +29,7 @@ export const createOrderThunk = createAsyncThunk(
   'order/createOrderThunk',
   async (order, thunkAPI) => {
     try {
-      const response = await customFetch.post('orders', order, {
+      const response = await customFetch.post('/orders', order, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -47,13 +48,13 @@ export const getOrdersThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       console.log('order there')
-      // const response = await customFetch.get('orders', {
-      //   headers: {
-      //     Authorization: `Bearer ${token}`,
-      //   },
-      // })
-      // console.log(response)
-      // return response.data
+      const response = await customFetch.get('/orders', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      console.log(response)
+      return response.data
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data)
     }
@@ -89,6 +90,7 @@ const orderSlice = createSlice({
       state.isLoading = false
     },
     [createOrderThunk.rejected]: (state, { payload }) => {
+      toast.error(`${payload?.msg ? payload.msg : payload}`)
       state.isLoading = false
     },
     // get Order
@@ -96,9 +98,11 @@ const orderSlice = createSlice({
       state.isLoading = true
     },
     [getOrdersThunk.fulfilled]: (state, { payload }) => {
+      state.ordersList = payload.orders
       state.isLoading = false
     },
     [getOrdersThunk.rejected]: (state, { payload }) => {
+      toast.error(`${payload?.msg ? payload.msg : payload}`)
       state.isLoading = false
     },
   },

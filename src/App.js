@@ -15,7 +15,13 @@ import {
 } from './pages'
 import { Products, SingleProduct } from './pages/productPages'
 import { CheckOut, PaymentStatus } from './pages/stripePages'
-import { Dashboard, Profile, ChangePassword } from './pages/dashboardPages'
+import {
+  Dashboard,
+  Profile,
+  ChangePassword,
+  Orders,
+  SingleOrder,
+} from './pages/dashboardPages'
 import { ForgetPassword, Register, VerifyUser } from './pages/userPages'
 
 const App = () => {
@@ -41,6 +47,8 @@ const App = () => {
               path='/dashboard/checkout/paymentStatus'
               element={<PaymentStatus />}
             />
+            <Route path='/dashboard/orders' element={<Orders />} />
+            <Route path='/dashboard/orders/:_id' element={<SingleOrder />} />
             <Route path='/dashboard/profile' element={<Profile />} />
             <Route
               path='/dashboard/changepassword'
