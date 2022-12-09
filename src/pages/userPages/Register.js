@@ -7,8 +7,8 @@ import {
   forgetPasswordToggle,
   loginUserThunk,
   registerUserThunk,
-} from '../features/user/userSlice'
-import ForgetPassword from '../components/user/ForgetPassword'
+} from '../../features/user/userSlice'
+import ForgetPassword from '../../components/user/ForgetPassword'
 
 const Register = () => {
   const dispatch = useDispatch()

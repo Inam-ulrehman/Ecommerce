@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import styled from 'styled-components'
-import { forgetPasswordChangeThunk } from '../features/user/userSlice'
+import { forgetPasswordChangeThunk } from '../../features/user/userSlice'
 
 const SingleChangePassword = () => {
   const dispatch = useDispatch()

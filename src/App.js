@@ -10,16 +10,14 @@ import {
   About,
   Contact,
   ProtectedRoute,
-  SingleChangePassword,
   VerifyUser,
   SharedDashboardLayout,
-  Register,
   Cart,
 } from './pages'
-
 import { Products, SingleProduct } from './pages/productPages'
 import { CheckOut, PaymentStatus } from './pages/stripePages'
 import { Dashboard, Profile, ChangePassword } from './pages/dashboardPages'
+import { ForgetPassword, Register } from './pages/userPages'
 
 const App = () => {
   return (
@@ -51,7 +49,7 @@ const App = () => {
             />
           </Route>
           {/* =======Dashboard======== */}
-          <Route path='changepassword/:id' element={<SingleChangePassword />} />
+          <Route path='changepassword/:id' element={<ForgetPassword />} />
           <Route path='verify/:id' element={<VerifyUser />} />
           <Route path='about' element={<About />} />
           <Route path='products' element={<Products />} />
