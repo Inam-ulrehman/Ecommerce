@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import { verifyUserThunk } from '../features/user/userSlice'
+import { verifyUserThunk } from '../../features/user/userSlice'
 
 const VerifyUser = () => {
   const { id } = useParams()

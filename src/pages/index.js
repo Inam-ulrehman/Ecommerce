@@ -6,7 +6,6 @@ import LandingPage from './LandingPage'
 import ProtectedRoute from './ProtectedRoute'
 import SharedDashboardLayout from './dashboardPages/SharedDashboardLayout'
 import SharedLayout from './SharedLayout'
-import VerifyUser from './VerifyUser'
 
 export {
   SharedLayout,
@@ -15,7 +14,6 @@ export {
   About,
   Contact,
   ProtectedRoute,
-  VerifyUser,
   SharedDashboardLayout,
   Cart,
 }

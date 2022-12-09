@@ -10,14 +10,13 @@ import {
   About,
   Contact,
   ProtectedRoute,
-  VerifyUser,
   SharedDashboardLayout,
   Cart,
 } from './pages'
 import { Products, SingleProduct } from './pages/productPages'
 import { CheckOut, PaymentStatus } from './pages/stripePages'
 import { Dashboard, Profile, ChangePassword } from './pages/dashboardPages'
-import { ForgetPassword, Register } from './pages/userPages'
+import { ForgetPassword, Register, VerifyUser } from './pages/userPages'
 
 const App = () => {
   return (
