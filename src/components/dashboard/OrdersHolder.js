@@ -1,3 +1,4 @@
+import moment from 'moment/moment'
 import React from 'react'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
@@ -6,7 +7,7 @@ import styled from 'styled-components'
 import Pagination from '../Pagination'
 
 const OrdersHolder = () => {
-  const { paginateOrders, ordersList } = useSelector((state) => state.order)
+  const { ordersList } = useSelector((state) => state.order)
   const [index, setIndex] = useState(0)
   return (
     <Wrapper className='orders'>
@@ -24,7 +25,7 @@ const OrdersHolder = () => {
             <th>details</th>
           </tr>
 
-          {ordersList.map((item) => {
+          {ordersList[index]?.map((item) => {
             const names = item.cart.map((item, index) => {
               const name = [item.title]
               return name
@@ -51,7 +52,7 @@ const OrdersHolder = () => {
                   })}
                 </td>
                 <td>{item.total}</td>
-                <td>{item.createdAt}</td>
+                <td>{moment(item.createdAt).format('MMMM DD YYYY')}</td>
                 <td>
                   <Link to={`${item._id}`}>More Details</Link>{' '}
                 </td>
@@ -60,11 +61,7 @@ const OrdersHolder = () => {
           })}
         </tbody>
       </table>
-      <Pagination
-        index={index}
-        setIndex={setIndex}
-        productsList={paginateOrders}
-      />
+      <Pagination index={index} setIndex={setIndex} productsList={ordersList} />
     </Wrapper>
   )
 }

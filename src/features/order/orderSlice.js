@@ -10,7 +10,6 @@ const { token } = getUserFromLocalStorage('user')
 
 const initialState = {
   ordersList: [],
-  paginateOrders: [],
   isLoading: false,
 }
 
@@ -99,8 +98,7 @@ const orderSlice = createSlice({
       state.isLoading = true
     },
     [getOrdersThunk.fulfilled]: (state, { payload }) => {
-      state.ordersList = payload.orders
-      state.paginateOrders = paginate(payload.orders)
+      state.ordersList = paginate(payload.orders)
 
       state.isLoading = false
     },
