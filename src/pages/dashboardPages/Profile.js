@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import styled from 'styled-components'
 import { customFetch } from '../../utils/axios'
-import FormInput from '../FormInput'
+import FormInput from '../../components/FormInput'
 
 const initialState = {
   user: [],

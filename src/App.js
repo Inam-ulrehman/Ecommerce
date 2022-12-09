@@ -3,14 +3,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ScrollToTopHook from './hooks/ScrollToTopHook'
-import { ChangePassword, Profile } from './components/dashboard'
 import {
   SharedLayout,
   LandingPage,
   ErrorPage,
   About,
   Contact,
-  Dashboard,
   ProtectedRoute,
   SingleChangePassword,
   VerifyUser,
@@ -21,6 +19,7 @@ import {
 
 import { Products, SingleProduct } from './pages/productPages'
 import { CheckOut, PaymentStatus } from './pages/stripePages'
+import { Dashboard, Profile, ChangePassword } from './pages/dashboardPages'
 
 const App = () => {
   return (
