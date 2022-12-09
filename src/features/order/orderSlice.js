@@ -10,6 +10,7 @@ const { token } = getUserFromLocalStorage('user')
 
 const initialState = {
   ordersList: [],
+  singleOrder: {},
   isLoading: false,
 }
 
@@ -42,7 +43,7 @@ export const createOrderThunk = createAsyncThunk(
     }
   }
 )
-// ====Get Orders====
+// ====Get All Orders====
 
 export const getOrdersThunk = createAsyncThunk(
   'order/getOrdersThunk',
@@ -54,6 +55,24 @@ export const getOrdersThunk = createAsyncThunk(
         },
       })
 
+      return response.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  }
+)
+// ===========Get Single Order
+
+export const getSingleOrderThunk = createAsyncThunk(
+  'order/getSingleOrderThunk',
+  async (_id, thunkAPI) => {
+    try {
+      const response = await customFetch.get(`/orders/${_id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      console.log(response)
       return response.data
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data)
@@ -103,6 +122,18 @@ const orderSlice = createSlice({
       state.isLoading = false
     },
     [getOrdersThunk.rejected]: (state, { payload }) => {
+      toast.error(`${payload?.msg ? payload.msg : payload}`)
+      state.isLoading = false
+    },
+    // get Single Order
+    [getSingleOrderThunk.pending]: (state, { payload }) => {
+      state.isLoading = true
+    },
+    [getSingleOrderThunk.fulfilled]: (state, { payload }) => {
+      state.singleOrder = payload.order
+      state.isLoading = false
+    },
+    [getSingleOrderThunk.rejected]: (state, { payload }) => {
       toast.error(`${payload?.msg ? payload.msg : payload}`)
       state.isLoading = false
     },
