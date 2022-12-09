@@ -7,9 +7,7 @@ const { token } = getUserFromLocalStorage('user')
   : { token: '' }
 
 const initialState = {
-  name: '',
-  email: '',
-  password: '',
+  ordersList: [],
   isLoading: false,
 }
 
@@ -37,6 +35,25 @@ export const createOrderThunk = createAsyncThunk(
       })
       console.log(response)
       return response.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  }
+)
+// ====Get Orders====
+
+export const getOrdersThunk = createAsyncThunk(
+  'order/getOrdersThunk',
+  async (_, thunkAPI) => {
+    try {
+      console.log('order there')
+      // const response = await customFetch.get('orders', {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // })
+      // console.log(response)
+      // return response.data
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data)
     }
@@ -72,6 +89,16 @@ const orderSlice = createSlice({
       state.isLoading = false
     },
     [createOrderThunk.rejected]: (state, { payload }) => {
+      state.isLoading = false
+    },
+    // get Order
+    [getOrdersThunk.pending]: (state, { payload }) => {
+      state.isLoading = true
+    },
+    [getOrdersThunk.fulfilled]: (state, { payload }) => {
+      state.isLoading = false
+    },
+    [getOrdersThunk.rejected]: (state, { payload }) => {
       state.isLoading = false
     },
   },
