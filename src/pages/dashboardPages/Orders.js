@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import OrdersHolder from '../../components/dashboard/OrdersHolder'
 import { getOrdersThunk } from '../../features/order/orderSlice'
 import emptyCart from '../../images/empty_cart.svg'
 
@@ -31,54 +31,7 @@ const Orders = () => {
       )}
 
       {/* ===holding orders */}
-      <div className='orders'>
-        <table>
-          <tbody>
-            <tr>
-              <th>image</th>
-              <th>name</th>
-              <th>total</th>
-              <th>date</th>
-              <th>details</th>
-            </tr>
-
-            {ordersList.map((item) => {
-              const names = item.cart.map((item, index) => {
-                const name = [item.title]
-                return name
-              })
-              const images = item.cart.map((item, index) => {
-                const image = item.uploadImage
-                return image
-              })
-
-              return (
-                <tr className='container' key={item._id}>
-                  <td className='image'>
-                    {images.map((item, index) => {
-                      return (
-                        <div key={index}>
-                          <img src={item[0].secure_url} alt='' />
-                        </div>
-                      )
-                    })}
-                  </td>
-                  <td className='name'>
-                    {names.map((item, index) => {
-                      return <div key={index}>{item}</div>
-                    })}
-                  </td>
-                  <td>{item.total}</td>
-                  <td>{item.createdAt}</td>
-                  <td>
-                    <Link to={`${item._id}`}>More Details</Link>{' '}
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
-      </div>
+      <OrdersHolder />
     </Wrapper>
   )
 }

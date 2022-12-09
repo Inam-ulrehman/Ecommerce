@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
 import { customFetch } from '../../utils/axios'
 import { getUserFromLocalStorage } from '../../utils/localStorage'
+import paginate from '../../utils/paginate'
 
 const { token } = getUserFromLocalStorage('user')
   ? getUserFromLocalStorage('user')
@@ -9,6 +10,7 @@ const { token } = getUserFromLocalStorage('user')
 
 const initialState = {
   ordersList: [],
+  paginateOrders: [],
   isLoading: false,
 }
 
@@ -98,6 +100,8 @@ const orderSlice = createSlice({
     },
     [getOrdersThunk.fulfilled]: (state, { payload }) => {
       state.ordersList = payload.orders
+      state.paginateOrders = paginate(payload.orders)
+
       state.isLoading = false
     },
     [getOrdersThunk.rejected]: (state, { payload }) => {
