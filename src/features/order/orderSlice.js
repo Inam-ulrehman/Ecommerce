@@ -47,13 +47,12 @@ export const getOrdersThunk = createAsyncThunk(
   'order/getOrdersThunk',
   async (_, thunkAPI) => {
     try {
-      console.log('order there')
       const response = await customFetch.get('/orders', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      console.log(response)
+
       return response.data
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data)
