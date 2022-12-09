@@ -82,6 +82,7 @@ const Wrapper = styled.div`
       p {
         margin-top: 0;
         background-color: var(--grey-3);
+        height: 2.3rem;
       }
     }
   }
