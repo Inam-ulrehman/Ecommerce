@@ -81,6 +81,7 @@ body {
 p {
   margin-bottom: 1.5rem;
   max-width: 40em;
+  text-transform: capitalize;
 }
 
 h1,
