@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { formatPrice } from '../../utils/helper'
 import Pagination from '../Pagination'
 
 const OrdersHolder = () => {
@@ -18,11 +19,11 @@ const OrdersHolder = () => {
       <table>
         <tbody>
           <tr>
-            <th>image</th>
-            <th>name</th>
-            <th>total</th>
-            <th>date</th>
-            <th>details</th>
+            <th>IMAGE</th>
+            <th>NAME</th>
+            <th>TOTAL</th>
+            <th>DATE</th>
+            <th>ACTION</th>
           </tr>
 
           {ordersList[index]?.map((item) => {
@@ -51,10 +52,13 @@ const OrdersHolder = () => {
                     return <div key={index}>{item}</div>
                   })}
                 </td>
-                <td>{item.total}</td>
+                <td>{}</td>
+                <td>{formatPrice(item.total)}</td>
                 <td>{moment(item.createdAt).format('MMMM DD YYYY')}</td>
                 <td>
-                  <Link to={`${item._id}`}>More Details</Link>{' '}
+                  <Link className='btn' to={`${item._id}`}>
+                    DETAILS
+                  </Link>{' '}
                 </td>
               </tr>
             )

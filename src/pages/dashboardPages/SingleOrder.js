@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import { getSingleOrderThunk } from '../../features/order/orderSlice'
+import { formatPrice } from '../../utils/helper'
 
 const SingleOrder = () => {
   const dispatch = useDispatch()
@@ -32,7 +33,7 @@ const SingleOrder = () => {
           <strong>{singleOrder.shipment ? 'Shipped' : 'Processing'}</strong>
         </span>
         <span>
-          Total Bill:<strong>{singleOrder.total}</strong>
+          Total Bill:<strong>{formatPrice(singleOrder.total)}</strong>
         </span>
         <span>
           {' '}

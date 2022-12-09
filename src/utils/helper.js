@@ -19,7 +19,7 @@ export const getUniqueValues = (data, type) => {
 export const formatPrice = (number) => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'CAD',
   }).format(number / 100)
 }
 
