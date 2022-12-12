@@ -93,7 +93,7 @@ const Cart = () => {
           <strong>TOTAL: {formatPrice(TotalAmount)}</strong>
         </p>
       </div>
-      <div>
+      <div className='checkout'>
         <Link
           to={`${user.isMember ? '/dashboard/checkout' : '/register'}`}
           className='btn'
@@ -106,6 +106,7 @@ const Cart = () => {
 }
 
 const Wrapper = styled.div`
+  min-height: 100vh;
   /* table */
   .table {
     text-align: center;
@@ -118,6 +119,10 @@ const Wrapper = styled.div`
       border-top: 2px solid black;
       border-bottom: 2px solid black;
     }
+  }
+  .checkout {
+    text-align: center;
+    margin: 1rem;
   }
   .img {
     border: transparent;
