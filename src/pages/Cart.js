@@ -2,12 +2,13 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { FaPlusSquare, FaMinusSquare } from 'react-icons/fa'
 import {
   decreaseItemQuantity,
   increaseItemQuantity,
   removeCartItem,
 } from '../features/product/productSlice'
-import { totalBill } from '../utils/helper'
+import { formatPrice, totalBill } from '../utils/helper'
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -33,7 +34,7 @@ const Cart = () => {
 
   return (
     <Wrapper>
-      <table>
+      <table className='table'>
         <tbody>
           <tr>
             <th>IMAGE</th>
@@ -56,20 +57,20 @@ const Cart = () => {
                   <button
                     className='btn'
                     type='button'
-                    onClick={() => handleIncrease(item._id)}
+                    onClick={() => handleDecrease(item._id)}
                   >
-                    Increase
+                    <FaMinusSquare />
                   </button>
-                  {item.quantity}
+                  <span>{item.quantity}</span>
                   <button
                     className='btn'
                     type='button'
-                    onClick={() => handleDecrease(item._id)}
+                    onClick={() => handleIncrease(item._id)}
                   >
-                    Decrease
+                    <FaPlusSquare />
                   </button>
                 </td>
-                <td className='price'>{item.amount}</td>
+                <td className='price'>{formatPrice(item.amount)}</td>
                 <td className='action'>
                   <button
                     className='btn'
@@ -89,7 +90,7 @@ const Cart = () => {
           <strong>Total Bill</strong>
         </p>
         <p>
-          <strong>TOTAL : {TotalAmount}</strong>
+          <strong>TOTAL: {formatPrice(TotalAmount)}</strong>
         </p>
       </div>
       <div>
@@ -105,6 +106,19 @@ const Cart = () => {
 }
 
 const Wrapper = styled.div`
+  /* table */
+  .table {
+    text-align: center;
+  }
+  /* Quantity */
+  .quantity {
+    span {
+      padding: 0.1rem 1.2rem;
+      background-color: var(--white);
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+    }
+  }
   .img {
     border: transparent;
     img {
