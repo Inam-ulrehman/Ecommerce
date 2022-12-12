@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+import { useState } from 'react'
+import { useRef } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
@@ -11,7 +13,7 @@ const Products = () => {
   const dispatch = useDispatch()
   const { product } = useSelector((state) => state)
   const { category, isLoading, productList } = product
-
+  const [value, setValue] = useState(0)
   // ==== handle Category button
 
   const handleCategory = (e) => {
@@ -41,17 +43,22 @@ const Products = () => {
         <link rel='canonical' href='/product' />
       </Helmet>
       {/*===== filter category =======Start */}
-      <div className='category-holder' id='category-holder'>
+      <ul className='category-holder'>
         {category.map((item, index) => {
           return (
-            <div onClick={handleCategory} key={index}>
-              <button type='button' className='btn' value={item}>
+            <li onClick={handleCategory} key={index}>
+              <button
+                onClick={() => setValue(index)}
+                type='button'
+                className={value === index ? 'btn active' : 'btn'}
+                value={item}
+              >
                 {item}
               </button>
-            </div>
+            </li>
           )
         })}
-      </div>
+      </ul>
       {/*===== filter category =======End */}
       {/*===== filter Product =======Start */}
       <div className='product-holder'>
@@ -80,8 +87,14 @@ const Wrapper = styled.div`
     flex-wrap: wrap;
     justify-content: center;
   }
-  .active {
+  .btn {
     background: var(--primary-8);
+    :hover {
+      background: var(--primary-5);
+    }
+  }
+  .active {
+    background: var(--primary-5);
   }
 `
 export default Products
