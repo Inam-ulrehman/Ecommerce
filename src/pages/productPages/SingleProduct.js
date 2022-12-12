@@ -10,6 +10,7 @@ import {
   getCart,
   getSingleProductThunk,
 } from '../../features/product/productSlice'
+import { formatPrice } from '../../utils/helper'
 const initialState = {
   index: 0,
 }
@@ -62,7 +63,9 @@ const SingleProduct = () => {
   }
   return (
     <Wrapper>
-      <h3>{singleProduct.category}</h3>
+      <h3>
+        Category / <strong>{singleProduct.category}</strong>
+      </h3>
       <div className='container'>
         <div className='img'>
           <div className='main-img'>
@@ -81,26 +84,27 @@ const SingleProduct = () => {
             })}
           </div>
         </div>
+        {/* ====DESCRIPTION  */}
         <div className='description'>
-          <h4 className='title'>{singleProduct.title}</h4>
           <div>
-            <p>{singleProduct.inStock ? 'in-stock' : 'out-of-stock'}</p>
+            <h3 className='title'>{singleProduct.title}</h3>
+            <div className='title-underline'></div>
+          </div>
+          <div className='description-heading'>
+            <p>{singleProduct.inStock ? null : 'out-of-stock'}</p>
             <p>
-              {singleProduct.inStock
-                ? `Total in-stock ${singleProduct.totalStock}`
-                : null}
+              Total Stock: <strong>{singleProduct.totalStock}</strong>
+            </p>
+            <p>
+              Total Price: <strong>{formatPrice(singleProduct.amount)}</strong>
             </p>
           </div>
-          <div>
-            <p>Total Price: {singleProduct.amount}</p>
-          </div>
+
           {/* ========== CART======START*/}
           {singleProduct.inStock && (
-            <div>
+            <div className='cart'>
               <form onSubmit={handleSubmit}>
-                <label>
-                  Quantity: between 1 and {singleProduct.totalStock}:
-                </label>
+                <label>Pick between 1 to{singleProduct.totalStock}:</label>
                 <input
                   ref={quantityRef}
                   type='number'
@@ -125,32 +129,57 @@ const SingleProduct = () => {
   )
 }
 const Wrapper = styled.div`
+  padding: 1rem;
   .container {
     display: flex;
   }
   .img,
   .description {
-    min-height: 100vh;
-    border: 2px solid black;
     min-width: 45vw;
     margin: 0 auto;
   }
   .main-img {
     text-align: center;
+
     img {
+      box-shadow: var(--shadow-2);
+      border-radius: var(--radius);
       width: 300px;
     }
   }
+  /* === small images */
   .options-img {
     display: flex;
     flex-wrap: wrap;
+
     img {
+      box-shadow: var(--shadow-2);
       max-width: 80px;
-      margin-left: 1rem;
-      border: 2px solid black;
+      margin-left: 0.5rem;
+      transition: var(--transition);
       :hover {
         cursor: pointer;
+        box-shadow: var(--shadow-4);
       }
+    }
+  }
+  /*=== Description */
+  .description-heading {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  /* === CART */
+  .cart {
+    input {
+      margin: 1rem;
+    }
+  }
+  .btn {
+  }
+  @media (max-width: 600px) {
+    .container {
+      display: grid;
     }
   }
 `
