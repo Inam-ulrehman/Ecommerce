@@ -9,6 +9,7 @@ import {
   StripeProfile,
   CheckoutForm,
 } from '../../components/stripe'
+import styled from 'styled-components'
 
 const CheckOut = () => {
   const { cart } = useSelector((state) => state.product)
@@ -42,21 +43,30 @@ const CheckOut = () => {
     appearance,
   }
   return (
-    <div>
-      <p> Success card : 4242 4242 4242 4242</p>
-      <p> fail card : 4000000000009995</p>
+    <Wrapper>
+      <strong> Success card : 4242 4242 4242 4242</strong>
+      <strong> fail card : 4000000000009995</strong>
+      <div className='heading'>
+        <h3 className='title'>Payment Details</h3>
+        <div className='title-underline'></div>
+      </div>
       {!showCart && <StripeProfile setShowCart={setShowCart} />}
 
       {clientSecret && showCart && (
         <Elements stripe={stripePromise} options={options}>
-          <CheckoutForm />
           <AddressForm />
+          <CheckoutForm />
         </Elements>
       )}
-    </div>
+    </Wrapper>
   )
 }
-
+const Wrapper = styled.div`
+  padding: 1rem;
+  .heading {
+    margin: 1rem;
+  }
+`
 export default CheckOut
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
