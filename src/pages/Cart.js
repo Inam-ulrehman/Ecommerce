@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { FaPlusSquare, FaMinusSquare } from 'react-icons/fa'
+import { FaPlusSquare, FaMinusSquare, FaTrash } from 'react-icons/fa'
 import {
   decreaseItemQuantity,
   increaseItemQuantity,
@@ -56,22 +56,24 @@ const Cart = () => {
                 <td className='name'>
                   <p>{item.title}</p>
                 </td>
-                <td className='quantity'>
-                  <button
-                    className='btn'
-                    type='button'
-                    onClick={() => handleDecrease(item._id)}
-                  >
-                    <FaMinusSquare />
-                  </button>
-                  <span>{item.quantity}</span>
-                  <button
-                    className='btn'
-                    type='button'
-                    onClick={() => handleIncrease(item._id)}
-                  >
-                    <FaPlusSquare />
-                  </button>
+                <td>
+                  <div className='quantity'>
+                    <button
+                      className='btn'
+                      type='button'
+                      onClick={() => handleDecrease(item._id)}
+                    >
+                      <FaMinusSquare />
+                    </button>
+                    <span>{item.quantity}</span>
+                    <button
+                      className='btn'
+                      type='button'
+                      onClick={() => handleIncrease(item._id)}
+                    >
+                      <FaPlusSquare />
+                    </button>
+                  </div>
                 </td>
                 <td className='price'>{formatPrice(item.amount)}</td>
                 <td className='action'>
@@ -80,7 +82,7 @@ const Cart = () => {
                     type='button'
                     onClick={() => handleRemove(item._id)}
                   >
-                    Remove
+                    <FaTrash />
                   </button>
                 </td>
               </tr>
@@ -138,6 +140,11 @@ const Wrapper = styled.div`
     justify-content: space-between;
     padding: 0 2rem;
     border: 2px solid black;
+  }
+  @media (max-width: 600px) {
+    .quantity {
+      display: grid;
+    }
   }
 `
 
