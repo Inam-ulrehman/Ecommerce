@@ -62,6 +62,7 @@ const Wrapper = styled.nav`
   position: fixed;
   top: 0;
   width: 100vw;
+  z-index: 10;
   ul {
     display: flex;
     margin-right: 1rem;
