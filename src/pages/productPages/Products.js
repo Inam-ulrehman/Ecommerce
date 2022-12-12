@@ -78,7 +78,7 @@ const Wrapper = styled.div`
     justify-content: center;
     flex-wrap: wrap;
     button {
-      margin: 1rem;
+      margin: 0.5rem;
     }
   }
   /* ====Product */
