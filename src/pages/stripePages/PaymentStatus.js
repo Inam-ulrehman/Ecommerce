@@ -58,7 +58,7 @@ const PaymentStatus = () => {
   if (redirect_status === 'requires_payment_method') {
     return (
       <div>
-        <h4>Payment failed. Please try another payment method..</h4>
+        <h4>Payment failed. Please try another payment method.</h4>
       </div>
     )
   } else {
