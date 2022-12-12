@@ -31,7 +31,7 @@ const Orders = () => {
       )}
 
       {/* ===holding orders */}
-      <OrdersHolder />
+      {ordersList.length > 0 && <OrdersHolder />}
     </Wrapper>
   )
 }
