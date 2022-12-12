@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const ProductDesign = ({ item }) => {
   const image = item.uploadImage[0].secure_url
-  console.log(item)
+
   return (
     <Link to={item._id}>
       <Wrapper>

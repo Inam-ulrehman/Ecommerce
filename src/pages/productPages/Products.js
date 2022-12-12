@@ -41,7 +41,7 @@ const Products = () => {
         <link rel='canonical' href='/product' />
       </Helmet>
       {/*===== filter category =======Start */}
-      <div className='category-holder'>
+      <div className='category-holder' id='category-holder'>
         {category.map((item, index) => {
           return (
             <div onClick={handleCategory} key={index}>
@@ -66,6 +66,7 @@ const Products = () => {
 
 const Wrapper = styled.div`
   .category-holder {
+    background: var(--primary-8);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -78,6 +79,9 @@ const Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+  }
+  .active {
+    background: var(--primary-8);
   }
 `
 export default Products
