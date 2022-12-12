@@ -4,9 +4,7 @@ import { customFetch } from '../../utils/axios'
 import { getUserFromLocalStorage } from '../../utils/localStorage'
 import paginate from '../../utils/paginate'
 
-const { token } = getUserFromLocalStorage('user')
-  ? getUserFromLocalStorage('user')
-  : { token: '' }
+const user = getUserFromLocalStorage('user')
 
 const initialState = {
   ordersList: [],
@@ -33,7 +31,7 @@ export const createOrderThunk = createAsyncThunk(
     try {
       const response = await customFetch.post('/orders', order, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${user?.token}`,
         },
       })
       console.log(response)
@@ -51,7 +49,7 @@ export const getOrdersThunk = createAsyncThunk(
     try {
       const response = await customFetch.get('/orders', {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${user?.token}`,
         },
       })
 
@@ -69,7 +67,7 @@ export const getSingleOrderThunk = createAsyncThunk(
     try {
       const response = await customFetch.get(`/orders/${_id}`, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${user?.token}`,
         },
       })
 
