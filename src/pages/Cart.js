@@ -9,6 +9,7 @@ import {
   removeCartItem,
 } from '../features/product/productSlice'
 import { formatPrice, totalBill } from '../utils/helper'
+import EmptyCart from '../components/EmptyCart'
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -31,7 +32,9 @@ const Cart = () => {
   const handleDecrease = (_id) => {
     dispatch(decreaseItemQuantity(_id))
   }
-
+  if (cart.length === 0) {
+    return <EmptyCart />
+  }
   return (
     <Wrapper>
       <table className='table'>
