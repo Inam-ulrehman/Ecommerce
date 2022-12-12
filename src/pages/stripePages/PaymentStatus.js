@@ -43,7 +43,7 @@ const PaymentStatus = () => {
   if (success) {
     return (
       <div>
-        <h4>Success! Payment received..</h4>
+        <h4>Success! Payment received...</h4>
       </div>
     )
   }
