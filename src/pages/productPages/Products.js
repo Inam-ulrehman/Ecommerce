@@ -72,6 +72,7 @@ const Products = () => {
 }
 
 const Wrapper = styled.div`
+  min-height: calc(100vh - 61px);
   .category-holder {
     background: var(--primary-8);
     display: flex;
