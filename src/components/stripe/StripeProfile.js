@@ -85,6 +85,8 @@ const StripeProfile = ({ setShowCart }) => {
   }
   return (
     <Wrapper>
+      <h3 className='title'>Confirm your profile </h3>
+      <div className='title-underline'></div>
       <form className='form' onSubmit={handleSubmit}>
         {/* name input */}
         <FormInput
