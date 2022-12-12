@@ -53,6 +53,8 @@ const Pagination = ({ index, setIndex, productsList }) => {
   )
 }
 const Wrapper = styled.div`
+  margin: 1rem;
+  text-align: center;
   .active {
     background-color: var(--primary-8);
   }

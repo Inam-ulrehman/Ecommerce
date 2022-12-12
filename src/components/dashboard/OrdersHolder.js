@@ -52,7 +52,7 @@ const OrdersHolder = () => {
                     return <div key={index}>{item}</div>
                   })}
                 </td>
-                <td>{}</td>
+
                 <td>{formatPrice(item.total)}</td>
                 <td>{moment(item.createdAt).format('MMMM DD YYYY')}</td>
                 <td>
