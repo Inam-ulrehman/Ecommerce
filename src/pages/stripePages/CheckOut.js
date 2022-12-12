@@ -46,14 +46,15 @@ const CheckOut = () => {
     <Wrapper>
       <strong> Success card : 4242 4242 4242 4242</strong>
       <strong> fail card : 4000000000009995</strong>
-      <div className='heading'>
-        <h3 className='title'>Payment Details</h3>
-        <div className='title-underline'></div>
-      </div>
+
       {!showCart && <StripeProfile setShowCart={setShowCart} />}
 
       {clientSecret && showCart && (
         <Elements stripe={stripePromise} options={options}>
+          <div className='heading'>
+            <h3 className='title'>Payment Details</h3>
+            <div className='title-underline'></div>
+          </div>
           <AddressForm />
           <CheckoutForm />
         </Elements>
