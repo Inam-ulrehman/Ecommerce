@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
-
 import { Helmet } from 'react-helmet-async'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import ProductDesign from '../../components/ProductDesign'
 import {
   getProductThunk,
   productsCategories,
@@ -55,13 +54,9 @@ const Products = () => {
       </div>
       {/*===== filter category =======End */}
       {/*===== filter Product =======Start */}
-      <div>
+      <div className='product-holder'>
         {productList.map((item, index) => {
-          return (
-            <Link to={`${item._id}`} key={index}>
-              <div>{item.title}</div>
-            </Link>
-          )
+          return <ProductDesign key={item._id} item={item} />
         })}
       </div>
       {/*===== filter Product =======End */}
@@ -77,6 +72,12 @@ const Wrapper = styled.div`
     button {
       margin: 1rem;
     }
+  }
+  /* ====Product */
+  .product-holder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 `
 export default Products
