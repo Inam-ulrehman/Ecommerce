@@ -129,9 +129,11 @@ const SingleProduct = () => {
   )
 }
 const Wrapper = styled.div`
+  min-height: calc(100vh - 59px);
   padding: 1rem;
   .container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
   .img,
   .description {
@@ -149,6 +151,8 @@ const Wrapper = styled.div`
   }
   /* === small images */
   .options-img {
+    border-top: 2px solid black;
+    margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
 
@@ -179,7 +183,7 @@ const Wrapper = styled.div`
   }
   @media (max-width: 600px) {
     .container {
-      display: grid;
+      grid-template-columns: 1fr;
     }
   }
 `
