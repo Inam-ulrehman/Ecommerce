@@ -8,7 +8,7 @@ const AddressForm = () => {
   }, [])
   return (
     <form>
-      <h3>Shipping</h3>
+      <h3>Shipping Address</h3>
       <AddressElement options={{ mode: 'shipping' }} />
     </form>
   )
