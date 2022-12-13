@@ -133,6 +133,9 @@ const Wrapper = styled.div`
       -webkit-appearance: none;
       margin: 0;
     }
+    input[type='number'] {
+      -moz-appearance: textfield;
+    }
   }
   @media (max-width: 720px) {
     .contactImage {
