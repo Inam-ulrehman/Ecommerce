@@ -8,9 +8,10 @@ import {
 import { toast } from 'react-toastify'
 
 const user = getUserFromLocalStorage()
+
 const initialState = {
   token: user?.token || '',
-  userName: user?.name || '',
+  userName: user?.user?.name || '',
   isMember: user ? true : false,
   isLoading: false,
   forgetPassword: false,
