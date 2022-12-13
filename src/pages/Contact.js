@@ -11,6 +11,7 @@ const Contact = () => {
   const nameRef = useRef(null)
   const mobileRef = useRef(null)
   const emailRef = useRef(null)
+  const subjectRef = useRef(null)
   const messageRef = useRef(null)
 
   const handleSubmit = async (e) => {
@@ -19,8 +20,9 @@ const Contact = () => {
     let name = nameRef.current.value
     let mobile = mobileRef.current.value
     let email = emailRef.current.value
+    let subject = subjectRef.current.value
     let message = messageRef.current.value
-    if (!name || !mobile || !email || !message) {
+    if (!name || !mobile || !email || !message || !subject) {
       return toast.warning('Please fill all fields.')
     } else {
       try {
@@ -28,6 +30,7 @@ const Contact = () => {
           name,
           mobile,
           email,
+          subject,
           message,
         })
         toast.success(
@@ -73,6 +76,13 @@ const Contact = () => {
               Email Address
             </label>
             <input className='form-input' type='text' ref={emailRef} />
+          </div>
+          {/* Email */}
+          <div>
+            <label htmlFor='subject' className='form-label'>
+              Subject
+            </label>
+            <input className='form-input' type='text' ref={subjectRef} />
           </div>
           {/* Message */}
           <div>
