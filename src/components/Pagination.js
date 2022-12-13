@@ -32,7 +32,7 @@ const Pagination = ({ index, setIndex, productsList }) => {
         }
       >
         <button onClick={handlePrevious} className='btn' type='button'>
-          Previous
+          Prev
         </button>
         {productsList?.map((item, itemIndex) => {
           return (
