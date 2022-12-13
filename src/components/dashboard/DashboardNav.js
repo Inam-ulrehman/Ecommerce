@@ -47,7 +47,7 @@ const Wrapper = styled.div`
     padding: 0 1rem;
     margin: 0;
     strong {
-      border-bottom: 2px solid var(--primary-8);
+      border-bottom: 2px solid var(--primary-5);
     }
   }
 
