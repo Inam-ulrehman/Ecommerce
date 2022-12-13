@@ -22,11 +22,12 @@ const Contact = () => {
     let email = emailRef.current.value
     let subject = subjectRef.current.value
     let message = messageRef.current.value
+    console.log(name)
     if (!name || !mobile || !email || !message || !subject) {
       return toast.warning('Please fill all fields.')
     } else {
       try {
-        const response = await customFetch.post('forms', {
+        const response = await customFetch.post('contacts', {
           name,
           mobile,
           email,
@@ -34,11 +35,12 @@ const Contact = () => {
           message,
         })
         toast.success(
-          `Hello, ${response.data.form.name} a team member will in touch with you soon.`
+          `Hello, ${response.data.contact.name}. A team member will be in touch soon.`
         )
         nameRef.current.value = ''
         mobileRef.current.value = ''
         emailRef.current.value = ''
+        subjectRef.current.value = ''
         messageRef.current.value = ''
       } catch (error) {
         console.log(error)
