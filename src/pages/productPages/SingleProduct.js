@@ -105,7 +105,7 @@ const SingleProduct = () => {
           </div>
 
           {/* ========== CART======START*/}
-          {singleProduct.inStock && (
+          {singleProduct.inStock && singleProduct?.totalStock > 0 && (
             <div className='cart'>
               <form onSubmit={handleSubmit}>
                 <label>Pick between 1 to{singleProduct.totalStock}:</label>
