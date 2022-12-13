@@ -64,8 +64,8 @@ const Contact = () => {
             <input className='form-input' type='text' ref={nameRef} />
           </div>
           {/* Mobile */}
-          <div>
-            <label htmlFor='Mobile' className='form-label'>
+          <div className='mobile'>
+            <label htmlFor='Mobile' className='form-label '>
               Mobile Number
             </label>
             <input className='form-input' type='number' ref={mobileRef} />
@@ -77,7 +77,7 @@ const Contact = () => {
             </label>
             <input className='form-input' type='text' ref={emailRef} />
           </div>
-          {/* Email */}
+          {/* Subject */}
           <div>
             <label htmlFor='subject' className='form-label'>
               Subject
@@ -120,7 +120,6 @@ const Wrapper = styled.div`
     margin-top: 0;
     font-size: 1rem;
   }
-  /* margin: 0; */
 
   .contactImage {
     padding: 1rem;
@@ -128,7 +127,13 @@ const Wrapper = styled.div`
       width: 40vw;
     }
   }
-
+  .mobile {
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
   @media (max-width: 720px) {
     .contactImage {
       display: none;
