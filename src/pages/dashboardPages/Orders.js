@@ -8,10 +8,10 @@ import emptyCart from '../../images/empty_cart.svg'
 const Orders = () => {
   const dispatch = useDispatch()
   const { isLoading, ordersList } = useSelector((state) => state.order)
-  console.log(isLoading)
+
   useEffect(() => {
     dispatch(getOrdersThunk())
-    console.log(isLoading)
+
     // eslint-disable-next-line
   }, [])
   if (isLoading) {

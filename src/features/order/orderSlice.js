@@ -7,6 +7,7 @@ import paginate from '../../utils/paginate'
 const user = getUserFromLocalStorage('user')
 
 const initialState = {
+  totalOrders: '',
   ordersList: [],
   singleOrder: {},
   isLoading: false,
@@ -115,8 +116,8 @@ const orderSlice = createSlice({
       state.isLoading = true
     },
     [getOrdersThunk.fulfilled]: (state, { payload }) => {
+      state.totalOrders = payload.orders.length
       state.ordersList = paginate(payload.orders)
-
       state.isLoading = false
     },
     [getOrdersThunk.rejected]: (state, { payload }) => {

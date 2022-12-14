@@ -8,12 +8,12 @@ import { formatPrice } from '../../utils/helper'
 import Pagination from '../Pagination'
 
 const OrdersHolder = () => {
-  const { ordersList } = useSelector((state) => state.order)
+  const { ordersList, totalOrders } = useSelector((state) => state.order)
   const [index, setIndex] = useState(0)
   return (
     <Wrapper className='orders'>
       <div className='total-page'>
-        <strong>Total Orders: {ordersList.length}</strong>
+        <strong>Total Orders: {totalOrders}</strong>
         <strong>Page No : {index + 1}</strong>
       </div>
       <table>
@@ -74,7 +74,7 @@ const Wrapper = styled.div`
   .total-page {
     display: flex;
     justify-content: space-between;
-    border: 2px solid black;
+    padding: 0 2rem;
   }
 `
 
