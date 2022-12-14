@@ -72,6 +72,11 @@ const Wrapper = styled.div`
   img {
     width: 200px;
   }
+  @media (max-width: 620px) {
+    img {
+      width: 150px;
+    }
+  }
   .name-image-container {
     display: flex;
     flex-wrap: wrap;

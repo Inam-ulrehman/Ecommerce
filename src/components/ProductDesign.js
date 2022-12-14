@@ -42,5 +42,11 @@ const Wrapper = styled.div`
       width: 100%;
     }
   }
+  @media (max-width: 620px) {
+    .img-container {
+      max-width: 150px;
+      max-height: 250px;
+    }
+  }
 `
 export default ProductDesign

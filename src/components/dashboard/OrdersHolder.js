@@ -58,7 +58,7 @@ const OrdersHolder = () => {
                 <td>
                   <Link className='btn' to={`${item._id}`}>
                     DETAILS
-                  </Link>{' '}
+                  </Link>
                 </td>
               </tr>
             )
