@@ -1,5 +1,10 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
+import {
+  LandingPortFolio,
+  LandingProduct,
+  LandingShare,
+} from '../components/landing'
 
 const LandingPage = () => {
   return (
@@ -9,7 +14,11 @@ const LandingPage = () => {
         <meta name='description' content='Welcome to our home Page' />
         <link rel='canonical' href='/' />
       </Helmet>
-      <h1>this is our landing page</h1>
+      <LandingShare />
+      <LandingProduct />
+      <LandingShare />
+      <LandingPortFolio />
+      <LandingShare />
     </>
   )
 }
