@@ -55,6 +55,33 @@ export const landingPageThree = {
   mobileImage:
     'https://res.cloudinary.com/inam6530/image/upload/v1667397263/inamwebsolutions/Untitled_design_1_xkozce.svg',
 }
+// ================About Page================
+export const aboutHeading = {
+  title: 'Meet Our Team Members',
+  paragraph:
+    'We have very hardworking and dedicated team members, teamwork play a huge role in a project and outcomes shine when it comes to good understanding.',
+}
+// ==========Team Members=========
+export const teamMembers = [
+  {
+    img: 'https://res.cloudinary.com/inam6530/image/upload/v1667047659/inamwebsolutions/Untitled_design_1_zufr0r.svg',
+    titleName: 'Sania Rehman',
+    titleJob: 'Marketing Manager',
+    description: `Sania writes content for business and also take care of digital marketing campaigns.`,
+  },
+  {
+    img: 'https://res.cloudinary.com/inam6530/image/upload/v1666904764/inamwebsolutions/Untitled_design_1_wwzfww.png',
+    titleName: 'Inam Rehman',
+    titleJob: 'Software engineer',
+    description: `Inam creates Digital Solutions for your business and helps you launch your product all over the internet.`,
+  },
+  {
+    img: 'https://res.cloudinary.com/inam6530/image/upload/v1666886063/inamwebsolutions/Untitled_design_qj4p3g.png',
+    titleName: 'George Bush',
+    titleJob: 'Software engineer',
+    description: `George is a coding addict most of the time he fixes bugs and searching new technologies.`,
+  },
+]
 // =======Dashboard========
 export const dashboardNavLink = [
   { id: 1, title: 'dashboard', path: '/dashboard' },
