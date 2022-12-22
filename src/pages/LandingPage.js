@@ -5,6 +5,7 @@ import {
   LandingProduct,
   LandingShare,
 } from '../components/landing'
+import { landingPage, landingPageThree, landingPageTwo } from '../utils/data'
 
 const LandingPage = () => {
   return (
@@ -14,11 +15,11 @@ const LandingPage = () => {
         <meta name='description' content='Welcome to our home Page' />
         <link rel='canonical' href='/' />
       </Helmet>
-      <LandingShare />
+      <LandingShare landingPage={landingPage} />
       <LandingProduct />
-      <LandingShare />
+      <LandingShare landingPage={landingPageTwo} />
       <LandingPortFolio />
-      <LandingShare />
+      <LandingShare landingPage={landingPageThree} />
     </>
   )
 }
