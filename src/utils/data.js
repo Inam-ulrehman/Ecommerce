@@ -24,7 +24,7 @@ export const landingPage = {
   heading: 'Website development solutions',
   paragraph:
     'We provide digital solutions to all businesses, from Software Development to deployment or design to hosting we cover your back.',
-  path: '/product',
+  path: '/products',
   buttonTitle: 'Services',
   image:
     'https://res.cloudinary.com/inam6530/image/upload/v1667050849/inamwebsolutions/Untitled_design_3_aquzmj.svg',
@@ -36,7 +36,7 @@ export const landingPageTwo = {
   heading: 'Website development solutions',
   paragraph:
     'We provide digital solutions to all businesses, from Software Development to deployment or design to hosting we cover your back.',
-  path: '/product',
+  path: '/products',
   buttonTitle: 'Services',
   image:
     'https://res.cloudinary.com/inam6530/image/upload/v1667050849/inamwebsolutions/Untitled_design_3_aquzmj.svg',
