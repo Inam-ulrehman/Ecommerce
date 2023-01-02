@@ -1,13 +1,16 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
+import { useSelector } from 'react-redux'
 import {
   LandingPortFolio,
   LandingProduct,
   LandingShare,
 } from '../components/landing'
-import { landingPage, landingPageThree, landingPageTwo } from '../utils/data'
 
 const LandingPage = () => {
+  const { sectionOne, sectionTwo, sectionThree } = useSelector(
+    (state) => state.websiteContent
+  )
   return (
     <>
       <Helmet>
@@ -15,11 +18,11 @@ const LandingPage = () => {
         <meta name='description' content='Welcome to our home Page' />
         <link rel='canonical' href='/' />
       </Helmet>
-      <LandingShare landingPage={landingPage} />
+      <LandingShare landingPage={sectionOne} />
       <LandingProduct />
-      <LandingShare landingPage={landingPageTwo} />
+      <LandingShare landingPage={sectionTwo} />
       <LandingPortFolio />
-      <LandingShare landingPage={landingPageThree} />
+      <LandingShare landingPage={sectionThree} />
     </>
   )
 }

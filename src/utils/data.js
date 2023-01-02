@@ -19,42 +19,7 @@ export const navbar = [
   { id: 3, path: '/products', title: 'Products', icon: <FaProductHunt /> },
   { id: 4, path: '/contact', title: 'Contact', icon: <FaRegAddressBook /> },
 ]
-// ==========Landing Page=============//
-export const landingPage = {
-  heading: 'Website development solutions',
-  paragraph:
-    'We provide digital solutions to all businesses, from Software Development to deployment or design to hosting we cover your back.',
-  path: '/products',
-  buttonTitle: 'Services',
-  image:
-    'https://res.cloudinary.com/inam6530/image/upload/v1667050849/inamwebsolutions/Untitled_design_3_aquzmj.svg',
-  mobileImage:
-    'https://res.cloudinary.com/inam6530/image/upload/v1667397263/inamwebsolutions/Untitled_design_1_xkozce.svg',
-}
-// ==========Landing Page Two =============//
-export const landingPageTwo = {
-  heading: 'Website development solutions',
-  paragraph:
-    'We provide digital solutions to all businesses, from Software Development to deployment or design to hosting we cover your back.',
-  path: '/products',
-  buttonTitle: 'Services',
-  image:
-    'https://res.cloudinary.com/inam6530/image/upload/v1667050849/inamwebsolutions/Untitled_design_3_aquzmj.svg',
-  mobileImage:
-    'https://res.cloudinary.com/inam6530/image/upload/v1667397263/inamwebsolutions/Untitled_design_1_xkozce.svg',
-}
-// ==========Landing Page Three =============//
-export const landingPageThree = {
-  heading: 'Website development solutions',
-  paragraph:
-    'We provide digital solutions to all businesses, from Software Development to deployment or design to hosting we cover your back.',
-  path: '/product',
-  buttonTitle: 'Services',
-  image:
-    'https://res.cloudinary.com/inam6530/image/upload/v1667050849/inamwebsolutions/Untitled_design_3_aquzmj.svg',
-  mobileImage:
-    'https://res.cloudinary.com/inam6530/image/upload/v1667397263/inamwebsolutions/Untitled_design_1_xkozce.svg',
-}
+
 // ================About Page================
 export const aboutHeading = {
   title: 'Meet Our Team Members',

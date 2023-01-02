@@ -8,14 +8,14 @@ const LandingShare = ({ landingPage }) => {
     <Wrapper>
       <div className='box box-mobile'>
         <h1>{landingPage.heading}</h1>
-        <img src={landingPage.mobileImage} alt='Inam web Solutions' />
+        <img src={landingPage.desktopImage} alt='Inam web Solutions' />
         <p>{landingPage.paragraph}</p>
-        <Link to={landingPage.path} className='btn'>
+        <Link to={'/products'} className='btn'>
           {landingPage.buttonTitle}
         </Link>
       </div>
       <div className='box box-desktop'>
-        <img src={landingPage.image} alt='computerPicture' />
+        <img src={landingPage.desktopImage} alt='computerPicture' />
       </div>
     </Wrapper>
   )

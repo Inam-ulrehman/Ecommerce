@@ -23,8 +23,26 @@ import {
   SingleOrder,
 } from './pages/dashboardPages'
 import { ForgetPassword, Register, VerifyUser } from './pages/userPages'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { websiteContentThunk } from './features/websiteContent/websiteContentSlice'
 
 const App = () => {
+  const dispatch = useDispatch()
+  const { isLoading } = useSelector((state) => state.websiteContent)
+  console.log(isLoading)
+  useEffect(() => {
+    dispatch(websiteContentThunk())
+    // eslint-disable-next-line
+  }, [])
+  if (isLoading) {
+    return (
+      <div>
+        <h1 className='title'>Loading...</h1>
+        <div className='loading'></div>
+      </div>
+    )
+  }
   return (
     <BrowserRouter>
       <ScrollToTopHook />
