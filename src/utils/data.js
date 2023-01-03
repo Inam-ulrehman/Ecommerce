@@ -55,7 +55,6 @@ export const dashboardNavLink = [
   { id: 4, title: 'Change password', path: '/dashboard/changepassword' },
 ]
 // ==================footer //============
-// ===== Data for Address =====
 
 // ======Data for SocialIcons=====Start
 export const socialIcons = [

@@ -1,8 +1,43 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
-import { address } from '../../utils/data'
 
 const Address = () => {
+  const {
+    address: contentAddress,
+    mobileNumber,
+    landLine,
+    email,
+    googleLocation,
+  } = useSelector((state) => state.websiteContent.contentContacts)
+  const address = [
+    {
+      id: 1,
+      title: 'Address',
+      titleInfo: googleLocation,
+      titleText: contentAddress,
+      target: '_blank',
+      rel: 'noreferrer',
+    },
+    {
+      id: 2,
+      title: 'Mobile Number',
+      titleInfo: `tel:${mobileNumber}`,
+      titleText: mobileNumber,
+    },
+    {
+      id: 3,
+      title: 'Landline',
+      titleInfo: `tel:${landLine}`,
+      titleText: landLine,
+    },
+    {
+      id: 4,
+      title: 'Email',
+      titleInfo: `mailto:${email}`,
+      titleText: email,
+    },
+  ]
   return (
     <Wrapper className='boxDesign'>
       <h3 className='title'>Contact US</h3>
@@ -30,6 +65,7 @@ const Wrapper = styled.div`
     transition: var(--transition);
     padding: 0.3rem 1rem;
     border-radius: var(--radius-1);
+    text-transform: capitalize;
     :hover {
       cursor: pointer;
       background-color: var(--primary-7);
