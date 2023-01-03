@@ -56,34 +56,7 @@ export const dashboardNavLink = [
 ]
 // ==================footer //============
 // ===== Data for Address =====
-export const address = [
-  {
-    id: 1,
-    title: 'Address',
-    titleInfo: 'https://www.google.com/maps/@43.4450731,-80.4859129,17z',
-    titleText: '86 Cedar Street,Kitchener, ON,  N2G 3L8',
-    target: '_blank',
-    rel: 'noreferrer',
-  },
-  {
-    id: 2,
-    title: 'Mobile Number',
-    titleInfo: 'tel:4165606790',
-    titleText: '4165606790',
-  },
-  {
-    id: 3,
-    title: 'Landline',
-    titleInfo: 'tel:4165606790',
-    titleText: '4165606790',
-  },
-  {
-    id: 4,
-    title: 'Email',
-    titleInfo: 'mailto:Support@inamwebsolutions.com',
-    titleText: 'Support@inamwebsolutions.com',
-  },
-]
+
 // ======Data for SocialIcons=====Start
 export const socialIcons = [
   {
