@@ -8,19 +8,14 @@ const Subscribe = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const value = emailInput.current.value
-    const at = '@'
-    const dot = '.'
-    if (value.length > 9 && value.includes(at) && value.includes(dot)) {
-      return toast.success('Thank you for subscription .')
-    } else {
-      try {
-        const response = await customFetch.post('email')
-        console.log(response)
-      } catch (error) {
-        console.log(error.response)
-      }
-      return toast.error('Please enter a valid email .')
+    let email = emailInput.current.value
+    try {
+      const result = await customFetch.post('/subscribeEmail', { email })
+      toast.success(result.statusText)
+      emailInput.current.value = ''
+    } catch (error) {
+      console.log(error)
+      toast.error(error.response.data.msg)
     }
   }
 
