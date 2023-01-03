@@ -2,9 +2,6 @@ import {
   FaHome,
   FaEnvelope,
   FaRegAddressBook,
-  FaInstagramSquare,
-  FaFacebook,
-  FaTwitterSquare,
   FaProductHunt,
   // FaSignInAlt,
 } from 'react-icons/fa'
@@ -56,33 +53,6 @@ export const dashboardNavLink = [
 ]
 // ==================footer //============
 
-// ======Data for SocialIcons=====Start
-export const socialIcons = [
-  {
-    id: 1,
-    path: 'https://facebook.com',
-    target: '_blank',
-    rel: 'noreferrer',
-    icon: <FaFacebook />,
-    title: 'Facebook',
-  },
-  {
-    id: 2,
-    path: 'https://Twitter.com',
-    target: '_blank',
-    rel: 'noreferrer',
-    icon: <FaTwitterSquare />,
-    title: 'Twitter',
-  },
-  {
-    id: 5,
-    path: 'https://www.instagram.com/',
-    target: '_blank',
-    rel: 'noreferrer',
-    icon: <FaInstagramSquare />,
-    title: 'Instagram',
-  },
-]
 // ======== Stripe  ==========
 
 export const StripePaymentStatus =
