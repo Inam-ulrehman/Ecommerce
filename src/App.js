@@ -30,7 +30,7 @@ import { websiteContentThunk } from './features/websiteContent/websiteContentSli
 const App = () => {
   const dispatch = useDispatch()
   const { isLoading } = useSelector((state) => state.websiteContent)
-  console.log(isLoading)
+
   useEffect(() => {
     dispatch(websiteContentThunk())
     // eslint-disable-next-line

@@ -16,9 +16,9 @@ export const websiteContentThunk = createAsyncThunk(
       const resultTwo = await customFetch.get('/sectionTwo')
       const resultThree = await customFetch.get('/sectionThree')
 
-      const sectionOne = resultOne.data.sectionOne[0]
-      const sectionTwo = resultTwo.data.sectionTwo[0]
-      const sectionThree = resultThree.data.sectionThree[0]
+      const sectionOne = resultOne.data.sectionOne
+      const sectionTwo = resultTwo.data.sectionTwo
+      const sectionThree = resultThree.data.sectionThree
       const data = [sectionOne, sectionTwo, sectionThree]
 
       return data
