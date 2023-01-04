@@ -12,7 +12,7 @@ const TeamMember = ({ img, titleName, titleJob, description }) => {
           <span>{titleName}</span>
           <span>{titleJob}</span>
         </div>
-        <p className='text-small'>{description}</p>
+        <p className=''>{description}</p>
       </div>
     </Wrapper>
   )
@@ -20,14 +20,16 @@ const TeamMember = ({ img, titleName, titleJob, description }) => {
 
 const Wrapper = styled.div`
   /* Team Members */
-  border-top-left-radius: var(--radius-2);
-  border-top-right-radius: var(--radius-2);
+
   box-shadow: var(--shadow-2);
   width: 80vw;
   margin: 1rem auto;
-  padding-top: 1rem;
-  background: var(--grey-4);
-
+  background: var(--white);
+  .image {
+    background: var(--grey-4);
+    border-top-left-radius: var(--radius-2);
+    border-top-right-radius: var(--radius-2);
+  }
   img {
     width: 80vw;
     height: 30vh;
@@ -40,8 +42,9 @@ const Wrapper = styled.div`
     background: var(--white);
   }
   .spanHolder {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
   }
   p {
     margin-bottom: 0;
