@@ -1,10 +1,13 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { TeamMember } from '../components'
-import { aboutHeading, teamMembers } from '../utils/data'
 
 const About = () => {
+  const { aboutUsTitle, aboutUs } = useSelector((state) => state.websiteContent)
+  const { title, paragraph } = aboutUsTitle
+
   return (
     <>
       <Helmet>
@@ -19,22 +22,22 @@ const About = () => {
         {/* headings */}
         <div className='box-1'>
           <div className='heading'>
-            <h1 className='title'>{aboutHeading.title}</h1>
+            <h1 className='title'>{title}</h1>
             <div className='title-underline'></div>
-            <p className='small'>{aboutHeading.paragraph}</p>
+            <p className='small'>{paragraph}</p>
           </div>
         </div>
         {/* Team Members */}
         <div className='box-2'>
-          {teamMembers.map((item, index) => {
-            const { img, titleName, titleJob, description } = item
+          {aboutUs.map((item, index) => {
+            const { uploadImage, name, profession, paragraph } = item
             return (
               <TeamMember
                 key={index}
-                img={img}
-                titleJob={titleJob}
-                titleName={titleName}
-                description={description}
+                image={uploadImage[0].secure_url}
+                name={name}
+                profession={profession}
+                paragraph={paragraph}
               />
             )
           })}

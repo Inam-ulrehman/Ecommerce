@@ -1,18 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const TeamMember = ({ img, titleName, titleJob, description }) => {
+const TeamMember = ({ image, name, profession, paragraph }) => {
   return (
     <Wrapper>
       <div className='image'>
-        <img src={img} alt={titleName} />
+        <img src={image} alt={name} />
       </div>
       <div className='body'>
         <div className='spanHolder'>
-          <span>{titleName}</span>
-          <span>{titleJob}</span>
+          <span>{name}</span>
+          <span>{profession}</span>
         </div>
-        <p className=''>{description}</p>
+        <p className=''>{paragraph}</p>
       </div>
     </Wrapper>
   )

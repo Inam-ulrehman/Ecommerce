@@ -7,6 +7,8 @@ const initialState = {
   sectionThree: '',
   contentContacts: '',
   contentSocialLinks: '',
+  aboutUsTitle: '',
+  aboutUs: [],
   isLoading: false,
 }
 
@@ -19,18 +21,25 @@ export const websiteContentThunk = createAsyncThunk(
       const resultThree = await customFetch.get('/sectionThree')
       const resultContact = await customFetch.get('/contentContact')
       const resultSocialLinks = await customFetch.get('/contentSocialLinks')
+      const resultAboutUsTitle = await customFetch.get('/ContentAboutUsTitle')
+      const resultAboutUs = await customFetch.get('/ContentAboutUs')
 
       const sectionOne = resultOne.data.sectionOne
       const sectionTwo = resultTwo.data.sectionTwo
       const sectionThree = resultThree.data.sectionThree
       const contentContacts = resultContact.data.contentContact
       const contentSocialLinks = resultSocialLinks.data.contentSocialLink
+      const aboutUsTitle = resultAboutUsTitle.data.contentAboutUsTitle
+      const aboutUs = resultAboutUs.data.contentAboutUs
+
       const data = [
         sectionOne,
         sectionTwo,
         sectionThree,
         contentContacts,
         contentSocialLinks,
+        aboutUsTitle,
+        aboutUs,
       ]
 
       return data
@@ -58,6 +67,8 @@ const websiteContentSlice = createSlice({
       state.sectionThree = payload[2]
       state.contentContacts = payload[3]
       state.contentSocialLinks = payload[4]
+      state.aboutUsTitle = payload[5]
+      state.aboutUs = payload[6]
       state.isLoading = false
     },
     [websiteContentThunk.rejected]: (state, { payload }) => {
