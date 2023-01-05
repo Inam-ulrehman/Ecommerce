@@ -1,22 +1,25 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import { logo } from '../utils/data'
 
 const Logo = () => {
   const navigate = useNavigate()
+  const { secure_url } = useSelector(
+    (state) => state.websiteContent.logo.uploadImage
+  )
+
   const handleClick = () => {
     navigate('/')
   }
+
   return (
     <Wrapper onClick={handleClick}>
-      <img style={{ width: '200px', height: '200px' }} src={logo} alt='' />
+      <img style={{ width: '60px', height: '60px' }} src={secure_url} alt='' />
     </Wrapper>
   )
 }
 const Wrapper = styled.div`
-  margin-top: -4.3rem;
-  margin-bottom: -4.3rem;
   transition: var(--transition-1);
   :hover {
     cursor: pointer;
