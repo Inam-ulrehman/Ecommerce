@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { customFetch } from '../../utils/axios'
+import { getUserFromLocalStorage } from '../../utils/localStorage'
 
 const initialState = {
   name: '',
@@ -11,6 +12,7 @@ const initialState = {
 export const userThunk = createAsyncThunk(
   'user/userThunk',
   async (_, thunkAPI) => {
+    const user = getUserFromLocalStorage()
     try {
       const response = await customFetch.get()
       console.log('hello Thunk')

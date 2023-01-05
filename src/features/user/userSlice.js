@@ -103,6 +103,7 @@ export const forgetPasswordChangeThunk = createAsyncThunk(
 export const changePasswordThunk = createAsyncThunk(
   'user/changePasswordThunk',
   async (password, thunkAPI) => {
+    const user = getUserFromLocalStorage()
     try {
       const response = await customFetch.post(
         `/auth/changepassword`,
