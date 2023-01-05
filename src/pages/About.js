@@ -34,7 +34,7 @@ const About = () => {
             return (
               <TeamMember
                 key={index}
-                image={uploadImage[0].secure_url}
+                image={uploadImage[0]?.secure_url}
                 name={name}
                 profession={profession}
                 paragraph={paragraph}

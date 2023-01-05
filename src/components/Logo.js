@@ -5,17 +5,15 @@ import styled from 'styled-components'
 
 const Logo = () => {
   const navigate = useNavigate()
-  const { secure_url } = useSelector(
-    (state) => state.websiteContent.logo.uploadImage
-  )
-
+  const { logo } = useSelector((state) => state.websiteContent)
+  const image = logo?.uploadImage?.secure_url
   const handleClick = () => {
     navigate('/')
   }
 
   return (
     <Wrapper onClick={handleClick}>
-      <img style={{ width: '60px', height: '60px' }} src={secure_url} alt='' />
+      <img style={{ width: '60px', height: '60px' }} src={image} alt='' />
     </Wrapper>
   )
 }
