@@ -53,7 +53,6 @@ const Wrapper = styled.div`
     padding: 1rem;
   }
   .container-holder {
-    height: -webkit-fill-available;
     max-width: 280px;
     box-shadow: var(--shadow-2);
   }
