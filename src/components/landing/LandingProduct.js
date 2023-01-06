@@ -116,12 +116,12 @@ const Wrapper = styled.div`
   }
   @media (max-width: 620px) {
     .container-holder {
-      max-width: 200px;
+      max-width: 180px;
     }
 
     .image-container {
-      width: 200px;
-      height: 200px;
+      width: 180px;
+      height: 180px;
     }
   }
 `
