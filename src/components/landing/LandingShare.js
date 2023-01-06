@@ -23,18 +23,25 @@ const LandingShare = ({ landingPage }) => {
       </Wrapper>
     )
   }
+
   return (
     <Wrapper>
       <div className='box box-mobile'>
         <h1>{landingPage?.heading}</h1>
-        <img src={landingPage?.desktopImage} alt='Inam web Solutions' />
+        <img
+          src={landingPage?.uploadImage[0]?.secure_url}
+          alt='Inam web Solutions'
+        />
         <p>{landingPage?.paragraph}</p>
         <Link to={'/products'} className='btn'>
           {landingPage?.buttonTitle}
         </Link>
       </div>
       <div className='box box-desktop'>
-        <img src={landingPage?.desktopImage} alt='computerPicture' />
+        <img
+          src={landingPage?.uploadImage[0]?.secure_url}
+          alt='computerPicture'
+        />
       </div>
     </Wrapper>
   )
