@@ -43,24 +43,23 @@ const LandingProduct = () => {
 }
 const Wrapper = styled.div`
   min-height: calc(100vh - 54px);
-  border: 2px solid black;
 
+  display: grid;
+  align-items: center;
   .container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
-
-    place-items: center;
-    justify-content: center;
-    min-height: calc(100vh - 54px);
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 1rem;
   }
   .container-holder {
-    max-width: 300px;
+    height: -webkit-fill-available;
+    max-width: 280px;
     box-shadow: var(--shadow-2);
   }
   .image-container {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     img {
       width: 100%;
     }
@@ -69,17 +68,53 @@ const Wrapper = styled.div`
     .heading {
       display: flex;
       justify-content: space-between;
-      padding: 0 1rem;
+      padding: 0 5px;
       text-transform: capitalize;
     }
+    p,
+    span {
+      font-size: small;
+    }
     p {
-      padding: 0 1rem;
+      padding: 0 5px;
       margin: 0;
     }
   }
   .footer-container {
     display: grid;
     text-align: center;
+  }
+  @media (max-width: 1024px) {
+    .container-holder {
+      max-width: 230px;
+    }
+
+    .image-container {
+      width: 230px;
+      height: 230px;
+    }
+  }
+  @media (max-width: 992px) {
+    .container-holder {
+      max-width: 180px;
+    }
+
+    .image-container {
+      width: 180px;
+      height: 180px;
+    }
+  }
+  @media (max-width: 768px) {
+    .container-holder {
+      max-width: 150px;
+    }
+
+    .image-container {
+      width: 150px;
+      height: 150px;
+    }
+  }
+  @media (max-width: 620px) {
   }
 `
 export default LandingProduct
