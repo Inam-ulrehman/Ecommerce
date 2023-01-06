@@ -2,20 +2,39 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 // import { landingPage } from '../../utils/data'
-
+const url =
+  'https://res.cloudinary.com/inam6530/image/upload/v1667055870/inamwebsolutions/Untitled_design_qebmwe.svg'
+console.log(url)
 const LandingShare = ({ landingPage }) => {
+  if (!landingPage) {
+    return (
+      <Wrapper>
+        <div className='box box-mobile'>
+          <h1>Waiting For Results...</h1>
+          <img src={url} alt='Inam web Solutions' />
+          <p>Waiting For Results...</p>
+          <Link to={'/products'} className='btn'>
+            Products
+          </Link>
+        </div>
+        <div className='box box-desktop'>
+          <img src={url} alt='computerPicture' />
+        </div>
+      </Wrapper>
+    )
+  }
   return (
     <Wrapper>
       <div className='box box-mobile'>
-        <h1>{landingPage.heading}</h1>
-        <img src={landingPage.desktopImage} alt='Inam web Solutions' />
-        <p>{landingPage.paragraph}</p>
+        <h1>{landingPage?.heading}</h1>
+        <img src={landingPage?.desktopImage} alt='Inam web Solutions' />
+        <p>{landingPage?.paragraph}</p>
         <Link to={'/products'} className='btn'>
-          {landingPage.buttonTitle}
+          {landingPage?.buttonTitle}
         </Link>
       </div>
       <div className='box box-desktop'>
-        <img src={landingPage.desktopImage} alt='computerPicture' />
+        <img src={landingPage?.desktopImage} alt='computerPicture' />
       </div>
     </Wrapper>
   )
