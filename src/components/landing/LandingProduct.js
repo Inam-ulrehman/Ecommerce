@@ -105,6 +105,7 @@ const Wrapper = styled.div`
   }
   @media (max-width: 768px) {
     .container-holder {
+      margin-top: 1rem;
       max-width: 300px;
     }
 
