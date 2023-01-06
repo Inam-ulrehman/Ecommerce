@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // import { landingPage } from '../../utils/data'
 const url =
   'https://res.cloudinary.com/inam6530/image/upload/v1667055870/inamwebsolutions/Untitled_design_qebmwe.svg'
-console.log(url)
+
 const LandingShare = ({ landingPage }) => {
   if (!landingPage) {
     return (

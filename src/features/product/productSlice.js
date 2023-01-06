@@ -13,6 +13,7 @@ const initialState = {
   category: [],
   initialProductList: [],
   productList: [],
+  featureProducts: [],
   singleProduct: '',
   singleProductImages: [],
   nbHits: '',
@@ -135,7 +136,9 @@ const userSlice = createSlice({
     },
     [getProductThunk.fulfilled]: (state, { payload }) => {
       const { category, products, nbHits } = payload
+
       state.category = category
+      state.featureProducts = products.filter((item) => item.feature === true)
       state.initialProductList = products
       state.productList = products
       state.nbHits = nbHits

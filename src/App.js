@@ -26,6 +26,7 @@ import { ForgetPassword, Register, VerifyUser } from './pages/userPages'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { websiteContentThunk } from './features/websiteContent/websiteContentSlice'
+import { getProductThunk } from './features/product/productSlice'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -33,6 +34,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(websiteContentThunk())
+    dispatch(getProductThunk())
     // eslint-disable-next-line
   }, [])
   if (isLoading) {

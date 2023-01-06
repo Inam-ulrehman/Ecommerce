@@ -1,14 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useState } from 'react'
 
 import { Helmet } from 'react-helmet-async'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import ProductDesign from '../../components/ProductDesign'
-import {
-  getProductThunk,
-  productsCategories,
-} from '../../features/product/productSlice'
+import { productsCategories } from '../../features/product/productSlice'
 const Products = () => {
   const dispatch = useDispatch()
   const { product } = useSelector((state) => state)
@@ -20,12 +17,6 @@ const Products = () => {
     const value = e.target.value
     dispatch(productsCategories(value))
   }
-
-  useEffect(() => {
-    dispatch(getProductThunk())
-
-    // eslint-disable-next-line
-  }, [])
 
   if (isLoading) {
     return (
