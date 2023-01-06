@@ -38,3 +38,9 @@ export const totalBill = (cart) => {
   }, 0)
   return TotalAmount
 }
+// =============Paragraph limit==========
+
+export const paragraphLimit = (string, length) => {
+  var trimmedString = string.substring(0, length) + '...'
+  return trimmedString
+}
