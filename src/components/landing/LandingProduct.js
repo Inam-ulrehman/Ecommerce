@@ -105,15 +105,23 @@ const Wrapper = styled.div`
   }
   @media (max-width: 768px) {
     .container-holder {
-      max-width: 150px;
+      max-width: 300px;
     }
 
     .image-container {
-      width: 150px;
-      height: 150px;
+      width: 300px;
+      height: 300px;
     }
   }
   @media (max-width: 620px) {
+    .container-holder {
+      max-width: 200px;
+    }
+
+    .image-container {
+      width: 200px;
+      height: 200px;
+    }
   }
 `
 export default LandingProduct
