@@ -14,6 +14,7 @@ const initialState = {
   initialProductList: [],
   productList: [],
   featureProducts: [],
+  newProducts: [],
   singleProduct: '',
   singleProductImages: [],
   nbHits: '',
@@ -38,11 +39,11 @@ export const getProductThunk = createAsyncThunk(
   'product/getProductThunk',
   async (_, thunkAPI) => {
     try {
-      const response = await customFetch.get('/products')
+      const response = await customFetch.get('/products/static')
 
       const { products, nbHits } = response.data
       const category = getUniqueValues(products, 'category')
-
+      console.log(response)
       return { category, products, nbHits }
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data)
@@ -139,6 +140,9 @@ const userSlice = createSlice({
 
       state.category = category
       state.featureProducts = products.filter((item) => item.feature === true)
+      state.newProducts = payload.products.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      )
       state.initialProductList = products
       state.productList = products
       state.nbHits = nbHits

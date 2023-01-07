@@ -2,8 +2,8 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useSelector } from 'react-redux'
 import {
-  LandingPortFolio,
-  LandingProduct,
+  LandingNewProducts,
+  LandingFeatureProduct,
   LandingShare,
 } from '../components/landing'
 
@@ -19,9 +19,9 @@ const LandingPage = () => {
         <link rel='canonical' href='/' />
       </Helmet>
       <LandingShare landingPage={sectionOne} />
-      <LandingProduct />
+      <LandingFeatureProduct />
       <LandingShare landingPage={sectionTwo} />
-      <LandingPortFolio />
+      <LandingNewProducts />
       <LandingShare landingPage={sectionThree} />
     </>
   )

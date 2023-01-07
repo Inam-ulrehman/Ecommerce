@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { paragraphLimit } from '../../utils/helper'
 
-const LandingProduct = () => {
+const LandingFeatureProduct = () => {
   const { featureProducts } = useSelector((state) => state.product)
 
   return (
     <Wrapper>
+      <h3 className='title'>feature Products</h3>
+      <div className='title-underline'></div>
       <div className='container'>
         {featureProducts
           .map((item, index) => {
@@ -77,6 +79,7 @@ const Wrapper = styled.div`
     p {
       padding: 0 5px;
       margin: 0;
+      height: 91px;
     }
   }
   .footer-container {
@@ -125,4 +128,4 @@ const Wrapper = styled.div`
     }
   }
 `
-export default LandingProduct
+export default LandingFeatureProduct

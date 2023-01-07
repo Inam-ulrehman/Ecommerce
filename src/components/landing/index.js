@@ -1,4 +1,5 @@
-import LandingPortFolio from './LandingPortFolio'
-import LandingProduct from './LandingProduct'
+import LandingNewProducts from './LandingNewProducts'
+import LandingFeatureProduct from './LandingFeatureProducts'
 import LandingShare from './LandingShare'
-export { LandingPortFolio, LandingShare, LandingProduct }
+
+export { LandingNewProducts, LandingShare, LandingFeatureProduct }
