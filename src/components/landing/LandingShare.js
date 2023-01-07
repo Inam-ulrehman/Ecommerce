@@ -56,7 +56,7 @@ const Wrapper = styled.div`
     font-size: 1.2rem;
   }
   .box {
-    min-height: 100vh;
+    min-height: calc(100vh - 3.2rem);
   }
   .box-mobile {
     display: grid;
