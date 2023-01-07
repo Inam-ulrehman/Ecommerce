@@ -112,7 +112,7 @@ const Wrapper = styled.div`
       max-width: 180px;
     }
 
-    .image-container {
+    .container-image {
       width: 180px;
       height: 180px;
     }
@@ -158,9 +158,12 @@ const Wrapper = styled.div`
       max-width: 160px;
     }
 
-    .image-container {
+    .container-image {
       width: 160px;
       height: 160px;
+      img {
+        width: 100%;
+      }
     }
     .container-body {
       p {
