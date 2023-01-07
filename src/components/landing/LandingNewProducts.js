@@ -95,6 +95,11 @@ const Wrapper = styled.div`
       width: 230px;
       height: 230px;
     }
+    .body-container {
+      p {
+        height: 112px;
+      }
+    }
   }
   @media (max-width: 992px) {
     .container-holder {
@@ -116,6 +121,11 @@ const Wrapper = styled.div`
       width: 300px;
       height: 300px;
     }
+    .body-container {
+      p {
+        height: 81px;
+      }
+    }
   }
   @media (max-width: 620px) {
     .container-holder {
@@ -125,6 +135,11 @@ const Wrapper = styled.div`
     .image-container {
       width: 180px;
       height: 180px;
+    }
+    .body-container {
+      p {
+        height: 112px;
+      }
     }
   }
 `
