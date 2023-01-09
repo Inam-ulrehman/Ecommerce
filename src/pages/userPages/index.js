@@ -1,4 +1,4 @@
-import ForgetPassword from '../../components/user/ForgetPassword'
+import ForgetPassword from './ForgetPassword'
 import Register from './Register'
 import VerifyUser from './VerifyUser'
 
