@@ -20,7 +20,8 @@ const Products = () => {
   if (productList.length === 0) {
     return (
       <Wrapper>
-        <h1 className='title'>Waiting For Products</h1>loading
+        <h1 className='title'>Waiting For Products</h1>
+        <div className='loading'></div>
       </Wrapper>
     )
   }
