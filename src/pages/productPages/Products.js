@@ -17,7 +17,13 @@ const Products = () => {
     const value = e.target.value
     dispatch(productsCategories(value))
   }
-
+  if (productList.length === 0) {
+    return (
+      <Wrapper>
+        <h1 className='title'>Waiting For Products</h1>loading
+      </Wrapper>
+    )
+  }
   if (isLoading) {
     return (
       <div>
