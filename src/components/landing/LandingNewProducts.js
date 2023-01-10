@@ -6,7 +6,14 @@ import { paragraphLimit } from '../../utils/helper'
 
 const LandingNewProducts = () => {
   const { newProducts } = useSelector((state) => state.product)
-
+  if (newProducts.length === 0) {
+    return (
+      <Wrapper>
+        <h1 className='title'>Waiting for new Products</h1>
+        <div className='loading'></div>
+      </Wrapper>
+    )
+  }
   return (
     <Wrapper>
       <div className='container-header'>

@@ -43,7 +43,7 @@ export const getProductThunk = createAsyncThunk(
 
       const { products, nbHits } = response.data
       const category = getUniqueValues(products, 'category')
-      console.log(response)
+
       return { category, products, nbHits }
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data)

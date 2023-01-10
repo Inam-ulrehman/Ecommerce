@@ -7,6 +7,14 @@ import { paragraphLimit } from '../../utils/helper'
 const LandingFeatureProduct = () => {
   const { featureProducts } = useSelector((state) => state.product)
 
+  if (featureProducts.length === 0) {
+    return (
+      <Wrapper>
+        <h1 className='title'>Waiting for Feature Products</h1>
+        <div className='loading'></div>
+      </Wrapper>
+    )
+  }
   return (
     <Wrapper>
       <div className='container-header'>
