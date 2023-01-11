@@ -3,7 +3,6 @@ import { useRef } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { toast } from 'react-toastify'
 import styled from 'styled-components'
-import Address from '../components/footer/Address'
 import { customFetch } from '../utils/axios'
 const image =
   'https://res.cloudinary.com/inam6530/image/upload/v1673448474/Default%20project/contactUs/Support_2_toxjey.png'
