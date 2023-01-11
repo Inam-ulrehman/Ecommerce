@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-  FaCartArrowDown,
-  FaSignInAlt,
-  FaSignOutAlt,
-  FaPhoneAlt,
-} from 'react-icons/fa'
+import { FaCartArrowDown, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
@@ -58,7 +53,7 @@ const DesktopNavbar = () => {
       <div className='number'>
         <a href={mobileLink}>
           <span>
-            <FaPhoneAlt />
+            <strong>Call Us @</strong>
           </span>
           {mobileNumber}
         </a>
@@ -81,12 +76,28 @@ const Wrapper = styled.nav`
   .number {
     position: absolute;
     right: 0%;
-    top: 100%;
-    border: 2px solid black;
+    top: 120%;
+    /* border: 2px solid black; */
+    background: var(--grey-2);
+    box-shadow: var(--shadow-2);
     padding-right: 2rem;
-
+    font-size: 1.5rem;
+    padding-left: 5px;
+    transition: var(--transition);
+    border-top-left-radius: var(--radius-1);
+    border-bottom-left-radius: var(--radius-1);
+    :hover {
+      cursor: pointer;
+      box-shadow: var(--shadow-3);
+    }
+    a {
+      color: black;
+    }
+    strong {
+      color: var(--primary-5);
+    }
     span {
-      margin-right: 1rem;
+      margin-right: 0.5rem;
     }
   }
   ul {
