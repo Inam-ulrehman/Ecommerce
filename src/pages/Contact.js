@@ -132,6 +132,8 @@ const Wrapper = styled.div`
     background-color: var(--primary-1);
     img {
       margin-bottom: -1.5rem;
+      margin-left: -1rem;
+      border-bottom-left-radius: var(--radius-1);
       width: 40vw;
     }
   }
