@@ -1,5 +1,10 @@
 import React from 'react'
-import { FaCartArrowDown, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa'
+import {
+  FaCartArrowDown,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaPhoneAlt,
+} from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
@@ -8,7 +13,10 @@ import { navbar } from '../../utils/data'
 import Logo from '../Logo'
 
 const DesktopNavbar = () => {
-  const { user, product } = useSelector((state) => state)
+  const { user, product, websiteContent } = useSelector((state) => state)
+  const { mobileNumber } = websiteContent.contentContacts
+  const mobileLink = `tel:${mobileNumber}`
+
   const dispatch = useDispatch()
   return (
     <Wrapper>
@@ -47,12 +55,19 @@ const DesktopNavbar = () => {
           </li>
         )}
       </ul>
+      <div className='number'>
+        <a href={mobileLink}>
+          <span>
+            <FaPhoneAlt />
+          </span>
+          {mobileNumber}
+        </a>
+      </div>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.nav`
-  overflow: hidden;
   box-shadow: var(--shadow-2);
   height: 3.2rem;
   background-color: var(--white);
@@ -63,6 +78,17 @@ const Wrapper = styled.nav`
   top: 0;
   width: 100vw;
   z-index: 10;
+  .number {
+    position: absolute;
+    right: 0%;
+    top: 100%;
+    border: 2px solid black;
+    padding-right: 2rem;
+
+    span {
+      margin-right: 1rem;
+    }
+  }
   ul {
     display: flex;
     margin-right: 1rem;
