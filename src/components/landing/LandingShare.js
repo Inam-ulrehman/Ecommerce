@@ -84,9 +84,9 @@ const Wrapper = styled.div`
       padding: 4rem;
       background: linear-gradient(
         90deg,
-        rgba(100, 116, 139, 1) 0%,
-        rgba(226, 232, 240, 1) 94%,
-        rgba(248, 250, 252, 1) 100%
+        var(--primary-3) 0%,
+        var(--primary-1) 74%,
+        var(--grey-05) 100%
       );
       img {
         display: none;
