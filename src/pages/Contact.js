@@ -3,9 +3,10 @@ import { useRef } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { toast } from 'react-toastify'
 import styled from 'styled-components'
+import Address from '../components/footer/Address'
 import { customFetch } from '../utils/axios'
 const image =
-  'https://res.cloudinary.com/inam6530/image/upload/v1667130716/inamwebsolutions/Untitled_design_1_tr1efo.svg'
+  'https://res.cloudinary.com/inam6530/image/upload/v1673445454/Default%20project/contactUs/Support_1_h84kbd.png'
 
 const Contact = () => {
   const nameRef = useRef(null)
@@ -104,6 +105,7 @@ const Contact = () => {
           </button>
         </form>
         <div className='contactImage'>
+          <div className='address'></div>
           <img src={image} alt='contactUs' />
         </div>
       </Wrapper>
@@ -112,11 +114,9 @@ const Contact = () => {
 }
 
 const Wrapper = styled.div`
-  padding-top: 3rem;
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-  min-height: 100vh;
 
   h1 {
     margin-top: 0;
@@ -124,8 +124,14 @@ const Wrapper = styled.div`
   }
 
   .contactImage {
+    margin-left: 2rem;
+    box-shadow: var(--shadow-2);
+    border-radius: var(--radius-1);
     padding: 1rem;
+
+    background-color: var(--primary-1);
     img {
+      margin-bottom: -1.5rem;
       width: 40vw;
     }
   }
