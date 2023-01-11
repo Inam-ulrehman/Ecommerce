@@ -10,7 +10,7 @@ const Logo = () => {
   const handleClick = () => {
     navigate('/')
   }
-  console.log(image)
+
   return (
     <Wrapper onClick={handleClick}>
       <img src={image ? image : url} alt='' />
