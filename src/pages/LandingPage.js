@@ -14,8 +14,8 @@ const LandingPage = () => {
   return (
     <>
       <Helmet>
-        <title>{sectionOne.heading}</title>
-        <meta name='description' content={sectionOne.paragraph} />
+        <title>{sectionOne?.heading}</title>
+        <meta name='description' content={sectionOne?.paragraph} />
         <link rel='canonical' href='/' />
       </Helmet>
       <LandingShare landingPage={sectionOne} />
