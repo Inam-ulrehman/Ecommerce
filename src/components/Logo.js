@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-
+const url = `https://res.cloudinary.com/inam6530/image/upload/v1667486202/inamwebsolutions/Inam_n9s4i4.svg`
 const Logo = () => {
   const navigate = useNavigate()
   const { logo } = useSelector((state) => state.websiteContent)
@@ -10,10 +10,10 @@ const Logo = () => {
   const handleClick = () => {
     navigate('/')
   }
-
+  console.log(image)
   return (
     <Wrapper onClick={handleClick}>
-      <img src={image} alt='' />
+      <img src={image ? image : url} alt='' />
     </Wrapper>
   )
 }
