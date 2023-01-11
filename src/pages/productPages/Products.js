@@ -72,6 +72,7 @@ const Products = () => {
 const Wrapper = styled.div`
   min-height: calc(100vh - 61px);
   .category-holder {
+    padding-right: 15rem;
     background: var(--primary-8);
     display: flex;
     justify-content: center;
@@ -94,6 +95,11 @@ const Wrapper = styled.div`
   }
   .active {
     background: var(--primary-5);
+  }
+  @media (max-width: 600px) {
+    .category-holder {
+      padding-right: 0rem;
+    }
   }
 `
 export default Products
