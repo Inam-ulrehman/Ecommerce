@@ -15,7 +15,9 @@ const DesktopNavbar = () => {
   const dispatch = useDispatch()
   return (
     <Wrapper>
-      <Logo />
+      <div className='logo-holder'>
+        <Logo />
+      </div>
       <ul>
         {navbar.map((item, index) => {
           return (
@@ -73,6 +75,9 @@ const Wrapper = styled.nav`
   top: 0;
   width: 100vw;
   z-index: 10;
+  .logo-holder {
+    overflow: hidden;
+  }
   .number {
     position: absolute;
     right: 0%;
