@@ -13,11 +13,18 @@ const Logo = () => {
 
   return (
     <Wrapper onClick={handleClick}>
-      <img style={{ width: '60px', height: '60px' }} src={image} alt='' />
+      <img src={image} alt='' />
     </Wrapper>
   )
 }
 const Wrapper = styled.div`
+  width: 200px;
+  height: 200px;
+  margin-left: 1rem;
+  margin-top: -75px;
+  img {
+    width: 100%;
+  }
   transition: var(--transition-1);
   :hover {
     cursor: pointer;
