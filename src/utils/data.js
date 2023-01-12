@@ -2,6 +2,7 @@ import {
   FaHome,
   FaEnvelope,
   FaRegAddressBook,
+  FaDollarSign,
   FaProductHunt,
   // FaSignInAlt,
 } from 'react-icons/fa'
@@ -14,7 +15,8 @@ export const navbar = [
   { id: 1, path: '/', title: 'Home', icon: <FaHome /> },
   { id: 2, path: '/about', title: 'About', icon: <FaEnvelope /> },
   { id: 3, path: '/products', title: 'Products', icon: <FaProductHunt /> },
-  { id: 4, path: '/contact', title: 'Contact', icon: <FaRegAddressBook /> },
+  { id: 4, path: '/prices', title: 'Prices', icon: <FaDollarSign /> },
+  { id: 5, path: '/contact', title: 'Contact', icon: <FaRegAddressBook /> },
 ]
 
 // =======Dashboard========

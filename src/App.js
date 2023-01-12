@@ -12,6 +12,7 @@ import {
   ProtectedRoute,
   SharedDashboardLayout,
   Cart,
+  Prices,
 } from './pages'
 import { Products, SingleProduct } from './pages/productPages'
 import { CheckOut, PaymentStatus } from './pages/stripePages'
@@ -80,7 +81,9 @@ const App = () => {
           <Route path='verify/:id' element={<VerifyUser />} />
           <Route path='about' element={<About />} />
           <Route path='products' element={<Products />} />
+          <Route path='products' element={<Products />} />
           <Route path='products/:_id' element={<SingleProduct />} />
+          <Route path='prices' element={<Prices />} />
           <Route path='contact' element={<Contact />} />
           <Route path='register' element={<Register />} />
           <Route path='cart' element={<Cart />} />

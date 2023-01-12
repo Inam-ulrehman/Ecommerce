@@ -6,6 +6,7 @@ import LandingPage from './LandingPage'
 import ProtectedRoute from './ProtectedRoute'
 import SharedDashboardLayout from './dashboardPages/SharedDashboardLayout'
 import SharedLayout from './SharedLayout'
+import Prices from './Prices'
 
 export {
   SharedLayout,
@@ -16,4 +17,5 @@ export {
   ProtectedRoute,
   SharedDashboardLayout,
   Cart,
+  Prices,
 }
