@@ -7,7 +7,7 @@ const SubCategory = ({ item, products }) => {
   )
   return (
     <div>
-      {item}
+      <h5 className='title'>{item}</h5>
       {/* sub category holder */}
       <SubCategoryHolder subCategoryProducts={subCategoryProducts} />
     </div>

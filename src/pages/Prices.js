@@ -2,7 +2,6 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { Category } from '../components/prices'
-import { getUniqueValues } from '../utils/helper'
 
 const Prices = () => {
   const { initialProductList: products } = useSelector((state) => state.product)
@@ -20,7 +19,7 @@ const Prices = () => {
       {category.map((item, index) => {
         return (
           <div className='container' key={index}>
-            <h3>{item}</h3>
+            <h3 className='title'> {item}</h3>
             <Category category={item} products={products} />
           </div>
         )
