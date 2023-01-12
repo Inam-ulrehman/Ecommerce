@@ -8,8 +8,8 @@ const SubCategoryHolder = ({ subCategoryProducts }) => {
         return (
           <div key={index}>
             <div>
-              <span>Name: {item.title}</span>{' '}
-              <span> Price {formatPrice(item.amount)}</span>
+              <span> {item.title}</span>{' '}
+              <span> {formatPrice(item.amount)}</span>
             </div>
           </div>
         )

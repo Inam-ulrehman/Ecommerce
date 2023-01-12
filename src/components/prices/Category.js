@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import SubCategory from './SubCategory'
 
 const Category = ({ category, products }) => {
@@ -8,12 +9,15 @@ const Category = ({ category, products }) => {
   const data = filterSubCategory.map((item) => item.subCategory)
   const uniqueSubCategory = [...new Set(data)]
   return (
-    <div>
+    <Wrapper>
       {uniqueSubCategory.map((item, index) => {
         return <SubCategory key={index} item={item} products={products} />
       })}
-    </div>
+    </Wrapper>
   )
 }
-
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`
 export default Category

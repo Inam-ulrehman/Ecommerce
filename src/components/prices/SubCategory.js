@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import SubCategoryHolder from './SubCategoryHolder'
 
 const SubCategory = ({ item, products }) => {
@@ -6,12 +7,12 @@ const SubCategory = ({ item, products }) => {
     (items) => items.subCategory === item
   )
   return (
-    <div>
-      <h5 className='title'>{item}</h5>
+    <Wrapper>
+      <h5>{item}</h5>
       {/* sub category holder */}
       <SubCategoryHolder subCategoryProducts={subCategoryProducts} />
-    </div>
+    </Wrapper>
   )
 }
-
+const Wrapper = styled.div``
 export default SubCategory

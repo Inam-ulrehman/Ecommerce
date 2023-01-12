@@ -19,7 +19,8 @@ const Prices = () => {
       {category.map((item, index) => {
         return (
           <div className='container' key={index}>
-            <h3 className='title'> {item}</h3>
+            <h3 className='title header'> {item}</h3>
+            <div className='title-underline'></div>
             <Category category={item} products={products} />
           </div>
         )
@@ -32,7 +33,13 @@ const Wrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   .container {
     margin: 1rem;
-    border: 2px solid black;
+    background-color: var(--grey-2);
+    box-shadow: var(--shadow-2);
+    border-radius: var(--radius);
+    padding: 1rem;
+    .header {
+      text-transform: uppercase;
+    }
   }
 `
 export default Prices
