@@ -6,16 +6,18 @@ const ProductDesign = ({ item }) => {
   const image = item.uploadImage[0].secure_url
 
   return (
-    <Link to={item._id}>
-      <Wrapper>
-        <p className='title'>
-          <strong>{item.title}</strong>
-        </p>
-        <div className='img-container'>
-          <img src={image} alt='' />
+    <Wrapper>
+      <Link to={item._id}>
+        <div>
+          <p className='title'>
+            <strong>{item.title}</strong>
+          </p>
+          <div className='img-container'>
+            <img src={image} alt='' />
+          </div>
         </div>
-      </Wrapper>
-    </Link>
+      </Link>
+    </Wrapper>
   )
 }
 const Wrapper = styled.div`
@@ -23,7 +25,16 @@ const Wrapper = styled.div`
   transition: var(--transition);
   margin: 5px;
   position: relative;
+  transition: var(--transition-1);
+  :hover {
+    box-shadow: var(--shadow-3);
+    p {
+      background-color: var(--primary-1);
+      color: var(--primary-9);
+    }
+  }
   .title {
+    transition: var(--transition-1);
     padding: 5px;
     width: 100%;
     position: absolute;
@@ -37,12 +48,6 @@ const Wrapper = styled.div`
     max-width: 250px;
     max-height: 250px;
     transition: var(--transition-1);
-    :hover {
-      box-shadow: var(--shadow-3);
-      p {
-        background-color: pink;
-      }
-    }
 
     img {
       width: 100%;
