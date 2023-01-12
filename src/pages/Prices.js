@@ -28,6 +28,8 @@ const Prices = () => {
   )
 }
 const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   .container {
     margin: 1rem;
     border: 2px solid black;
