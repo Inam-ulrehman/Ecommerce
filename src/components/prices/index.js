@@ -1,4 +1,4 @@
 import Category from './Category'
 import SubCategory from './SubCategory'
-
-export { Category, SubCategory }
+import SubCategoryHolder from './SubCategoryHolder'
+export { SubCategoryHolder, Category, SubCategory }

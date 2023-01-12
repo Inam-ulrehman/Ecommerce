@@ -1,12 +1,15 @@
 import React from 'react'
+import SubCategoryHolder from './SubCategoryHolder'
 
 const SubCategory = ({ item, products }) => {
-  const singleProduct = products.filter((items) => items.subCategory === item)
+  const subCategoryProducts = products.filter(
+    (items) => items.subCategory === item
+  )
   return (
     <div>
       {item}
       {/* sub category holder */}
-      <div>{singleProduct.map((item) => item.title)}</div>
+      <SubCategoryHolder subCategoryProducts={subCategoryProducts} />
     </div>
   )
 }
