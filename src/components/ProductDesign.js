@@ -21,14 +21,13 @@ const ProductDesign = ({ item }) => {
 const Wrapper = styled.div`
   box-shadow: var(--shadow-1);
   transition: var(--transition);
-
-  :hover {
-    box-shadow: var(--shadow-3);
-    transform: scale(1.03);
-    z-index: -1;
-  }
   margin: 5px;
+  position: relative;
   .title {
+    padding: 5px;
+    width: 100%;
+    position: absolute;
+    top: -17px;
     color: var(--primary-7);
     background-color: var(--white);
 
@@ -37,6 +36,13 @@ const Wrapper = styled.div`
   .img-container {
     max-width: 250px;
     max-height: 250px;
+    transition: var(--transition-1);
+    :hover {
+      box-shadow: var(--shadow-3);
+      p {
+        background-color: pink;
+      }
+    }
 
     img {
       width: 100%;
@@ -44,8 +50,14 @@ const Wrapper = styled.div`
   }
   @media (max-width: 620px) {
     .img-container {
-      max-width: 150px;
-      max-height: 250px;
+      max-width: 180px;
+      max-height: 180px;
+    }
+  }
+  @media (max-width: 400px) {
+    .img-container {
+      max-width: 160px;
+      max-height: 160px;
     }
   }
 `
