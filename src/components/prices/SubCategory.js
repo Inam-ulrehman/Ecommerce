@@ -8,11 +8,15 @@ const SubCategory = ({ item, products }) => {
   )
   return (
     <Wrapper>
-      <h5>{item}</h5>
+      <h5 className='title'>{item}</h5>
       {/* sub category holder */}
       <SubCategoryHolder subCategoryProducts={subCategoryProducts} />
     </Wrapper>
   )
 }
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+  h5 {
+    text-transform: uppercase;
+  }
+`
 export default SubCategory

@@ -19,5 +19,6 @@ const Category = ({ category, products }) => {
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 `
 export default Category
