@@ -41,5 +41,8 @@ const Wrapper = styled.div`
       text-transform: uppercase;
     }
   }
+  @media (max-width: 792px) {
+    grid-template-columns: 1fr;
+  }
 `
 export default Prices
