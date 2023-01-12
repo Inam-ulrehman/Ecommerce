@@ -34,9 +34,6 @@ const LandingFeatureProduct = () => {
                     <span>
                       <strong>{item.title}</strong>
                     </span>
-                    <span>
-                      <strong>{item.category}</strong>
-                    </span>
                   </div>
                   <p>{paragraphLimit(item.description, 120)}</p>
                 </div>
