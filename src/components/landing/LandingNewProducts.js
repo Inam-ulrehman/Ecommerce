@@ -1,45 +1,35 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import { paragraphLimit } from '../../utils/helper'
 
 const LandingNewProducts = () => {
+  const navigate = useNavigate()
   const { newProducts } = useSelector((state) => state.product)
-  if (newProducts.length === 0) {
-    return (
-      <Wrapper>
-        <h1 className='title'>Waiting for new Products</h1>
-        <div className='loading'></div>
-      </Wrapper>
-    )
+
+  const handleClick = (id) => {
+    navigate(`/products/${id}`)
   }
   return (
     <Wrapper>
       <div className='container-header'>
-        <h3 className='title'>New Products</h3>
+        <h3 className='title'>New Arrivals</h3>
         <div className='title-underline'></div>
       </div>
       <div className='container'>
         {newProducts
           .map((item, index) => {
             return (
-              <div className='container-holder' key={index}>
+              <div
+                onClick={() => handleClick(item._id)}
+                className='container-holder'
+                key={index}
+              >
                 <div className='container-image'>
                   <img src={item.uploadImage[0].secure_url} alt='' />
                 </div>
-                <div className='container-body'>
-                  <div className='heading'>
-                    <span>
-                      <strong>{item.title}</strong>
-                    </span>
-                  </div>
-                  <p>{paragraphLimit(item.description, 120)}</p>
-                </div>
-                <div className='container-footer'>
-                  <Link className='btn' to={`/products/${item._id}`}>
-                    Order Now
-                  </Link>
+                <div className='container-paragraph'>
+                  <p>{item.category}</p>
                 </div>
               </div>
             )
@@ -52,17 +42,30 @@ const LandingNewProducts = () => {
 const Wrapper = styled.div`
   min-height: calc(100vh - 54px);
   display: grid;
-
+  align-content: space-evenly;
   .container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
     padding: 1rem;
   }
   .container-holder {
     max-width: 280px;
-    box-shadow: var(--shadow-2);
+    box-shadow: var(--shadow-1);
+    position: relative;
+    transition: var(--transition-1);
+    :hover {
+      cursor: pointer;
+      box-shadow: var(--shadow-3);
+      .container-paragraph {
+        opacity: 1;
+        background-color: var(--primary-9);
+      }
+      p {
+        color: var(--white);
+      }
+    }
   }
   .container-image {
     width: 280px;
@@ -71,109 +74,53 @@ const Wrapper = styled.div`
       width: 100%;
     }
   }
-  .container-body {
-    .heading {
-      display: flex;
-      justify-content: space-between;
-      padding: 0 5px;
-      text-transform: capitalize;
-    }
-    p,
-    span {
-      font-size: small;
-    }
-    span {
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    p {
-      padding: 0 5px;
-      margin: 0;
-      height: 71px;
-    }
-  }
-  .container-footer {
-    display: grid;
+  .container-paragraph {
+    position: absolute;
+    bottom: 0;
+    padding: 5px;
+    background: var(--primary-5);
+    opacity: 0.8;
+    width: 100%;
     text-align: center;
+    transition: var(--transition-1);
+    p {
+      color: var(--white);
+      margin: 0;
+    }
   }
+
   @media (max-width: 1024px) {
     .container-holder {
-      max-width: 230px;
+      max-width: 210px;
     }
-
     .container-image {
-      width: 230px;
-      height: 230px;
-    }
-    .container-body {
-      p {
-        height: 91px;
-      }
+      width: 210px;
+      height: 210px;
     }
   }
   @media (max-width: 992px) {
-    .container-holder {
-      max-width: 180px;
-    }
-
-    .container-image {
-      width: 180px;
-      height: 180px;
-    }
-    .container-body {
-      p {
-        height: 121px;
-      }
-    }
   }
   @media (max-width: 768px) {
     .container-holder {
-      margin-top: 1rem;
-      max-width: 300px;
+      max-width: 190px;
     }
-
     .container-image {
-      width: 300px;
-      height: 300px;
-    }
-    .container-body {
-      p {
-        height: 81px;
-      }
+      width: 190px;
+      height: 190px;
     }
   }
   @media (max-width: 620px) {
+    min-height: auto;
     .container-holder {
+      margin-top: 1rem;
       max-width: 180px;
     }
-
     .container-image {
       width: 180px;
       height: 180px;
     }
-    .container-body {
-      p {
-        height: 112px;
-      }
-    }
   }
   @media (max-width: 480px) {
-    .container-holder {
-      max-width: 160px;
-    }
-
-    .container-image {
-      width: 160px;
-      height: 160px;
-    }
-    .container-body {
-      p {
-        height: 137px;
-      }
-    }
-  }
-  .container-footer {
-    font-size: 12px;
   }
 `
 export default LandingNewProducts
