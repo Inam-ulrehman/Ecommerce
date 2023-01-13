@@ -33,15 +33,17 @@ const Wrapper = styled.div`
 
   .container {
     margin: 1rem;
-
-    /* box-shadow: var(--shadow-2); */
+    background-color: var(--grey-2);
+    box-shadow: var(--shadow-2);
     border-radius: var(--radius);
     padding: 1rem;
     .header {
       text-transform: uppercase;
     }
   }
+
   @media (max-width: 792px) {
+    grid-template-columns: 1fr;
   }
 `
 export default Prices

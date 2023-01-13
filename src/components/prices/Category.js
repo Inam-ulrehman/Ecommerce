@@ -17,6 +17,9 @@ const Category = ({ category, products }) => {
   )
 }
 const Wrapper = styled.div`
+  display: grid;
+  margin-top: 2rem;
+  gap: 1rem;
   @media (max-width: 792px) {
   }
 `
