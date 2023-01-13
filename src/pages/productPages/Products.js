@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
+import ProductCategory from '../../components/product/ProductCategory'
 import ProductDesign from '../../components/ProductDesign'
 import { productsCategories } from '../../features/product/productSlice'
 const Products = () => {
@@ -16,15 +17,9 @@ const Products = () => {
   const handleCategory = (e) => {
     const value = e.target.value
     dispatch(productsCategories(value))
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   }
-  if (productList.length === 0) {
-    return (
-      <Wrapper>
-        <h1 className='title'>Waiting For Products</h1>
-        <div className='loading'></div>
-      </Wrapper>
-    )
-  }
+
   if (isLoading) {
     return (
       <div>
@@ -41,23 +36,13 @@ const Products = () => {
         <link rel='canonical' href='/product' />
       </Helmet>
       {/*===== filter category =======Start */}
-      <ul className='category-holder'>
-        {category.map((item, index) => {
-          return (
-            <li onClick={handleCategory} key={index}>
-              <button
-                onClick={() => setValue(index)}
-                type='button'
-                className={value === index ? 'btn active' : 'btn'}
-                value={item}
-              >
-                {item}
-              </button>
-            </li>
-          )
-        })}
-      </ul>
-      {/*===== filter category =======End */}
+      <ProductCategory
+        category={category}
+        value={value}
+        setValue={setValue}
+        handleCategory={handleCategory}
+      />
+
       {/*===== filter Product =======Start */}
       <div className='product-holder'>
         {productList.map((item, index) => {
@@ -71,16 +56,7 @@ const Products = () => {
 
 const Wrapper = styled.div`
   min-height: calc(100vh - 61px);
-  .category-holder {
-    padding-right: 15rem;
-    background: var(--primary-8);
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    button {
-      margin: 0.5rem;
-    }
-  }
+
   /* ====Product */
   .product-holder {
     display: flex;
