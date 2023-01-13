@@ -1,22 +1,72 @@
 import React from 'react'
 import styled from 'styled-components'
-import SubCategoryHolder from './SubCategoryHolder'
 
-const SubCategory = ({ item, products }) => {
-  const subCategoryProducts = products.filter(
-    (items) => items.subCategory === item
-  )
+const SubCategoryHolder = ({ subCategoryProducts }) => {
   return (
     <Wrapper>
-      <h5 className='title'>{item}</h5>
-      {/* sub category holder */}
-      <SubCategoryHolder subCategoryProducts={subCategoryProducts} />
+      {subCategoryProducts.map((item, index) => {
+        return (
+          <div key={index}>
+            <div className='box-holder'>
+              <span className='box-1'> {item.title}</span>
+              <div className='box-2'>
+                <div>
+                  <span>{item.amountOneText}</span>
+                  <span>$ {item.amountOne}</span>
+                </div>
+                {item.amountTwo && (
+                  <div>
+                    <span>{item.amountTwoText}</span>
+                    <span>$ {item.amountTwo}</span>
+                  </div>
+                )}
+                {item.amountThree && (
+                  <div>
+                    <span>{item.amountThreeText}</span>
+                    <span>$ {item.amountThree}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )
+      })}
     </Wrapper>
   )
 }
+
 const Wrapper = styled.div`
-  h5 {
-    text-transform: uppercase;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  box-shadow: var(--shadow-2);
+  background-color: var(--grey-05);
+  padding: 1rem;
+  span {
+    text-transform: capitalize;
+  }
+  .box-holder {
+    border: 2px solid var(--primary-1);
+    /* background-color: var(--primary-1); */
+    color: var(--primary-9);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+    margin-top: 1rem;
+    align-items: center;
+  }
+  .box-1 {
+  }
+  .box-2 {
+    text-align: center;
+    div {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 620px) {
+    grid-template-columns: 1fr;
   }
 `
-export default SubCategory
+
+export default SubCategoryHolder

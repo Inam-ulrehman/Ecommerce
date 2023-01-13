@@ -30,11 +30,11 @@ const Prices = () => {
 }
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+
   .container {
     margin: 1rem;
-    background-color: var(--grey-2);
-    box-shadow: var(--shadow-2);
+
+    /* box-shadow: var(--shadow-2); */
     border-radius: var(--radius);
     padding: 1rem;
     .header {
@@ -42,7 +42,6 @@ const Wrapper = styled.div`
     }
   }
   @media (max-width: 792px) {
-    grid-template-columns: 1fr;
   }
 `
 export default Prices
