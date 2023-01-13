@@ -40,7 +40,6 @@ const LandingFeatureProduct = () => {
   )
 }
 const Wrapper = styled.div`
-  min-height: calc(100vh - 54px);
   display: grid;
   align-content: space-evenly;
   .container {
@@ -88,6 +87,9 @@ const Wrapper = styled.div`
       margin: 0;
     }
   }
+  @media (min-width: 992px) {
+    min-height: calc(100vh - 3.2rem);
+  }
 
   @media (max-width: 1024px) {
     .container-holder {
@@ -119,8 +121,6 @@ const Wrapper = styled.div`
       width: 180px;
       height: 180px;
     }
-  }
-  @media (max-width: 480px) {
   }
 `
 export default LandingFeatureProduct

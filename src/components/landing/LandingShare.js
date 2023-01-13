@@ -55,9 +55,7 @@ const Wrapper = styled.div`
   p {
     font-size: 1.2rem;
   }
-  .box {
-    min-height: calc(100vh - 3.2rem);
-  }
+
   .box-mobile {
     display: grid;
     padding: 2rem;
@@ -74,7 +72,11 @@ const Wrapper = styled.div`
       width: 90%;
     }
   }
+
   @media (min-width: 992px) {
+    .box {
+      min-height: calc(100vh - 3.2rem);
+    }
     grid-template-columns: 1.5fr 1fr;
     .box-desktop {
       display: grid;
@@ -92,6 +94,15 @@ const Wrapper = styled.div`
         display: none;
       }
     }
+  }
+  @media (max-width: 992px) {
+    background-color: var(--primary-1);
+  }
+  @media (max-width: 768px) {
+  }
+  @media (max-width: 620px) {
+  }
+  @media (max-width: 400px) {
   }
 `
 export default LandingShare

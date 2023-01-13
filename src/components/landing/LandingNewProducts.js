@@ -40,7 +40,6 @@ const LandingNewProducts = () => {
   )
 }
 const Wrapper = styled.div`
-  min-height: calc(100vh - 54px);
   display: grid;
   align-content: space-evenly;
   .container {
@@ -87,6 +86,9 @@ const Wrapper = styled.div`
       color: var(--white);
       margin: 0;
     }
+  }
+  @media (min-width: 992px) {
+    min-height: calc(100vh - 3.2rem);
   }
 
   @media (max-width: 1024px) {
