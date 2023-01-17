@@ -9,7 +9,7 @@ const image =
 
 const Contact = () => {
   const nameRef = useRef(null)
-  const mobileRef = useRef(null)
+  const phoneRef = useRef(null)
   const emailRef = useRef(null)
   const subjectRef = useRef(null)
   const messageRef = useRef(null)
@@ -18,18 +18,18 @@ const Contact = () => {
     // Prepare axios and good to go.
     e.preventDefault()
     let name = nameRef.current.value
-    let mobile = mobileRef.current.value
+    let phone = phoneRef.current.value
     let email = emailRef.current.value
     let subject = subjectRef.current.value
     let message = messageRef.current.value
     console.log(name)
-    if (!name || !mobile || !email || !message || !subject) {
+    if (!name || !phone || !email || !message || !subject) {
       return toast.warning('Please fill all fields.')
     } else {
       try {
         const response = await customFetch.post('contacts', {
           name,
-          mobile,
+          phone,
           email,
           subject,
           message,
@@ -38,7 +38,7 @@ const Contact = () => {
           `Hello, ${response.data.contact.name}. A team member will be in touch soon.`
         )
         nameRef.current.value = ''
-        mobileRef.current.value = ''
+        phoneRef.current.value = ''
         emailRef.current.value = ''
         subjectRef.current.value = ''
         messageRef.current.value = ''
@@ -70,7 +70,7 @@ const Contact = () => {
             <label htmlFor='Mobile' className='form-label '>
               Mobile Number
             </label>
-            <input className='form-input' type='number' ref={mobileRef} />
+            <input className='form-input' type='number' ref={phoneRef} />
           </div>
           {/* Email */}
           <div>
