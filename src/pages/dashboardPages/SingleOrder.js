@@ -11,7 +11,7 @@ const SingleOrder = () => {
   const dispatch = useDispatch()
   const { _id } = useParams()
   const { isLoading, singleOrder } = useSelector((state) => state.order)
-
+  console.log(singleOrder)
   useEffect(() => {
     dispatch(getSingleOrderThunk(_id))
     // eslint-disable-next-line
@@ -30,7 +30,7 @@ const SingleOrder = () => {
       <div className='order-details'>
         <span>
           Order Status:
-          <strong>{singleOrder.shipment ? 'Shipped' : 'Processing'}</strong>
+          <strong>{singleOrder.shipment ? 'completed' : 'Processing'}</strong>
         </span>
         <span>
           Total Bill:<strong>{formatPrice(singleOrder.total)}</strong>

@@ -1,18 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
+import LandingFeatureProduct from '../../components/landing/LandingFeatureProducts'
 
 const Dashboard = () => {
-  return <Wrapper>dashboard</Wrapper>
+  return (
+    <Wrapper>
+      <LandingFeatureProduct />
+    </Wrapper>
+  )
 }
 
-const Wrapper = styled.div`
-  min-height: calc(100vh - 3.2rem);
-  .empty-cart {
-    display: grid;
-    place-content: center;
-    img {
-      width: 400px;
-    }
-  }
-`
+const Wrapper = styled.div``
 export default Dashboard
