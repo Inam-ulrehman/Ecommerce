@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api'
+import { GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api'
 
 export default function Home() {
   const { isLoaded } = useLoadScript({
@@ -15,7 +15,9 @@ function Map() {
 
   return (
     <GoogleMap zoom={12} center={center} mapContainerClassName='map-container'>
-      <Marker position={center} />
+      <MarkerF position={center} />
+      {/* SHow street View on Map */}
+      {/* <StreetViewPanorama position={center} /> */}
     </GoogleMap>
   )
 }
