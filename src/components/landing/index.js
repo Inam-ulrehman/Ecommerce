@@ -2,4 +2,10 @@ import LandingNewProducts from './LandingNewProducts'
 import LandingFeatureProduct from './LandingFeatureProducts'
 import LandingShare from './LandingShare'
 
-export { LandingNewProducts, LandingShare, LandingFeatureProduct }
+import GoogleReviews from './GoogleReviews'
+export {
+  GoogleReviews,
+  LandingNewProducts,
+  LandingShare,
+  LandingFeatureProduct,
+}

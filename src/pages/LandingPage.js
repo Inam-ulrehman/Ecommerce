@@ -5,6 +5,7 @@ import {
   LandingNewProducts,
   LandingFeatureProduct,
   LandingShare,
+  GoogleReviews,
 } from '../components/landing'
 
 const LandingPage = () => {
@@ -23,6 +24,7 @@ const LandingPage = () => {
       <LandingShare landingPage={sectionTwo} />
       <LandingNewProducts />
       <LandingShare landingPage={sectionThree} />
+      <GoogleReviews />
     </>
   )
 }
