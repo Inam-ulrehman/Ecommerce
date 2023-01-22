@@ -173,9 +173,10 @@ const Wrapper = styled.div`
       position: absolute;
       top: 1%;
       right: 1%;
-      background-color: var(--grey-2);
+      background-color: var(--grey-5);
       padding: 5px;
       border-radius: 50%;
+      color: var(--white);
     }
     .body-header {
       display: flex;
@@ -194,6 +195,12 @@ const Wrapper = styled.div`
   @media (max-width: 620px) {
     .body {
       max-width: 80vw;
+    }
+    .google {
+      margin-bottom: 1rem;
+      span {
+        display: none;
+      }
     }
     .next {
       right: 1%;
