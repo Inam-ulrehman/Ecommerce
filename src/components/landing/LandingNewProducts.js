@@ -124,5 +124,15 @@ const Wrapper = styled.div`
   }
   @media (max-width: 480px) {
   }
+  @media (max-width: 400px) {
+    .container-holder {
+      margin-top: 1rem;
+      max-width: 160px;
+    }
+    .container-image {
+      width: 160px;
+      height: 160px;
+    }
+  }
 `
 export default LandingNewProducts
