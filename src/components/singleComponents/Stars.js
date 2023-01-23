@@ -3,7 +3,6 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import styled from 'styled-components'
 
 const Stars = ({ rating }) => {
-  console.log(Math.round(rating))
   const number = rating
 
   return (
