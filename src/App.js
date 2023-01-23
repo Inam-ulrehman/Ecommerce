@@ -28,6 +28,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { websiteContentThunk } from './features/websiteContent/websiteContentSlice'
 import { getProductThunk } from './features/product/productSlice'
+import { Booking } from './pages/booking'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -84,6 +85,7 @@ const App = () => {
           <Route path='products' element={<Products />} />
           <Route path='products/:_id' element={<SingleProduct />} />
           <Route path='prices' element={<Prices />} />
+          <Route path='booking' element={<Booking />} />
           <Route path='contact' element={<Contact />} />
           <Route path='register' element={<Register />} />
           <Route path='cart' element={<Cart />} />
