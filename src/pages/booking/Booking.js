@@ -3,14 +3,21 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
 import styled from 'styled-components'
 import FormInput from '../../components/FormInput'
 import { customFetch } from '../../utils/axios'
+import { getUserFromLocalStorage } from '../../utils/localStorage'
 
 const initialState = {
+  name: '',
+  email: '',
+  phone: '',
+  note: '',
   category: '',
-  date: '',
+  date: new Date().toLocaleDateString('en-ca'),
   bookingId: '',
+  count: '',
   slot: [],
 }
 
@@ -25,9 +32,28 @@ const Booking = () => {
   moment(state.date).format('dddd')
 
   // handle Submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('submit form')
+    // function to filter and pick one slot
+    const slot = state.slot.find((item) => item._id === state.bookingId)
+
+    const { name, email, phone, note, category, date } = state
+    const { token } = getUserFromLocalStorage()
+    try {
+      await customFetch.post(
+        '/appointments',
+        { slot, name, email, phone, note, category, date },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      setState(initialState)
+      toast.success('Your appointment request is received.')
+    } catch (error) {
+      toast.error(error.result.data.msg)
+    }
   }
 
   const handleChange = (e) => {
@@ -41,9 +67,12 @@ const Booking = () => {
   }
 
   const getSlots = async () => {
-    const result = await customFetch.get('/slots')
-    console.log('hello')
-    setState({ ...state, slot: result.data.slots })
+    const freeSlots = await customFetch.post('/slots/available', {
+      date: state.date,
+    })
+    console.log(freeSlots.data.count)
+    const { count, result } = freeSlots.data
+    setState({ ...state, slot: result, count: count })
   }
   useEffect(() => {
     getSlots()
@@ -82,6 +111,7 @@ const Booking = () => {
             type='date'
             name='date'
             id='date'
+            min={new Date().toLocaleDateString('en-ca')}
             value={state.date}
             onChange={handleChange}
           />
@@ -99,7 +129,9 @@ const Booking = () => {
           <div className='day-container'>
             <div className='date-holder'>
               <span>{moment(state.date).format('dddd')} </span>
-              <span>Available Dates</span>
+              <span>
+                Total Available Dates: <strong>{state.count}</strong>
+              </span>
             </div>
             <div className='day-body'>
               {state.slot.map((item, index) => {
@@ -140,6 +172,13 @@ const Booking = () => {
                 value={state.email}
                 onChange={handleChange}
               />
+              {/* phone */}
+              <FormInput
+                name='phone'
+                type='number'
+                value={state.number}
+                onChange={handleChange}
+              />
               {/* Note */}
               <div>
                 <label className='form-label' htmlFor='note'>
@@ -151,6 +190,8 @@ const Booking = () => {
                   id='note'
                   cols='30'
                   rows='10'
+                  value={state.note}
+                  onChange={handleChange}
                 ></textarea>
               </div>
               <button type='submit' className='btn'>
