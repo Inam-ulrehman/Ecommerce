@@ -1,15 +1,17 @@
 import moment from 'moment/moment'
 import React from 'react'
+import { useEffect } from 'react'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import FormInput from '../../components/FormInput'
-import { slot } from '../../utils/data'
+import { customFetch } from '../../utils/axios'
 
 const initialState = {
   category: '',
   date: '',
   bookingId: '',
+  slot: [],
 }
 
 const Booking = () => {
@@ -37,6 +39,16 @@ const Booking = () => {
   const handleBooking = async (_id) => {
     setState({ ...state, bookingId: _id })
   }
+
+  const getSlots = async () => {
+    const result = await customFetch.get('/slots')
+    console.log('hello')
+    setState({ ...state, slot: result.data.slots })
+  }
+  useEffect(() => {
+    getSlots()
+    // eslint-disable-next-line
+  }, [state.date])
   return (
     <Wrapper>
       {/* ===== Category ====== */}
@@ -90,7 +102,7 @@ const Booking = () => {
               <span>Available Dates</span>
             </div>
             <div className='day-body'>
-              {slot.map((item, index) => {
+              {state.slot.map((item, index) => {
                 return (
                   <div
                     className={
