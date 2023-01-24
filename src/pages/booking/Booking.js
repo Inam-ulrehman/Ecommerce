@@ -7,7 +7,6 @@ import { toast } from 'react-toastify'
 import styled from 'styled-components'
 import FormInput from '../../components/FormInput'
 import { customFetch } from '../../utils/axios'
-import { getUserFromLocalStorage } from '../../utils/localStorage'
 
 const initialState = {
   name: '',
@@ -38,17 +37,17 @@ const Booking = () => {
     const slot = state.slot.find((item) => item._id === state.bookingId)
 
     const { name, email, phone, note, category, date } = state
-    const { token } = getUserFromLocalStorage()
+
     try {
-      await customFetch.post(
-        '/appointments',
-        { slot, name, email, phone, note, category, date },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      await customFetch.post('/appointments', {
+        slot,
+        name,
+        email,
+        phone,
+        note,
+        category,
+        date,
+      })
       setState(initialState)
       toast.success('Your appointment request is received.')
     } catch (error) {
