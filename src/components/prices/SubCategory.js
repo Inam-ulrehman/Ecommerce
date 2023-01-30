@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 
   h5 {
     text-transform: uppercase;
-
+    margin-bottom: 0;
     color: white;
   }
 `
