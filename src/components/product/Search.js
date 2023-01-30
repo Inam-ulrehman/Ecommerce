@@ -26,6 +26,13 @@ const Search = () => {
           onChange={handleChange}
           placeholder={'Search by Name'}
         />
+        <button
+          className='btn clear-filter'
+          type='button'
+          onClick={handleClear}
+        >
+          Clear Filter
+        </button>
       </div>
       {/* =======box divider======= */}
       <div className='sort-limit-feature'>
@@ -54,15 +61,7 @@ const Search = () => {
             </select>
           </div>
           <div className='feature'></div>
-          <div className='clear-filter'>
-            <button
-              className='btn clear-filter'
-              type='button'
-              onClick={handleClear}
-            >
-              Clear Filter
-            </button>
-          </div>
+          <div className='clear-filter'></div>
         </div>
       </div>
     </Wrapper>
@@ -73,6 +72,9 @@ const Wrapper = styled.div`
   justify-content: center;
   .sort-limit {
     display: flex;
+  }
+  @media (max-width: 600px) {
+    display: grid;
   }
 `
 export default Search
