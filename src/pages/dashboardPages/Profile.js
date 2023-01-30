@@ -11,6 +11,7 @@ const initialState = {
   isLoading: false,
   name: '',
   lastName: '',
+  dateOfBirth: '',
   email: '',
   phone: '',
   address: '',
@@ -56,6 +57,7 @@ const Profile = () => {
         },
       })
       const data = response.data
+      console.log(data)
       setState({ ...state, ...data, isLoading: false })
     } catch (error) {
       setState({ ...state, isLoading: false })
@@ -88,54 +90,70 @@ const Profile = () => {
         </p>
       </div>
       <form className='form' onSubmit={handleSubmit}>
-        {/* name input */}
-        <FormInput
-          label={'First Name'}
-          name={'name'}
-          value={state.name}
-          onChange={handleChange}
-        />
-        {/* last name input */}
-        <FormInput
-          label={'Last Name'}
-          name={'lastName'}
-          value={state.lastName}
-          onChange={handleChange}
-        />
-        {/* Email input */}
-        <FormInput name={'email'} value={state.email} onChange={handleChange} />
-        {/* phone input */}
-        <FormInput
-          type={'number'}
-          name={'phone'}
-          value={state.phone}
-          onChange={handleChange}
-        />
-        {/* Address input */}
-        <FormInput
-          name={'address'}
-          value={state.address}
-          onChange={handleChange}
-        />
-        {/* City input */}
-        <FormInput name={'city'} value={state.city} onChange={handleChange} />
-        {/* province input */}
-        <FormInput
-          name={'province'}
-          value={state.province}
-          onChange={handleChange}
-        />
-        {/* postalCode input */}
-        <FormInput
-          label={'postal code'}
-          name={'postalCode'}
-          value={state.postalCode}
-          onChange={handleChange}
-        />
+        <div className='profile'>
+          {/* name input */}
+          <FormInput
+            label={'First Name'}
+            name={'name'}
+            value={state.name}
+            onChange={handleChange}
+          />
+          {/* last name input */}
+          <FormInput
+            label={'Last Name'}
+            name={'lastName'}
+            value={state.lastName}
+            onChange={handleChange}
+          />
+          {/* Date of birth input */}
+          <FormInput
+            label={'Date Of Birth'}
+            type={'date'}
+            name={'dateOfBirth'}
+            value={state.dateOfBirth.split('T')[0]}
+            onChange={handleChange}
+          />
+          {/* Email input */}
+          <FormInput
+            name={'email'}
+            value={state.email}
+            onChange={handleChange}
+          />
+          {/* phone input */}
+          <FormInput
+            type={'number'}
+            name={'phone'}
+            value={state.phone === null ? '' : state.phone}
+            onChange={handleChange}
+          />
+        </div>
+        <div className='address'>
+          {/* Address input */}
+          <FormInput
+            name={'address'}
+            value={state.address}
+            onChange={handleChange}
+          />
+          {/* City input */}
+          <FormInput name={'city'} value={state.city} onChange={handleChange} />
+          {/* province input */}
+          <FormInput
+            name={'province'}
+            value={state.province}
+            onChange={handleChange}
+          />
+          {/* postalCode input */}
+          <FormInput
+            label={'postal code'}
+            name={'postalCode'}
+            value={state.postalCode}
+            onChange={handleChange}
+          />
 
-        <button type='submit' className='btn'>
-          Update Profile
-        </button>
+          <button type='submit' className='btn'>
+            Update Profile
+          </button>
+        </div>
       </form>
     </Wrapper>
   )
