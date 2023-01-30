@@ -187,7 +187,7 @@ const Wrapper = styled.div`
     justify-content: space-between;
     padding-right: 1rem;
     margin-top: 1rem;
-    background-color: var(--grey-3);
+    background-color: var(--grey-2);
 
     span {
       margin: 1rem;
