@@ -71,7 +71,7 @@ const SingleProduct = () => {
     <Wrapper>
       <span className='category'>
         <Link className='btn' to={'/products'}>
-          Products
+          Category
         </Link>
         / <strong>{singleProduct.category}</strong>
       </span>
