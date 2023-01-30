@@ -15,6 +15,7 @@ const Cart = () => {
   const dispatch = useDispatch()
   const { product, user } = useSelector((state) => state)
   const { cart } = product
+  console.log(cart)
 
   // ==== Calculator function=====
   const TotalAmount = totalBill(cart)
@@ -39,12 +40,12 @@ const Cart = () => {
     <Wrapper>
       <table className='table'>
         <tbody>
-          <tr>
+          <tr className='heading'>
             <th>IMAGE</th>
             <th>NAME</th>
             <th>QUANTITY</th>
             <th>PRICE</th>
-            <th>ACTION</th>
+            <th className='action'>ACTION</th>
           </tr>
 
           {cart.map((item, index) => {
@@ -53,8 +54,9 @@ const Cart = () => {
                 <td className='img'>
                   <img src={item.uploadImage[0].secure_url} alt='' />
                 </td>
-                <td className='name'>
-                  <p>{item.title}</p>
+                <td className='name-box'>
+                  <span>{item.title}</span>
+                  <strong>{item.category}</strong>
                 </td>
                 <td>
                   <div className='quantity'>
@@ -111,20 +113,42 @@ const Cart = () => {
 }
 
 const Wrapper = styled.div`
+  padding: 2rem;
   min-height: 100vh;
+  padding-top: 5rem;
   /* table */
   .table {
     text-align: center;
+    th,
+    tr,
+    td,
+    tbody {
+      border: none;
+    }
   }
+
+  table {
+    border: none;
+  }
+  td {
+    border-top: 2px solid var(--grey-2) !important;
+  }
+
+  /* name */
+  .name-box {
+    text-transform: capitalize;
+    span {
+      display: block;
+    }
+  }
+
   /* Quantity */
   .quantity {
     span {
       padding: 0.1rem 1.2rem;
-      background-color: var(--white);
-      border-top: 2px solid black;
-      border-bottom: 2px solid black;
     }
   }
+
   .checkout {
     text-align: center;
     margin: 1rem;
@@ -139,12 +163,28 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 0 2rem;
-    border: 2px solid black;
+    border: 2px solid var(--grey-3);
   }
   @media (max-width: 600px) {
     .quantity {
       display: grid;
+
+      justify-content: space-evenly;
+
+      button {
+        padding: 2px;
+        width: 25px;
+      }
+      span {
+        padding: 0;
+        background-color: transparent;
+        width: 23px;
+        border-top: 0px solid black;
+        border-bottom: 0px solid black;
+      }
     }
+
+    padding-top: 0px;
   }
 `
 
