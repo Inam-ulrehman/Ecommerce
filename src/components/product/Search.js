@@ -20,6 +20,7 @@ const Search = () => {
     <Wrapper>
       <div className='search'>
         <input
+          className='form-input'
           type='text'
           value={searchTitle}
           name='searchTitle'
@@ -68,13 +69,18 @@ const Search = () => {
   )
 }
 const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  input {
+    width: auto !important;
+  }
   .sort-limit {
     display: flex;
   }
   @media (max-width: 600px) {
     display: grid;
+    grid-template-columns: 1fr;
   }
 `
 export default Search
