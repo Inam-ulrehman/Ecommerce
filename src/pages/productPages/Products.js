@@ -1,33 +1,35 @@
 import React from 'react'
-import { useState } from 'react'
-
+import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
+import List from '../../components/product/List'
+import Pagination from '../../components/product/Pagination'
 import ProductCategory from '../../components/product/ProductCategory'
-import ProductDesign from '../../components/ProductDesign'
-import { productsCategories } from '../../features/product/productSlice'
+import Search from '../../components/product/Search'
+import { getAllProductsThunk } from '../../features/product/productSlice'
 const Products = () => {
   const dispatch = useDispatch()
   const { product } = useSelector((state) => state)
-  const { category, isLoading, productList } = product
-  const [value, setValue] = useState(0)
+  const { searchTitle, searchCategory, page, limit, count, sort, feature } =
+    product
+
   // ==== handle Category button
 
-  const handleCategory = (e) => {
-    const value = e.target.value
-    dispatch(productsCategories(value))
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
-  }
-
-  if (isLoading) {
-    return (
-      <div>
-        <h1>Loading...</h1>
-        <div className='loading'></div>
-      </div>
+  useEffect(() => {
+    dispatch(
+      getAllProductsThunk({
+        searchTitle,
+        searchCategory,
+        page,
+        limit,
+        count,
+        sort,
+        feature,
+      })
     )
-  }
+    // eslint-disable-next-line
+  }, [searchCategory, searchTitle, page, limit, count, sort, feature])
   return (
     <Wrapper>
       <Helmet>
@@ -35,21 +37,10 @@ const Products = () => {
         <meta name='description' content='Welcome to our Product Page.' />
         <link rel='canonical' href='/product' />
       </Helmet>
-      {/*===== filter category =======Start */}
-      <ProductCategory
-        category={category}
-        value={value}
-        setValue={setValue}
-        handleCategory={handleCategory}
-      />
-
-      {/*===== filter Product =======Start */}
-      <div className='product-holder'>
-        {productList.map((item, index) => {
-          return <ProductDesign key={item._id} item={item} />
-        })}
-      </div>
-      {/*===== filter Product =======End */}
+      <ProductCategory />
+      <Search />
+      <List />
+      <Pagination />
     </Wrapper>
   )
 }

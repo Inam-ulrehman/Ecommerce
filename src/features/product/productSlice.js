@@ -11,6 +11,7 @@ import {
 const cart = getCartFromLocalStorage()
 const initialState = {
   category: [],
+  categoryIndex: 0,
   initialProductList: [],
   productList: [],
   featureProducts: [],
@@ -20,6 +21,17 @@ const initialState = {
   nbHits: '',
   cart: cart || [],
   isLoading: false,
+
+  // search
+  searchTitle: '',
+  searchCategory: '',
+  // pagination
+  list: [],
+  page: 1,
+  limit: 20,
+  count: '',
+  sort: '-createdAt',
+  feature: '',
 }
 
 export const productThunk = createAsyncThunk(
@@ -34,7 +46,23 @@ export const productThunk = createAsyncThunk(
     }
   }
 )
-//  ==== Get Products
+// get All Products Thunk
+export const getAllProductsThunk = createAsyncThunk(
+  'product/getAllProductsThunk',
+  async (state, thunkAPI) => {
+    try {
+      const response = await customFetch.get(
+        `/products?title=${state?.searchTitle}&category=${state?.searchCategory}&feature=${state?.searchFeature}&sort=${state?.sort}&limit=${state?.limit}&page=${state?.page}`
+      )
+
+      return response.data
+    } catch (error) {
+      console.log(error.response)
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  }
+)
+//  ==== Get Static Products
 export const getProductThunk = createAsyncThunk(
   'product/getProductThunk',
   async (_, thunkAPI) => {
@@ -72,6 +100,35 @@ const userSlice = createSlice({
     createFunction: (state, { payload }) => {
       console.log('function call')
     },
+    getStateValues: (state, { payload }) => {
+      const { name, value } = payload
+      state[name] = value
+    },
+    clearState: (state, { payload }) => {
+      state.categoryIndex = 0
+      // search
+      state.searchTitle = ''
+      state.searchCategory = ''
+      // pagination
+      state.page = 1
+      state.limit = 20
+      state.sort = '-createdAt'
+    },
+    // pagination
+
+    next: (state, { payload }) => {
+      console.log('next')
+      state.page = state.page + 1
+    },
+    prev: (state, { payload }) => {
+      console.log('prev')
+      state.page = state.page - 1
+    },
+    index: (state, { payload }) => {
+      const index = Number(payload)
+      state.page = index
+    },
+    // cart
     emptyCart: (state, { payload }) => {
       removeCartFromLocalStorage()
       state.cart = []
@@ -94,7 +151,7 @@ const userSlice = createSlice({
         return
       }
       state.cart[index].quantity = state.cart[index].quantity + 1
-      console.log(state.cart[index].quantity)
+
       setCartInLocalStorage(state.cart)
     },
     decreaseItemQuantity: (state, { payload }) => {
@@ -106,16 +163,6 @@ const userSlice = createSlice({
       }
       state.cart[index].quantity = state.cart[index].quantity - 1
       setCartInLocalStorage(state.cart)
-    },
-    productsCategories: (state, { payload }) => {
-      if (payload === 'all') {
-        state.productList = state.initialProductList
-        return
-      }
-      const category = state.initialProductList.filter(
-        (item) => item.category === payload
-      )
-      state.productList = category
     },
   },
   extraReducers: {
@@ -130,7 +177,21 @@ const userSlice = createSlice({
     [productThunk.rejected]: (state, { payload }) => {
       state.isLoading = false
     },
-    // ==== get products
+    // Get All products Pagination
+
+    [getAllProductsThunk.pending]: (state, { payload }) => {
+      state.isLoading = true
+    },
+    [getAllProductsThunk.fulfilled]: (state, { payload }) => {
+      state.list = payload.result
+      state.count = payload.totalOrders
+
+      state.isLoading = false
+    },
+    [getAllProductsThunk.rejected]: (state, { payload }) => {
+      state.isLoading = false
+    },
+    // ==== get Static products
 
     [getProductThunk.pending]: (state, { payload }) => {
       state.isLoading = true
@@ -169,8 +230,12 @@ const userSlice = createSlice({
   },
 })
 export const {
+  clearState,
+  next,
+  prev,
+  index,
   createFunction,
-  productsCategories,
+  getStateValues,
   getCart,
   emptyCart,
   removeCartItem,

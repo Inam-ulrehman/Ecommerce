@@ -10,7 +10,8 @@ import {
   getCart,
   getSingleProductThunk,
 } from '../../features/product/productSlice'
-import { formatPrice } from '../../utils/helper'
+
+// import { formatPrice } from '../../utils/helper'
 const initialState = {
   index: 0,
 }
@@ -31,7 +32,7 @@ const SingleProduct = () => {
   }
 
   // ==== handle submit
-
+  // eslint-disable-next-line
   const handleSubmit = (e) => {
     e.preventDefault()
     const quantity = Number(quantityRef.current.value)
@@ -94,18 +95,33 @@ const SingleProduct = () => {
             <h3 className='title'>{singleProduct.title}</h3>
             <div className='title-underline'></div>
           </div>
+          <div>
+            <h3 className='title'>{singleProduct.subCategory}</h3>
+          </div>
           <div className='description-heading'>
-            <p>{singleProduct.inStock ? null : 'out-of-stock'}</p>
-            <p>
-              Total Stock: <strong>{singleProduct.totalStock}</strong>
-            </p>
-            <p>
-              Total Price: <strong>{formatPrice(singleProduct.amount)}</strong>
-            </p>
+            <strong className='title'>Prices</strong>
+            {singleProduct.amountOne && (
+              <div>
+                <span>{singleProduct.amountOneText}</span>
+                <span>${singleProduct.amountOne}</span>
+              </div>
+            )}
+            {singleProduct.amountTwoText && (
+              <div>
+                <span>{singleProduct.amountTwoText}</span>
+                <span>${singleProduct.amountTwo}</span>
+              </div>
+            )}
+            {singleProduct.amountThree && (
+              <div>
+                <span>{singleProduct.amountThreeText}</span>
+                <span>${singleProduct.amountThree}</span>
+              </div>
+            )}
           </div>
 
           {/* ========== CART======START*/}
-          {singleProduct.inStock && singleProduct?.totalStock > 0 && (
+          {/* {singleProduct.inStock && singleProduct?.totalStock > 0 && (
             <div className='cart'>
               <form onSubmit={handleSubmit}>
                 <label>Pick between 1 to{singleProduct.totalStock}:</label>
@@ -121,7 +137,7 @@ const SingleProduct = () => {
                 </button>
               </form>
             </div>
-          )}
+          )} */}
 
           {/* ========== CART======END*/}
           <div>
@@ -173,8 +189,12 @@ const Wrapper = styled.div`
   }
   /*=== Description */
   .description-heading {
-    display: flex;
-    justify-content: space-around;
+    border: 2px solid black;
+    display: grid;
+    place-content: center;
+    span {
+      margin: 1rem;
+    }
   }
 
   /* === CART */
