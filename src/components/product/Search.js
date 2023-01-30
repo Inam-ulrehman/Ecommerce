@@ -59,6 +59,8 @@ const Search = () => {
               <option value='createdAt'>DATE OLD</option>
               <option value='title'>NAME A-Z</option>
               <option value='-title'>NAME Z-A</option>
+              <option value='amount'>PRICE LOW-HIGH</option>
+              <option value='-amount'>PRICE HIGH-LOW</option>
             </select>
           </div>
           <div className='feature'></div>
@@ -77,6 +79,7 @@ const Wrapper = styled.div`
   }
   .sort-limit {
     display: flex;
+    gap: 1rem;
   }
   @media (max-width: 600px) {
     display: grid;
