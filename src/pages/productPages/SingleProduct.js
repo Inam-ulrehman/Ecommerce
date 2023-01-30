@@ -3,13 +3,14 @@ import { useRef } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import styled from 'styled-components'
 import {
   getCart,
   getSingleProductThunk,
 } from '../../features/product/productSlice'
+import { formatPrice } from '../../utils/helper'
 
 // import { formatPrice } from '../../utils/helper'
 const initialState = {
@@ -68,9 +69,12 @@ const SingleProduct = () => {
   }
   return (
     <Wrapper>
-      <h3>
-        Category / <strong>{singleProduct.category}</strong>
-      </h3>
+      <span className='category'>
+        <Link className='btn' to={'/products'}>
+          Products
+        </Link>
+        / <strong>{singleProduct.category}</strong>
+      </span>
       <div className='container'>
         <div className='img'>
           <div className='main-img'>
@@ -89,7 +93,7 @@ const SingleProduct = () => {
             })}
           </div>
         </div>
-        {/* ====DESCRIPTION  */}
+        {/* ====box divider========= */}
         <div className='description'>
           <div>
             <h3 className='title'>{singleProduct.title}</h3>
@@ -99,48 +103,10 @@ const SingleProduct = () => {
             <h3 className='title'>{singleProduct.subCategory}</h3>
           </div>
           <div className='description-heading'>
-            <strong className='title'>Prices</strong>
-            {singleProduct.amountOne && (
-              <div>
-                <span>{singleProduct.amountOneText}</span>
-                <span>${singleProduct.amountOne}</span>
-              </div>
-            )}
-            {singleProduct.amountTwoText && (
-              <div>
-                <span>{singleProduct.amountTwoText}</span>
-                <span>${singleProduct.amountTwo}</span>
-              </div>
-            )}
-            {singleProduct.amountThree && (
-              <div>
-                <span>{singleProduct.amountThreeText}</span>
-                <span>${singleProduct.amountThree}</span>
-              </div>
-            )}
+            <span className='title'>PRICE:</span>
+            <strong>{formatPrice(singleProduct.amount)}</strong>
           </div>
-
-          {/* ========== CART======START*/}
-          {/* {singleProduct.inStock && singleProduct?.totalStock > 0 && (
-            <div className='cart'>
-              <form onSubmit={handleSubmit}>
-                <label>Pick between 1 to{singleProduct.totalStock}:</label>
-                <input
-                  ref={quantityRef}
-                  type='number'
-                  defaultValue={1}
-                  min='1'
-                  max={singleProduct.totalStock}
-                ></input>
-                <button className='btn' type='submit'>
-                  Add to cart
-                </button>
-              </form>
-            </div>
-          )} */}
-
-          {/* ========== CART======END*/}
-          <div>
+          <div className='description-box'>
             <p>{singleProduct.description}</p>
           </div>
         </div>
@@ -155,6 +121,21 @@ const Wrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+
+  .category {
+    background-color: var(--primary-1);
+    padding: 10px 0;
+    font-size: 1.2rem;
+    padding-right: 5px;
+
+    a {
+      padding: 5px;
+      margin-right: 5px;
+    }
+    strong {
+      text-transform: capitalize;
+    }
+  }
   .img,
   .description {
     min-width: 45vw;
@@ -162,6 +143,7 @@ const Wrapper = styled.div`
   }
   .main-img {
     text-align: center;
+    margin-top: 1rem;
 
     img {
       box-shadow: var(--shadow-2);
@@ -171,7 +153,7 @@ const Wrapper = styled.div`
   }
   /* === small images */
   .options-img {
-    border-top: 2px solid black;
+    border-top: 2px solid var(--primary-5);
     margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
@@ -187,24 +169,22 @@ const Wrapper = styled.div`
       }
     }
   }
-  /*=== Description */
+  /*=== Description=== box divider */
   .description-heading {
-    border: 2px solid black;
-    display: grid;
+    background-color: var(--grey-3);
+    box-shadow: var(--shadow-2);
+    display: flex;
+    align-items: center;
     place-content: center;
     span {
       margin: 1rem;
     }
   }
+  .description-box {
+    padding: 1rem;
+    background-color: var(--grey-1);
+  }
 
-  /* === CART */
-  .cart {
-    input {
-      margin: 1rem;
-    }
-  }
-  .btn {
-  }
   @media (max-width: 600px) {
     .container {
       grid-template-columns: 1fr;
