@@ -31,7 +31,6 @@ const Wrapper = styled.footer`
   place-items: center;
 
   .logo-holder {
-    border: 2px solid black;
     max-height: 60px;
     overflow: hidden;
   }
