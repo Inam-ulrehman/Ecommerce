@@ -29,7 +29,10 @@ const Wrapper = styled.footer`
   background-color: var(--grey-1);
   display: grid;
   place-items: center;
+
   .logo-holder {
+    border: 2px solid black;
+    max-height: 60px;
     overflow: hidden;
   }
   @media (min-width: 600px) {
