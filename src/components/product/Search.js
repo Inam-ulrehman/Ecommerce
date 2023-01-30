@@ -1,11 +1,17 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
-import { clearState, getStateValues } from '../../features/product/productSlice'
+import {
+  clearState,
+  getStateValues,
+  handleFeature,
+} from '../../features/product/productSlice'
 
 const Search = () => {
   const dispatch = useDispatch()
-  const { searchTitle, sort, limit } = useSelector((state) => state.product)
+  const { searchTitle, sort, limit, feature } = useSelector(
+    (state) => state.product
+  )
 
   const handleChange = (e) => {
     const name = e.target.name
@@ -64,7 +70,16 @@ const Search = () => {
             </select>
           </div>
           <div className='feature'></div>
-          <div className='clear-filter'></div>
+          <div className='clear-filter'>
+            <label htmlFor='feature'>Feature</label>
+            <input
+              type='checkbox'
+              name='feature'
+              value={feature}
+              onChange={() => dispatch(handleFeature())}
+              id=''
+            />
+          </div>
         </div>
       </div>
     </Wrapper>

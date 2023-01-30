@@ -31,7 +31,7 @@ const initialState = {
   limit: 20,
   count: '',
   sort: '-createdAt',
-  feature: '',
+  feature: false,
 }
 
 export const productThunk = createAsyncThunk(
@@ -52,7 +52,7 @@ export const getAllProductsThunk = createAsyncThunk(
   async (state, thunkAPI) => {
     try {
       const response = await customFetch.get(
-        `/products?title=${state?.searchTitle}&category=${state?.searchCategory}&feature=${state?.searchFeature}&sort=${state?.sort}&limit=${state?.limit}&page=${state?.page}`
+        `/products?title=${state?.searchTitle}&category=${state?.searchCategory}&feature=${state?.feature}&sort=${state?.sort}&limit=${state?.limit}&page=${state?.page}`
       )
 
       return response.data
@@ -113,6 +113,7 @@ const userSlice = createSlice({
       state.page = 1
       state.limit = 20
       state.sort = '-createdAt'
+      state.feature = false
     },
     // pagination
 
@@ -127,6 +128,10 @@ const userSlice = createSlice({
     index: (state, { payload }) => {
       const index = Number(payload)
       state.page = index
+    },
+    // feature solution
+    handleFeature: (state, { payload }) => {
+      state.feature = !state.feature
     },
     // cart
     emptyCart: (state, { payload }) => {
@@ -234,6 +239,7 @@ export const {
   next,
   prev,
   index,
+  handleFeature,
   createFunction,
   getStateValues,
   getCart,
