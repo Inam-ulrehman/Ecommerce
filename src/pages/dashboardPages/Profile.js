@@ -57,7 +57,7 @@ const Profile = () => {
         },
       })
       const data = response.data
-      console.log(data)
+
       setState({ ...state, ...data, isLoading: false })
     } catch (error) {
       setState({ ...state, isLoading: false })
