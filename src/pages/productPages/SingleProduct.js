@@ -203,7 +203,8 @@ const Wrapper = styled.div`
   .btn {
   }
   .description-box {
-    background-color: var(--grey-2);
+    background-color: var(--white);
+    box-shadow: var(--shadow-2);
     padding: 1rem;
   }
   @media (max-width: 600px) {
