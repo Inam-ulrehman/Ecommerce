@@ -167,7 +167,7 @@ const Wrapper = styled.div`
   }
   /* === small images */
   .options-img {
-    border-top: 2px solid black;
+    border-top: 2px solid var(--primary-5);
     margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
