@@ -42,16 +42,12 @@ const SingleProduct = () => {
       return
     }
     if (cart.find((item) => item._id === _id)) {
-      toast.success('Already in your Cart.', {
-        position: toast.POSITION.TOP_CENTER,
-      })
+      toast.success('Already in your Cart.')
       return
     }
     const addInCart = { ...singleProduct, quantity }
     dispatch(getCart(addInCart))
-    toast.success('Added in your Cart.', {
-      position: toast.POSITION.TOP_CENTER,
-    })
+    toast.success('Added in your Cart.')
   }
   useEffect(() => {
     dispatch(getSingleProductThunk(_id))
