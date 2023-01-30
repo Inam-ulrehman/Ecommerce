@@ -106,7 +106,9 @@ const SingleProduct = () => {
             {singleProduct.inStock && singleProduct?.totalStock > 0 && (
               <div className='cart'>
                 <form onSubmit={handleSubmit}>
-                  <label>Pick between 1 to{singleProduct.totalStock}:</label>
+                  <label>
+                    Total Available: <strong>{singleProduct.totalStock}</strong>
+                  </label>
                   <input
                     ref={quantityRef}
                     type='number'
