@@ -3,7 +3,6 @@ import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import { customFetch } from '../../utils/axios'
 import { useSelector } from 'react-redux'
-import { STRIPE_PUBLISHABLE_KEY } from '../../utils/data'
 import {
   AddressForm,
   StripeProfile,
@@ -17,7 +16,7 @@ const CheckOut = () => {
   const [clientSecret, setClientSecret] = useState('')
   // eslint-disable-next-line
   const [stripePromise, setStripePromise] = useState(() =>
-    loadStripe(STRIPE_PUBLISHABLE_KEY)
+    loadStripe(process.env.STRIPE_PUBLISHABLE_KEY)
   )
 
   const getClientSecret = async () => {
