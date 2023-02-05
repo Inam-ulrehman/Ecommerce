@@ -20,11 +20,11 @@ const LandingPage = () => {
         <meta name='description' content={sectionOne?.paragraph} />
         <link rel='canonical' href='/' />
       </Helmet>
-      <LandingShare landingPage={sectionOne} />
+      <LandingShare landingPage={sectionOne} heading={1} />
       <LandingFeatureProduct />
-      <LandingShare landingPage={sectionTwo} />
+      <LandingShare landingPage={sectionTwo} heading={2} />
       <LandingNewProducts />
-      <LandingShare landingPage={sectionThree} />
+      <LandingShare landingPage={sectionThree} heading={3} />
       <GoogleReviews />
       {/* <GoogleMaps /> */}
     </>
