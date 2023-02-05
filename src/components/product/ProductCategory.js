@@ -6,9 +6,7 @@ import ScrollHook from '../../hooks/ScrollHook'
 
 const ProductCategory = () => {
   const dispatch = useDispatch()
-  const { category, categoryIndex, searchCategory } = useSelector(
-    (state) => state.product
-  )
+  const { category, searchCategory } = useSelector((state) => state.product)
 
   const handleCategory = (e) => {
     ScrollHook()
