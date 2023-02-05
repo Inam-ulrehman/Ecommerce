@@ -11,15 +11,15 @@ const SingleAboutUs = () => {
   return (
     <Wrapper>
       <div className='box-1'>
-        <img src={person.uploadImage[0]?.secure_url} alt='' />
+        <img src={person?.uploadImage[0]?.secure_url} alt='' />
       </div>
       <div className='box-2'>
         <div className='heading'>
-          <span>{person.name}</span>
-          <span>{person.profession}</span>
+          <span>{person?.name}</span>
+          <span>{person?.profession}</span>
         </div>
         <div className='paragraph'>
-          <p>{person.paragraph}</p>
+          <p>{person?.paragraph}</p>
         </div>
       </div>
     </Wrapper>
@@ -51,7 +51,7 @@ const Wrapper = styled.div`
       font-size: 2rem;
       display: flex;
       justify-content: space-around;
-      background-color: var(--primary-1);
+      background-color: var(--grey-2);
     }
     .paragraph {
       padding: 1rem;
