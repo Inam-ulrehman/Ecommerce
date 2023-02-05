@@ -166,6 +166,9 @@ const Wrapper = styled.div`
     border: 2px solid var(--grey-3);
   }
   @media (max-width: 600px) {
+    padding: 0px;
+    table {
+    }
     .quantity {
       display: grid;
 
@@ -185,6 +188,8 @@ const Wrapper = styled.div`
     }
 
     padding-top: 0px;
+  }
+  @media (max-width: 400px) {
   }
 `
 
