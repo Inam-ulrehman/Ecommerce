@@ -176,7 +176,6 @@ const Wrapper = styled.div`
     .quantity {
       display: grid;
       justify-content: space-evenly;
-      border: 2px solid black;
       width: 5px;
       margin: 0 auto;
 
