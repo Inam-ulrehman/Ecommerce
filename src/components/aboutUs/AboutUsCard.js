@@ -1,9 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
-const AboutUsCard = ({ image, name, profession, paragraph }) => {
+const AboutUsCard = ({ image, name, profession, paragraph, _id }) => {
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    navigate(`/about/${_id}`)
+  }
   return (
-    <Wrapper>
+    <Wrapper onClick={handleClick}>
       <div className='image'>
         <img src={image} alt={name} />
       </div>
