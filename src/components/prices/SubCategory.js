@@ -8,7 +8,7 @@ const SubCategory = ({ item, products }) => {
   )
   return (
     <Wrapper>
-      <h5 className='title'>{item}</h5>
+      <div className='title-head title'>{item}</div>
       {/* sub category holder */}
       <SubCategoryHolder subCategoryProducts={subCategoryProducts} />
     </Wrapper>
@@ -17,7 +17,7 @@ const SubCategory = ({ item, products }) => {
 const Wrapper = styled.div`
   background-color: var(--primary-5);
 
-  h5 {
+  .title-head {
     text-transform: uppercase;
     margin-bottom: 0;
     color: white;
