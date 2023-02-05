@@ -32,3 +32,6 @@ export const dashboardNavLink = [
 
 export const StripePaymentStatus =
   'http://localhost:3000/dashboard/paymentstatus'
+
+export const STRIPE_PUBLISHABLE_KEY =
+  'pk_test_51MCOOyAWL09tx3q3PEZKwZOjJyC94URRgxK9l8Efy9siYmXPybFxYhj3ByPZnjZfvaVmyvCpcT6NaLZogWkiUKK700XGTZL0aq'
