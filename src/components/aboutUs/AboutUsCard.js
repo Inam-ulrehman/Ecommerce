@@ -12,7 +12,14 @@ const AboutUsCard = ({ image, name, profession, paragraph, _id }) => {
   return (
     <Wrapper onClick={handleClick}>
       <div className='image'>
-        <img src={image} alt={name} />
+        <img
+          src={image}
+          alt={name}
+          title={name}
+          loading='lazy'
+          width='100%'
+          height='100%'
+        />
       </div>
       <div className='body'>
         <div className='spanHolder'>
@@ -41,6 +48,7 @@ const Wrapper = styled.div`
   border-top-left-radius: var(--radius-2);
   border-top-right-radius: var(--radius-2);
   transition: var(--transition-1);
+  overflow: hidden;
   :hover {
     cursor: pointer;
     box-shadow: var(--shadow-4);
