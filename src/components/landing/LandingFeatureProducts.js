@@ -13,7 +13,9 @@ const LandingFeatureProduct = () => {
   return (
     <Wrapper>
       <div className='container-header'>
-        <h3 className='title'>Feature Services</h3>
+        <div className='title'>
+          Feature <span>Services</span>
+        </div>
         <div className='title-underline'></div>
       </div>
       <div className='container'>
@@ -48,6 +50,14 @@ const Wrapper = styled.div`
     align-items: center;
     flex-wrap: wrap;
     padding: 1rem;
+  }
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    span {
+      color: var(--primary-5);
+    }
   }
   .container-holder {
     max-width: 280px;
