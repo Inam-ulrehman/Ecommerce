@@ -167,6 +167,7 @@ const Wrapper = styled.div`
   }
   @media (max-width: 600px) {
     padding: 0px;
+    margin: 0 auto;
     width: 400px;
     table {
     }
