@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const TeamMember = ({ image, name, profession, paragraph }) => {
+const AboutUsCard = ({ image, name, profession, paragraph }) => {
   return (
     <Wrapper>
       <div className='image'>
@@ -63,4 +63,4 @@ const Wrapper = styled.div`
     }
   }
 `
-export default TeamMember
+export default AboutUsCard

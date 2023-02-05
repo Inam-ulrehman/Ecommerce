@@ -2,16 +2,17 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
-import { TeamMember } from '../components'
 
-const About = () => {
+import AboutUsCard from '../../components/aboutUs/AboutUsCard'
+
+const AboutUs = () => {
   const { aboutUsTitle, aboutUs } = useSelector((state) => state.websiteContent)
   const { title, paragraph } = aboutUsTitle
 
   return (
     <>
       <Helmet>
-        <title>Developers Team</title>
+        <title>{''}</title>
         <meta
           name='description'
           content='We have very hardworking and dedicated team members, teamwork play a huge role in a project and outcomes shine when it comes to good understanding.'
@@ -32,7 +33,7 @@ const About = () => {
           {aboutUs.map((item, index) => {
             const { uploadImage, name, profession, paragraph } = item
             return (
-              <TeamMember
+              <AboutUsCard
                 key={index}
                 image={uploadImage[0]?.secure_url}
                 name={name}
@@ -65,4 +66,4 @@ const Wrapper = styled.div`
     flex-wrap: wrap;
   }
 `
-export default About
+export default AboutUs
