@@ -25,8 +25,10 @@ const Wrapper = styled.div`
   width: 80vw;
   margin: 1rem auto;
   background: var(--white);
+  border-top-left-radius: var(--radius-2);
+  border-top-right-radius: var(--radius-2);
   .image {
-    background: var(--grey-4);
+    background: var(--primary-1);
     border-top-left-radius: var(--radius-2);
     border-top-right-radius: var(--radius-2);
   }
