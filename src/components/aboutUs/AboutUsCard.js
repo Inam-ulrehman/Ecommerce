@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { paragraphLimit } from '../../utils/helper'
 
 const AboutUsCard = ({ image, name, profession, paragraph, _id }) => {
   const navigate = useNavigate()
@@ -18,7 +19,14 @@ const AboutUsCard = ({ image, name, profession, paragraph, _id }) => {
           <span>{name}</span>
           <span>{profession}</span>
         </div>
-        <p className=''>{paragraph}</p>
+        <div className='paragraph'>
+          <p>
+            {paragraph.length > 200
+              ? paragraphLimit(paragraph, 200)
+              : paragraph}
+          </p>
+          {paragraph.length > 200 && <span className='btn'>Read more</span>}
+        </div>
       </div>
     </Wrapper>
   )
@@ -27,12 +35,16 @@ const AboutUsCard = ({ image, name, profession, paragraph, _id }) => {
 const Wrapper = styled.div`
   /* Team Members */
 
-  box-shadow: var(--shadow-2);
-  width: 80vw;
+  box-shadow: var(--shadow-1);
   margin: 1rem auto;
   background: var(--white);
   border-top-left-radius: var(--radius-2);
   border-top-right-radius: var(--radius-2);
+  transition: var(--transition-1);
+  :hover {
+    cursor: pointer;
+    box-shadow: var(--shadow-4);
+  }
   .image {
     background: var(--primary-1);
     border-top-left-radius: var(--radius-2);
@@ -54,9 +66,17 @@ const Wrapper = styled.div`
     justify-content: space-between;
     text-transform: capitalize;
   }
-  p {
-    margin-bottom: 0;
-    color: var(--grey-5);
+  .paragraph {
+    p {
+      margin-bottom: 0;
+      color: var(--grey-5);
+      display: inline;
+    }
+    span {
+      padding: 2px;
+      margin: 0;
+      border-radius: 0;
+    }
   }
   @media (min-width: 600px) {
     width: 45vw;
