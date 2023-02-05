@@ -12,11 +12,8 @@ const AboutUs = () => {
   return (
     <>
       <Helmet>
-        <title>{''}</title>
-        <meta
-          name='description'
-          content='We have very hardworking and dedicated team members, teamwork play a huge role in a project and outcomes shine when it comes to good understanding.'
-        />
+        <title>{title}</title>
+        <meta name='description' content={paragraph} />
         <link rel='canonical' href='/about' />
       </Helmet>
       <Wrapper>
