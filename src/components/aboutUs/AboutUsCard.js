@@ -46,7 +46,6 @@ const Wrapper = styled.div`
     box-shadow: var(--shadow-4);
   }
   .image {
-    background: var(--primary-1);
     border-top-left-radius: var(--radius-2);
     border-top-right-radius: var(--radius-2);
   }
