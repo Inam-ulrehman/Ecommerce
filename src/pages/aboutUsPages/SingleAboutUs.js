@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const SingleAboutUs = () => {
   const { _id } = useParams()
-  const { aboutUs, isLoading } = useSelector((state) => state.websiteContent)
+  const { aboutUs } = useSelector((state) => state.websiteContent)
   const person = aboutUs.find((item) => item._id === _id)
 
   return (
