@@ -43,7 +43,7 @@ const Cart = () => {
           <tr className='heading'>
             <th>IMAGE</th>
             <th>NAME</th>
-            <th>QUANTITY</th>
+            <th>ITEMS</th>
             <th>PRICE</th>
             <th className='action'>ACTION</th>
           </tr>
@@ -167,12 +167,18 @@ const Wrapper = styled.div`
   }
   @media (max-width: 600px) {
     padding: 0px;
+    width: 400px;
     table {
+    }
+    .heading {
+      width: 400px;
     }
     .quantity {
       display: grid;
-
       justify-content: space-evenly;
+      border: 2px solid black;
+      width: 5px;
+      margin: 0 auto;
 
       button {
         padding: 2px;
@@ -188,6 +194,10 @@ const Wrapper = styled.div`
     }
 
     padding-top: 0px;
+    .total {
+      max-width: 400px;
+      margin: 0 auto;
+    }
   }
   @media (max-width: 400px) {
   }
