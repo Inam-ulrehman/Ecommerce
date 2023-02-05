@@ -21,11 +21,11 @@ const AboutUsCard = ({ image, name, profession, paragraph, _id }) => {
         </div>
         <div className='paragraph'>
           <p>
-            {paragraph.length > 200
-              ? paragraphLimit(paragraph, 200)
+            {paragraph.length > 215
+              ? paragraphLimit(paragraph, 215)
               : paragraph}
           </p>
-          {paragraph.length > 200 && <span className='btn'>Read more</span>}
+          {paragraph.length > 215 && <span className='btn'>Read more</span>}
         </div>
       </div>
     </Wrapper>
