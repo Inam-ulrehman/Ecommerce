@@ -6,7 +6,6 @@ const url =
   'https://res.cloudinary.com/inam6530/image/upload/v1667055870/inamwebsolutions/Untitled_design_qebmwe.svg'
 
 const LandingShare = ({ landingPage, heading }) => {
-  console.log(landingPage)
   if (!landingPage) {
     return (
       <Wrapper>

@@ -13,7 +13,7 @@ const Logo = () => {
 
   return (
     <Wrapper onClick={handleClick}>
-      <img src={image ? image : url} alt='' />
+      <img src={image ? image : url} alt='Logo' />
     </Wrapper>
   )
 }

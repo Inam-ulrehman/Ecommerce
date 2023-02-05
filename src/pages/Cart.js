@@ -52,7 +52,7 @@ const Cart = () => {
             return (
               <tr key={index}>
                 <td className='img'>
-                  <img src={item.uploadImage[0].secure_url} alt='' />
+                  <img src={item.uploadImage[0].secure_url} alt='Cart' />
                 </td>
                 <td className='name-box'>
                   <span>{item.title}</span>

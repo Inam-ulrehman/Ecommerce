@@ -13,7 +13,7 @@ const ProductDesign = ({ item }) => {
             <strong>{item.title}</strong>
           </p>
           <div className='img-container'>
-            <img src={image} alt='' />
+            <img src={image} alt={item.title} />
           </div>
         </div>
       </Link>

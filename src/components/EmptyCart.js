@@ -7,7 +7,7 @@ const EmptyCart = () => {
     <Wrapper>
       <div className='container'>
         <h3 className='title'>Your cart is Empty</h3>
-        <img src={emptyCart} alt='' />
+        <img src={emptyCart} alt='cart' />
       </div>
       {/* <img src={emptyCart} alt='' /> */}
     </Wrapper>

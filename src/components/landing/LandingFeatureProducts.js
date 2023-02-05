@@ -28,7 +28,10 @@ const LandingFeatureProduct = () => {
                 key={index}
               >
                 <div className='container-image'>
-                  <img src={item.uploadImage[0].secure_url} alt='' />
+                  <img
+                    src={item.uploadImage[0].secure_url}
+                    alt={item.category}
+                  />
                 </div>
                 <div className='container-paragraph'>
                   <p>{item.category}</p>
