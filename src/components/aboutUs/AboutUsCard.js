@@ -48,6 +48,8 @@ const Wrapper = styled.div`
   .image {
     border-top-left-radius: var(--radius-2);
     border-top-right-radius: var(--radius-2);
+    display: grid;
+    justify-content: center;
   }
   img {
     width: 80vw;
@@ -79,9 +81,9 @@ const Wrapper = styled.div`
   }
   @media (min-width: 600px) {
     width: 45vw;
-    img {
-      width: 45vw;
-    }
+  }
+  @media (max-width: 600px) {
+    margin: 2rem;
   }
   @media (min-width: 1024px) {
     width: 30vw;
