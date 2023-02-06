@@ -35,8 +35,8 @@ const LandingShare = ({ landingPage, heading }) => {
           alt={landingPage?.heading}
           title={landingPage?.heading}
           loading='lazy'
-          width='100%'
-          height='100%'
+          width='300px'
+          height='300px'
         />
         <p>{landingPage?.paragraph}</p>
         <Link to={'/products'} className='btn'>
@@ -59,8 +59,10 @@ const LandingShare = ({ landingPage, heading }) => {
 
 const Wrapper = styled.div`
   display: grid;
-  h1 {
-    margin-left: 0;
+  h1,
+  h2,
+  h3 {
+    font-size: 2.5rem;
   }
   p {
     font-size: 1.2rem;
@@ -73,7 +75,7 @@ const Wrapper = styled.div`
     justify-items: center;
 
     img {
-      max-width: 300px;
+      width: 300px !important;
     }
   }
   .box-desktop {
@@ -109,6 +111,11 @@ const Wrapper = styled.div`
     background-color: var(--primary-1);
   }
   @media (max-width: 768px) {
+    h1,
+    h2,
+    h3 {
+      margin: 0px;
+    }
   }
   @media (max-width: 620px) {
   }
