@@ -5,12 +5,20 @@ import { toast } from 'react-toastify'
 import styled from 'styled-components'
 import { customFetch } from '../../utils/axios'
 import FormInput from '../../components/FormInput'
+const genderValue = [
+  'male',
+  'female',
+  'transgender',
+  'non-binary/non-conforming',
+  'prefer not to respond',
+]
 
 const initialState = {
   user: [],
   isLoading: false,
   name: '',
   lastName: '',
+  gender: '',
   dateOfBirth: '',
   email: '',
   phone: '',
@@ -113,6 +121,23 @@ const Profile = () => {
             value={state.dateOfBirth.split('T')[0]}
             onChange={handleChange}
           />
+          {/* gender */}
+          <div className='gender'>
+            <label htmlFor='gender'>Gender</label>
+            <select name='gender' value={state?.gender} onChange={handleChange}>
+              {genderValue.map((item, index) => {
+                return (
+                  <option
+                    select={state?.gender?.toString()}
+                    key={index}
+                    value={item}
+                  >
+                    {item}
+                  </option>
+                )
+              })}
+            </select>
+          </div>
           {/* Email input */}
           <FormInput
             name={'email'}
@@ -168,6 +193,14 @@ const Wrapper = styled.div`
       margin: 0;
     }
   }
+  select {
+    text-transform: capitalize;
+  }
+  .gender {
+    padding: 5px 0;
+    display: grid;
+  }
+
   @media (min-width: 600px) {
     form {
       display: grid;
