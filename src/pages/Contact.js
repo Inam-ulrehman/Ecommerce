@@ -1,5 +1,4 @@
-import React from 'react'
-import { useRef } from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { toast } from 'react-toastify'
 import styled from 'styled-components'
@@ -7,51 +6,52 @@ import { customFetch } from '../utils/axios'
 const image =
   'https://res.cloudinary.com/inam6530/image/upload/v1673448474/Default%20project/contactUs/Support_2_toxjey.png'
 
-const Contact = () => {
-  const nameRef = useRef(null)
-  const phoneRef = useRef(null)
-  const emailRef = useRef(null)
-  const subjectRef = useRef(null)
-  const messageRef = useRef(null)
+const initialState = {
+  name: '',
+  phone: '',
+  email: '',
+  subject: '',
+  message: '',
+  isLoading: false,
+}
 
+const Contact = () => {
+  const [state, setState] = useState(initialState)
+  const { name, phone, email, message, subject, isLoading } = state
   const handleSubmit = async (e) => {
     // Prepare axios and good to go.
     e.preventDefault()
-    let name = nameRef.current.value
-    let phone = phoneRef.current.value
-    let email = emailRef.current.value
-    let subject = subjectRef.current.value
-    let message = messageRef.current.value
-    console.log(name)
+
     if (!name || !phone || !email || !message || !subject) {
       return toast.warning('Please fill all fields.')
     } else {
+      setState({ ...state, isLoading: true })
       try {
-        const response = await customFetch.post('contacts', {
-          name,
-          phone,
-          email,
-          subject,
-          message,
-        })
+        const response = await customFetch.post('contacts', state)
         toast.success(
           `Hello, ${response.data.contact.name}. A team member will be in touch soon.`
         )
-        nameRef.current.value = ''
-        phoneRef.current.value = ''
-        emailRef.current.value = ''
-        subjectRef.current.value = ''
-        messageRef.current.value = ''
+        setState(initialState)
       } catch (error) {
+        setState({ ...state, isLoading: false })
         console.log(error)
       }
     }
   }
+
+  const handleChange = (e) => {
+    const name = e.target.name
+    const value = e.target.value
+    setState({ ...state, [name]: value })
+  }
   return (
     <>
       <Helmet>
-        <title>Contact</title>
-        <meta name='description' content='Welcome to our Contact Form' />
+        <title>Contact Us</title>
+        <meta
+          name='description'
+          content='We are here 24/7 to answer your questions.'
+        />
         <link rel='canonical' href='/contact' />
       </Helmet>
       <Wrapper>
@@ -60,46 +60,62 @@ const Contact = () => {
           <div className='title-underline'></div>
           {/* name */}
           <div>
-            <label htmlFor='name' className='form-label'>
-              Full Name
-            </label>
-            <input className='form-input' type='text' ref={nameRef} />
+            <label className='form-label'>Full Name</label>
+            <input
+              className='form-input'
+              type='text'
+              name='name'
+              value={name}
+              onChange={handleChange}
+            />
           </div>
           {/* Mobile */}
           <div className='mobile'>
-            <label htmlFor='Mobile' className='form-label '>
-              Mobile Number
-            </label>
-            <input className='form-input' type='number' ref={phoneRef} />
+            <label className='form-label '>Mobile Number</label>
+            <input
+              className='form-input'
+              type='number'
+              name='phone'
+              value={phone}
+              onChange={handleChange}
+            />
           </div>
           {/* Email */}
           <div>
-            <label htmlFor='email' className='form-label'>
-              Email Address
-            </label>
-            <input className='form-input' type='text' ref={emailRef} />
+            <label className='form-label'>Email Address</label>
+            <input
+              className='form-input'
+              type='email'
+              name='email'
+              value={email}
+              onChange={handleChange}
+            />
           </div>
           {/* Subject */}
           <div>
-            <label htmlFor='subject' className='form-label'>
-              Subject
-            </label>
-            <input className='form-input' type='text' ref={subjectRef} />
+            <label className='form-label'>Subject</label>
+            <input
+              className='form-input'
+              name='subject'
+              type='text'
+              value={subject}
+              onChange={handleChange}
+            />
           </div>
           {/* Message */}
           <div>
-            <label htmlFor='message' className='form-label'>
-              Message
-            </label>
+            <label className='form-label'>Message</label>
             <textarea
               className='form-input'
               type='text'
               cols='50'
               rows='5'
-              ref={messageRef}
+              name='message'
+              value={message}
+              onChange={handleChange}
             />
           </div>
-          <button type='submit' className='btn btn-block'>
+          <button disabled={isLoading} type='submit' className='btn btn-block'>
             Submit
           </button>
         </form>
