@@ -61,3 +61,10 @@ export const paragraphLimit = (string, length) => {
   var trimmedString = string.substring(0, length) + '...'
   return trimmedString
 }
+// ==========addObjectInState=======
+export const addObjectInState = (payload, state) => {
+  const objectArray = Object.entries(payload)
+  return objectArray.forEach(([key, value]) => {
+    state[key] = value
+  })
+}
