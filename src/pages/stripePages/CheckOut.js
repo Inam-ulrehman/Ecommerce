@@ -3,7 +3,7 @@ import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import { customFetch } from '../../utils/axios'
 import { useSelector } from 'react-redux'
-import { STRIPE_PUBLISHABLE_KEY } from '../../utils/data'
+
 import {
   AddressForm,
   StripeProfile,
