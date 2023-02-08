@@ -32,7 +32,7 @@ const AboutUsCard = ({ image, name, profession, paragraph, _id }) => {
               ? paragraphLimit(paragraph, 215)
               : paragraph}
           </p>
-          {paragraph.length > 215 && <span className='btn'>Read more</span>}
+          {paragraph.length > 215 && <span>Read More</span>}
         </div>
       </div>
     </Wrapper>
@@ -85,6 +85,12 @@ const Wrapper = styled.div`
       padding: 2px;
       margin: 0;
       border-radius: 0;
+      color: var(--primary-5);
+      transition: var(--transition-1);
+      :hover {
+        color: var(--primary-7);
+        background-color: var(--grey-2);
+      }
     }
   }
   @media (min-width: 600px) {
