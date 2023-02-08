@@ -49,12 +49,15 @@ const Wrapper = styled.div`
     .heading {
       text-transform: capitalize;
       font-size: 2rem;
-      display: flex;
-      justify-content: space-around;
-      background-color: var(--grey-2);
+      display: grid;
+      padding: 1rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      background-color: var(--primary-1);
     }
     .paragraph {
       padding: 1rem;
+      color: var(--grey-5);
     }
   }
   @media (min-width: 600px) {
