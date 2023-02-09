@@ -54,10 +54,12 @@ const Wrapper = styled.div`
       margin: 0 auto;
       margin-bottom: 1rem;
       max-width: 500px;
+      color: var(--grey-5);
     }
     p {
       margin: 1rem auto;
       padding: 1rem;
+      color: var(--grey-5);
     }
   }
   /* Team Members */
