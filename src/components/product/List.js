@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import ProductDesign from '../ProductDesign'
+import ProductDesign from './ProductDesign'
 
 const List = () => {
   const { list, isLoading } = useSelector((state) => state.product)
