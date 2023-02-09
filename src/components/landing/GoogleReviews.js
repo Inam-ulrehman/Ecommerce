@@ -120,11 +120,9 @@ const GoogleReviews = () => {
           <p>
             {state.reviews[state.index]?.text.substring(0, state.stringLength)}
             {state.reviews[state.index]?.text.length > state.stringLength && (
-              <button
-                onClick={() => setState({ ...state, stringLength: 2000 })}
-              >
+              <span onClick={() => setState({ ...state, stringLength: 2000 })}>
                 Read More...
-              </button>
+              </span>
             )}
           </p>
         </div>
@@ -225,18 +223,16 @@ const Wrapper = styled.div`
         margin-bottom: 0;
         text-transform: none;
       }
-      button {
-        border-radius: var(--radius-2);
-        background-color: var(--grey-3);
-        box-shadow: var(--shadow-2);
-        border: transparent;
-        font-weight: 500;
-        border-radius: 1rem;
+      span {
+        padding: 2px;
+        margin: 0;
+        border-radius: 0;
+        color: var(--primary-5);
         transition: var(--transition-1);
         :hover {
           cursor: pointer;
-          background-color: var(--grey-4);
-          box-shadow: var(--shadow-3);
+          color: var(--primary-7);
+          background-color: var(--grey-2);
         }
       }
     }
