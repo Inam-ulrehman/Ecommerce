@@ -275,6 +275,9 @@ const Wrapper = styled.div`
   }
   @media (max-width: 720px) {
     grid-template-columns: 1fr;
+    form {
+      margin-top: 0px;
+    }
   }
 `
 export default Register
