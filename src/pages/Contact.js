@@ -50,7 +50,7 @@ const Contact = () => {
         <title>Contact Us</title>
         <meta
           name='description'
-          content='We are here 24/7 to answer your questions.'
+          content='We are here 24/7 to answer all your questions.'
         />
         <link rel='canonical' href='/contact' />
       </Helmet>
@@ -121,7 +121,14 @@ const Contact = () => {
         </form>
         <div className='contactImage'>
           <div className='address'></div>
-          <img src={image} alt='contactUs' />
+          <img
+            src={image}
+            alt='ContactUs'
+            title='ContactUs'
+            loading='eager'
+            width='100&'
+            height='100%'
+          />
         </div>
       </Wrapper>
     </>
