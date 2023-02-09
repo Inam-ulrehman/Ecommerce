@@ -113,7 +113,7 @@ const Register = () => {
                   label={'Date Of Birth'}
                   name='dateOfBirth'
                   type='date'
-                  value={user?.dateOfBirth ? user.dateOfBirth : ''}
+                  value='1980-01-01'
                   onChange={handleChange}
                 />
               </div>
