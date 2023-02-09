@@ -12,6 +12,7 @@ import {
 import ForgetPassword from '../../components/user/ForgetPassword'
 import { Helmet } from 'react-helmet-async'
 import FormInput from '../../components/FormInput'
+import Logo from '../../components/Logo'
 const genderValue = [
   'male',
   'female',
@@ -83,9 +84,22 @@ const Register = () => {
     <Wrapper>
       <Helmet>
         <title>Register/Login</title>
-        <meta name='description' content='' />
-        <link rel='canonical' href='/about' />
+        <meta
+          name='description'
+          content='Create an account or log into your portal.'
+        />
+        <link rel='canonical' href='/register' />
       </Helmet>
+      <div className='div-title'>
+        <div className='title-holder'>
+          <Logo />
+          <h1>
+            Registered
+            <strong> members</strong> can connect with all our
+            <strong> services.</strong>
+          </h1>
+        </div>
+      </div>
       {user.forgetPassword ? (
         <ForgetPassword />
       ) : (
@@ -193,6 +207,30 @@ const Register = () => {
 }
 const Wrapper = styled.div`
   min-height: calc(100vh - 3.2rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  .div-title {
+    display: grid;
+    place-content: center;
+    .title-holder {
+      width: fit-content;
+      height: fit-content;
+    }
+    div {
+      margin: 0;
+    }
+    h1 {
+      margin-top: -4rem;
+      margin-left: 0;
+      font-size: 1.5rem;
+      max-width: 350px;
+      text-transform: none;
+      strong {
+        color: var(--primary-5);
+      }
+    }
+  }
   form {
     margin-top: 6rem;
   }
@@ -234,6 +272,9 @@ const Wrapper = styled.div`
   .login-register {
     display: flex;
     justify-content: space-between;
+  }
+  @media (max-width: 720px) {
+    grid-template-columns: 1fr;
   }
 `
 export default Register
