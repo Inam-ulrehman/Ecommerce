@@ -1,3 +1,6 @@
 www.inamwebsolutions.com/
 www.inamwebsolutions.com/about
+www.inamwebsolutions.com/products
+www.inamwebsolutions.com/prices
 www.inamwebsolutions.com/contact
+www.inamwebsolutions.com/register

@@ -14,11 +14,18 @@ const SingleAboutUs = () => {
       <Helmet>
         <title>{person?.name}</title>
 
-        <meta name='description' content={person?.paragraph} />
+        <meta name='description' content={person?.profession} />
         <link rel='canonical' href='/contact' />
       </Helmet>
       <div className='box-1'>
-        <img src={person?.uploadImage[0]?.secure_url} alt={person?.name} />
+        <img
+          src={person?.uploadImage[0]?.secure_url}
+          alt={person?.name}
+          title={person?.name}
+          loading={'eager'}
+          width='100%'
+          height='100%'
+        />
       </div>
       <div className='box-2'>
         <div className='heading'>
