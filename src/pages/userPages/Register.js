@@ -208,9 +208,11 @@ const Register = () => {
 const Wrapper = styled.div`
   min-height: calc(100vh - 3.2rem);
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr 1fr;
 
   .div-title {
+    height: fit-content;
     display: grid;
     place-content: center;
     .title-holder {
@@ -233,6 +235,7 @@ const Wrapper = styled.div`
   }
   form {
     margin-top: 6rem;
+    height: fit-content;
   }
   .name-lastName {
     display: grid;
@@ -272,6 +275,9 @@ const Wrapper = styled.div`
   .login-register {
     display: flex;
     justify-content: space-between;
+  }
+  @media (max-width: 820px) {
+    min-height: fit-content;
   }
   @media (max-width: 720px) {
     grid-template-columns: 1fr;
