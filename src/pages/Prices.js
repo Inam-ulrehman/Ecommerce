@@ -19,7 +19,7 @@ const Prices = () => {
     <Wrapper>
       <Helmet>
         <title>Prices</title>
-        <meta name='description' content='All Products Prices.' />
+        <meta name='description' content='Price List of our products.' />
         <link rel='canonical' href='/about' />
       </Helmet>
       <div className='h1'>
