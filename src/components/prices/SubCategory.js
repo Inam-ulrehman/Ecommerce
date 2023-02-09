@@ -6,6 +6,7 @@ const SubCategory = ({ item, products }) => {
   const subCategoryProducts = products.filter(
     (items) => items.subCategory === item
   )
+
   return (
     <Wrapper>
       <div className='title-head title'>{item}</div>
@@ -15,12 +16,11 @@ const SubCategory = ({ item, products }) => {
   )
 }
 const Wrapper = styled.div`
-  background-color: var(--primary-5);
-
   .title-head {
-    text-transform: uppercase;
+    text-transform: capitalize;
+    border-top: 2px solid var(--grey-2);
     margin-bottom: 0;
-    color: white;
+    color: var(--grey-5);
   }
 `
 export default SubCategory

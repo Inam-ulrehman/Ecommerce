@@ -41,11 +41,11 @@ const Prices = () => {
 const Wrapper = styled.div`
   display: grid;
   .h1 {
-    background-color: var(--primary-1);
+    background-color: var(--grey-2);
     h1 {
       font-size: 2rem;
       margin-top: 0px;
-      color: var(--primary-7);
+      color: var(--grey-5);
     }
   }
   .container {
@@ -53,6 +53,7 @@ const Wrapper = styled.div`
     background-color: var(--grey-2);
     box-shadow: var(--shadow-2);
     border-radius: var(--radius);
+    color: var(--grey-6);
 
     .header {
       text-transform: uppercase;
