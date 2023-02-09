@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { formatPrice } from '../utils/helper'
 
 const ProductDesign = ({ item }) => {
   const image = item.uploadImage[0].secure_url
@@ -22,6 +23,7 @@ const ProductDesign = ({ item }) => {
               height='100%'
             />
           </div>
+          <span>{formatPrice(item.amount)}</span>
         </div>
       </Link>
     </Wrapper>
@@ -59,6 +61,11 @@ const Wrapper = styled.div`
     img {
       width: 100%;
     }
+  }
+  span {
+    padding: 0 5px;
+
+    color: var(--grey-6);
   }
   @media (max-width: 620px) {
     .img-container {
