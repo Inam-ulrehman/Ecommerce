@@ -13,15 +13,23 @@ const SubCategoryHolder = ({ subCategoryProducts }) => {
     <Wrapper>
       {subCategoryProducts.map((item, index) => {
         return (
-          <div key={index}>
-            <div onClick={() => handleClick(item._id)} className='box-holder'>
-              <span className='box-1'> {item.title}</span>
-              <div className='box-2'>
-                <div>
-                  <span>{formatPrice(item.amount)}</span>
-                </div>
-              </div>
+          <div
+            key={index}
+            className='box-holder'
+            onClick={() => handleClick(item._id)}
+          >
+            <div className='image-holder'>
+              <img
+                src={item.uploadImage[0].secure_url}
+                alt={item.title}
+                title={item.title}
+                loading='eager'
+                width='100%'
+                height='100%'
+              />
             </div>
+            <span>{item.title}</span>
+            <span>{formatPrice(item.amount).slice(2, 15)}</span>
           </div>
         )
       })}
@@ -40,29 +48,25 @@ const Wrapper = styled.div`
     text-transform: capitalize;
   }
   .box-holder {
-    border: 2px solid var(--primary-1);
-    /* background-color: var(--primary-1); */
+    box-shadow: var(--shadow-1);
+    padding: 0 5px;
     color: var(--primary-9);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 1rem;
-    margin-top: 1rem;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
     transition: var(--transition-1);
     :hover {
       cursor: pointer;
       box-shadow: var(--shadow-3);
     }
-  }
-  .box-1 {
-  }
-  .box-2 {
-    text-align: center;
-    div {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    .image-holder {
+      width: 70px;
+    }
+    span {
+      color: var(--grey-5);
     }
   }
+
   @media (max-width: 620px) {
     grid-template-columns: 1fr;
   }
