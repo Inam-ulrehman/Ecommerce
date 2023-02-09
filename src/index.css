@@ -37,9 +37,14 @@ html {
   --black: #222;
   --white: #fff;
   --red-light: #f8d7da;
+  --red-medium: #d92635;
   --red-dark: #842029;
   --green-light: #d1e7dd;
+  --green-medium: #58a783;
   --green-dark: #0f5132;
+  --blue-light: #b7d4fb;
+  --blue-medium: #6ea9f7;
+  --blue-dark: #1877f2;
 
   /* fonts  */
 

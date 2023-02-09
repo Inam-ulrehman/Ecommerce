@@ -256,19 +256,18 @@ const Wrapper = styled.div`
     display: grid;
   }
   .login-button {
-    background: var(--grey-3);
+    background: var(--green-light);
     border: transparent;
     font-size: large;
     border-bottom: 2px solid var(--primary-7);
     margin-left: 1rem;
     border-radius: var(--radius);
-
     padding: 5px;
     transition: var(--transition);
 
     :hover {
       cursor: pointer;
-      background: var(--primary-5);
+      background: var(--green-medium);
       color: white;
     }
   }
