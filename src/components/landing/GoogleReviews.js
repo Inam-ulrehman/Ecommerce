@@ -12,6 +12,7 @@ const initialState = {
   formatted_address: '',
   reviews: [],
   length: '',
+  stringLength: 200,
   index: 0,
 }
 
@@ -115,7 +116,17 @@ const GoogleReviews = () => {
           </div>
         </div>
         <div className='body-description'>
-          <p>{state.reviews[state.index]?.text}</p>
+          {/* state.reviews[state.index]?.text.substring(0, 200) */}
+          <p>
+            {state.reviews[state.index]?.text.substring(0, state.stringLength)}
+            {state.reviews[state.index]?.text.length > state.stringLength && (
+              <button
+                onClick={() => setState({ ...state, stringLength: 2000 })}
+              >
+                Read More...
+              </button>
+            )}
+          </p>
         </div>
       </div>
     </Wrapper>
@@ -130,7 +141,7 @@ const Wrapper = styled.div`
     right: 5%;
     background-color: transparent;
     :hover {
-      background-color: var(--primary-1);
+      background-color: var(--grey-3);
     }
   }
   .previous {
@@ -139,7 +150,7 @@ const Wrapper = styled.div`
     left: 5%;
     background-color: transparent;
     :hover {
-      background-color: var(--primary-1);
+      background-color: var(--grey-3);
     }
   }
   .heading {
@@ -152,7 +163,7 @@ const Wrapper = styled.div`
       span {
         font-size: 4rem;
 
-        color: var(--primary-5);
+        color: var(--grey-6);
       }
     }
   }
@@ -160,16 +171,15 @@ const Wrapper = styled.div`
     padding: 1rem;
     display: flex;
     justify-content: space-around;
-
     max-width: 80vw;
     margin: 0 auto;
     .name {
       strong {
-        color: var(--primary-5);
+        color: var(--grey-5);
       }
       p {
         margin: 0;
-        color: var(--primary-7);
+        color: var(--grey-4);
       }
     }
   }
@@ -177,7 +187,7 @@ const Wrapper = styled.div`
     text-align: center;
     min-width: 100px;
     strong {
-      color: var(--primary-5);
+      color: var(--grey-5);
     }
   }
   .body {
@@ -191,7 +201,7 @@ const Wrapper = styled.div`
       position: absolute;
       top: 1%;
       right: 1%;
-      background-color: var(--grey-5);
+      background-color: var(--grey-);
       padding: 5px;
       border-radius: 50%;
       color: var(--white);
@@ -205,26 +215,39 @@ const Wrapper = styled.div`
       .body-title-reviews {
         padding-left: 1.5rem;
         strong {
-          color: var(--primary-5);
+          color: var(--grey-5);
         }
       }
     }
     .body-description {
       p {
-        color: var(--primary-7);
+        color: var(--grey-4);
+        margin-bottom: 0;
+        text-transform: none;
+      }
+      button {
+        border-radius: var(--radius-2);
+        background-color: var(--grey-3);
+        box-shadow: var(--shadow-2);
+        border: transparent;
+        font-weight: 500;
+        border-radius: 1rem;
+        transition: var(--transition-1);
+        :hover {
+          cursor: pointer;
+          background-color: var(--grey-4);
+          box-shadow: var(--shadow-3);
+        }
       }
     }
   }
 
   @media (max-width: 620px) {
     .body {
-      max-width: 80vw;
+      max-width: 70vw;
     }
     .google {
       margin-bottom: 1rem;
-      span {
-        display: none;
-      }
     }
     .next {
       right: 1%;
