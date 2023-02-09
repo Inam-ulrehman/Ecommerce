@@ -57,11 +57,11 @@ const Wrapper = styled.div`
   .h1 {
     margin-bottom: 5px;
     margin-top: -18px;
-    background-color: var(--primary-1);
+    background-color: var(--grey-2);
     h1 {
       margin-top: 0px;
       font-size: 2rem;
-      color: var(--primary-7);
+      color: var(--grey-5);
     }
   }
   /* ====Product */
