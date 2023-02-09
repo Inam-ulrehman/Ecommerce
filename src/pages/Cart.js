@@ -77,7 +77,9 @@ const Cart = () => {
                     </button>
                   </div>
                 </td>
-                <td className='price'>{formatPrice(item.amount)}</td>
+                <td className='price'>
+                  {formatPrice(item.amount).slice(2, 15)}
+                </td>
                 <td className='action'>
                   <button
                     className='btn'
@@ -97,7 +99,7 @@ const Cart = () => {
           <strong>Total Bill</strong>
         </p>
         <p>
-          <strong>TOTAL: {formatPrice(TotalAmount)}</strong>
+          <strong> {formatPrice(TotalAmount)}</strong>
         </p>
       </div>
       <div className='checkout'>
