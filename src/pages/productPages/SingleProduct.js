@@ -2,6 +2,7 @@ import React from 'react'
 import { useRef } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -65,6 +66,14 @@ const SingleProduct = () => {
   }
   return (
     <Wrapper>
+      <Helmet>
+        <title>{singleProduct?.title}</title>
+        <meta
+          name='description'
+          content={singleProduct.description?.substring(0, 170)}
+        />
+        <link rel='canonical' href='/product' />
+      </Helmet>
       <div className='container-header'>
         <span>
           <Link to={'/products'} className='btn'>
@@ -79,13 +88,24 @@ const SingleProduct = () => {
             <img
               src={singleProductImages[state.index]?.secure_url}
               alt={singleProduct.title}
+              title={singleProduct.title}
+              loading='eager'
+              width='100%'
+              height='100%'
             />
           </div>
           <div className='options-img'>
             {singleProductImages?.map((item, index) => {
               return (
                 <div onClick={() => handleIndex(index)} key={index}>
-                  <img src={item.secure_url} alt='product ' />
+                  <img
+                    src={item.secure_url}
+                    alt={singleProduct.title}
+                    title={singleProduct.title}
+                    loading='eager'
+                    width='100%'
+                    height='100%'
+                  />
                 </div>
               )
             })}
@@ -94,7 +114,7 @@ const SingleProduct = () => {
         {/* ====DESCRIPTION  */}
         <div className='description'>
           <div>
-            <h3 className='title'>{singleProduct.title}</h3>
+            <h1 className='title'>{singleProduct.title}</h1>
             <div className='title-underline'></div>
           </div>
           <div className='description-heading'>

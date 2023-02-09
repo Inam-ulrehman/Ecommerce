@@ -33,8 +33,11 @@ const Products = () => {
   return (
     <Wrapper>
       <Helmet>
-        <title>Product</title>
-        <meta name='description' content='Welcome to our Product Page.' />
+        <title>Products</title>
+        <meta
+          name='description'
+          content='Shop online thousands of products. '
+        />
         <link rel='canonical' href='/product' />
       </Helmet>
       <ProductCategory />
