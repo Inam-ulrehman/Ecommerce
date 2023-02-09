@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
@@ -10,12 +11,18 @@ const SingleAboutUs = () => {
 
   return (
     <Wrapper>
+      <Helmet>
+        <title>{person?.name}</title>
+
+        <meta name='description' content={person?.paragraph} />
+        <link rel='canonical' href='/contact' />
+      </Helmet>
       <div className='box-1'>
         <img src={person?.uploadImage[0]?.secure_url} alt={person?.name} />
       </div>
       <div className='box-2'>
         <div className='heading'>
-          <span>{person?.name}</span>
+          <h1>{person?.name}</h1>
           <span>{person?.profession}</span>
         </div>
         <div className='paragraph'>
@@ -48,12 +55,21 @@ const Wrapper = styled.div`
     box-shadow: var(--shadow-2);
     .heading {
       text-transform: capitalize;
-      font-size: 2rem;
       display: grid;
+      align-items: center;
       padding: 1rem;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      background-color: var(--primary-1);
+      background-color: var(--grey-2);
+      color: var(--grey-5);
+      h1,
+      span {
+        font-size: 1.3rem;
+      }
+      h1,
+      span {
+        margin: 0;
+      }
     }
     .paragraph {
       padding: 1rem;
