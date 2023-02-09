@@ -23,7 +23,7 @@ const ProductDesign = ({ item }) => {
               height='100%'
             />
           </div>
-          <span>{formatPrice(item.amount)}</span>
+          <span>{formatPrice(item.amount).slice(2, 17)}</span>
         </div>
       </Link>
     </Wrapper>
@@ -57,7 +57,6 @@ const Wrapper = styled.div`
     max-width: 250px;
     max-height: 250px;
     transition: var(--transition-1);
-
     img {
       width: 100%;
     }
