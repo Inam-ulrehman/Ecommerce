@@ -12,7 +12,7 @@ const initialState = {
   formatted_address: '',
   reviews: [],
   length: '',
-  stringLength: 200,
+  stringLength: 400,
   index: 0,
 }
 
